@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		62794A16C600772F8DDE5B14 /* Pods_soundcloudql_swiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CADF51EA26512D32948B714D /* Pods_soundcloudql_swiftTests.framework */; };
+		9FD5B2353E88AB4EBB99D5CF /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BD2661F65F03F3C3ED6E /* ProfileCollectionViewController.swift */; };
 		9FD5B4438B9F351BB6E96B87 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF88F4A2402972CF436F /* AppCoordinator.swift */; };
+		9FD5B7FAFF7F517AF9D0ED36 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BE3C25B741AF3345FB88 /* Coordinator.swift */; };
+		9FD5B868CB29D6D3823851A7 /* ProfileCoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BBCFE55151C7BF88CBAA /* ProfileCoordinatorSpec.swift */; };
 		9FD5B88D83DCF4CFD2F2F9FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B606DD49330528B32028 /* AppDelegate.swift */; };
+		9FD5BD54A5F952F3787E150B /* AppCoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B9AD248F5B0C74C36DB8 /* AppCoordinatorSpec.swift */; };
+		9FD5BFD51D338175F26C1759 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BE5E2A900A54A5A72576 /* ProfileCoordinator.swift */; };
 		EB80F2DA1C8B0C9A00E7C7DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB80F2D91C8B0C9A00E7C7DD /* ViewController.swift */; };
 		EB80F2DF1C8B0C9A00E7C7DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB80F2DE1C8B0C9A00E7C7DD /* Assets.xcassets */; };
 		EB80F2E21C8B0C9A00E7C7DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB80F2E01C8B0C9A00E7C7DD /* LaunchScreen.storyboard */; };
-		EB80F2ED1C8B0C9A00E7C7DD /* soundcloudql_swiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB80F2EC1C8B0C9A00E7C7DD /* soundcloudql_swiftTests.swift */; };
 		EB80F2F81C8B0C9A00E7C7DD /* soundcloudql_swiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB80F2F71C8B0C9A00E7C7DD /* soundcloudql_swiftUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +42,11 @@
 		0992327D8E584DDC0CE261F2 /* Pods-soundcloudql-swiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundcloudql-swiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-soundcloudql-swiftTests/Pods-soundcloudql-swiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3470501CC60AE2E7FE80DF6F /* Pods-soundcloudql-swiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundcloudql-swiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-soundcloudql-swiftTests/Pods-soundcloudql-swiftTests.release.xcconfig"; sourceTree = "<group>"; };
 		9FD5B606DD49330528B32028 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9FD5B9AD248F5B0C74C36DB8 /* AppCoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinatorSpec.swift; sourceTree = "<group>"; };
+		9FD5BBCFE55151C7BF88CBAA /* ProfileCoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoordinatorSpec.swift; sourceTree = "<group>"; };
+		9FD5BD2661F65F03F3C3ED6E /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
+		9FD5BE3C25B741AF3345FB88 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		9FD5BE5E2A900A54A5A72576 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		9FD5BF88F4A2402972CF436F /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		CADF51EA26512D32948B714D /* Pods_soundcloudql_swiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_soundcloudql_swiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB80F2D41C8B0C9A00E7C7DD /* soundcloudql-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "soundcloudql-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,7 +55,6 @@
 		EB80F2E11C8B0C9A00E7C7DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB80F2E31C8B0C9A00E7C7DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB80F2E81C8B0C9A00E7C7DD /* soundcloudql-swiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "soundcloudql-swiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB80F2EC1C8B0C9A00E7C7DD /* soundcloudql_swiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = soundcloudql_swiftTests.swift; sourceTree = "<group>"; };
 		EB80F2EE1C8B0C9A00E7C7DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB80F2F31C8B0C9A00E7C7DD /* soundcloudql-swiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "soundcloudql-swiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB80F2F71C8B0C9A00E7C7DD /* soundcloudql_swiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = soundcloudql_swiftUITests.swift; sourceTree = "<group>"; };
@@ -87,11 +95,44 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9FD5B22F03D62FC57940CD5B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				9FD5BE5E2A900A54A5A72576 /* ProfileCoordinator.swift */,
+				9FD5BD2661F65F03F3C3ED6E /* ProfileCollectionViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		9FD5B6095CCCD9256FFDE5EC /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				9FD5BE3C25B741AF3345FB88 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		9FD5BA9C71F8AA74C94D5BAC /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				9FD5BBCFE55151C7BF88CBAA /* ProfileCoordinatorSpec.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		9FD5BB71D5F2E25801E890A8 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				9FD5B606DD49330528B32028 /* AppDelegate.swift */,
 				9FD5BF88F4A2402972CF436F /* AppCoordinator.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9FD5BC759A8A23A8AC936B92 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9FD5B9AD248F5B0C74C36DB8 /* AppCoordinatorSpec.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -126,6 +167,8 @@
 				EB80F2E01C8B0C9A00E7C7DD /* LaunchScreen.storyboard */,
 				EB80F2E31C8B0C9A00E7C7DD /* Info.plist */,
 				9FD5BB71D5F2E25801E890A8 /* App */,
+				9FD5B22F03D62FC57940CD5B /* Profile */,
+				9FD5B6095CCCD9256FFDE5EC /* Coordinator */,
 			);
 			path = "soundcloudql-swift";
 			sourceTree = "<group>";
@@ -133,8 +176,9 @@
 		EB80F2EB1C8B0C9A00E7C7DD /* soundcloudql-swiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				EB80F2EC1C8B0C9A00E7C7DD /* soundcloudql_swiftTests.swift */,
 				EB80F2EE1C8B0C9A00E7C7DD /* Info.plist */,
+				9FD5BC759A8A23A8AC936B92 /* App */,
+				9FD5BA9C71F8AA74C94D5BAC /* Profile */,
 			);
 			path = "soundcloudql-swiftTests";
 			sourceTree = "<group>";
@@ -341,6 +385,9 @@
 				EB80F2DA1C8B0C9A00E7C7DD /* ViewController.swift in Sources */,
 				9FD5B88D83DCF4CFD2F2F9FF /* AppDelegate.swift in Sources */,
 				9FD5B4438B9F351BB6E96B87 /* AppCoordinator.swift in Sources */,
+				9FD5BFD51D338175F26C1759 /* ProfileCoordinator.swift in Sources */,
+				9FD5B7FAFF7F517AF9D0ED36 /* Coordinator.swift in Sources */,
+				9FD5B2353E88AB4EBB99D5CF /* ProfileCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,7 +395,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB80F2ED1C8B0C9A00E7C7DD /* soundcloudql_swiftTests.swift in Sources */,
+				9FD5BD54A5F952F3787E150B /* AppCoordinatorSpec.swift in Sources */,
+				9FD5B868CB29D6D3823851A7 /* ProfileCoordinatorSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
