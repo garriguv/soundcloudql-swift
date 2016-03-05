@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		62794A16C600772F8DDE5B14 /* Pods_soundcloudql_swiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CADF51EA26512D32948B714D /* Pods_soundcloudql_swiftTests.framework */; };
-		EB80F2D81C8B0C9A00E7C7DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB80F2D71C8B0C9A00E7C7DD /* AppDelegate.swift */; };
+		9FD5B4438B9F351BB6E96B87 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF88F4A2402972CF436F /* AppCoordinator.swift */; };
+		9FD5B88D83DCF4CFD2F2F9FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B606DD49330528B32028 /* AppDelegate.swift */; };
 		EB80F2DA1C8B0C9A00E7C7DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB80F2D91C8B0C9A00E7C7DD /* ViewController.swift */; };
-		EB80F2DD1C8B0C9A00E7C7DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB80F2DB1C8B0C9A00E7C7DD /* Main.storyboard */; };
 		EB80F2DF1C8B0C9A00E7C7DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB80F2DE1C8B0C9A00E7C7DD /* Assets.xcassets */; };
 		EB80F2E21C8B0C9A00E7C7DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB80F2E01C8B0C9A00E7C7DD /* LaunchScreen.storyboard */; };
 		EB80F2ED1C8B0C9A00E7C7DD /* soundcloudql_swiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB80F2EC1C8B0C9A00E7C7DD /* soundcloudql_swiftTests.swift */; };
@@ -37,11 +37,11 @@
 /* Begin PBXFileReference section */
 		0992327D8E584DDC0CE261F2 /* Pods-soundcloudql-swiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundcloudql-swiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-soundcloudql-swiftTests/Pods-soundcloudql-swiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3470501CC60AE2E7FE80DF6F /* Pods-soundcloudql-swiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundcloudql-swiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-soundcloudql-swiftTests/Pods-soundcloudql-swiftTests.release.xcconfig"; sourceTree = "<group>"; };
+		9FD5B606DD49330528B32028 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9FD5BF88F4A2402972CF436F /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		CADF51EA26512D32948B714D /* Pods_soundcloudql_swiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_soundcloudql_swiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB80F2D41C8B0C9A00E7C7DD /* soundcloudql-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "soundcloudql-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB80F2D71C8B0C9A00E7C7DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB80F2D91C8B0C9A00E7C7DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EB80F2DC1C8B0C9A00E7C7DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EB80F2DE1C8B0C9A00E7C7DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB80F2E11C8B0C9A00E7C7DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB80F2E31C8B0C9A00E7C7DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -87,6 +87,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9FD5BB71D5F2E25801E890A8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9FD5B606DD49330528B32028 /* AppDelegate.swift */,
+				9FD5BF88F4A2402972CF436F /* AppCoordinator.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		EB80F2CB1C8B0C9A00E7C7DD = {
 			isa = PBXGroup;
 			children = (
@@ -112,12 +121,11 @@
 		EB80F2D61C8B0C9A00E7C7DD /* soundcloudql-swift */ = {
 			isa = PBXGroup;
 			children = (
-				EB80F2D71C8B0C9A00E7C7DD /* AppDelegate.swift */,
 				EB80F2D91C8B0C9A00E7C7DD /* ViewController.swift */,
-				EB80F2DB1C8B0C9A00E7C7DD /* Main.storyboard */,
 				EB80F2DE1C8B0C9A00E7C7DD /* Assets.xcassets */,
 				EB80F2E01C8B0C9A00E7C7DD /* LaunchScreen.storyboard */,
 				EB80F2E31C8B0C9A00E7C7DD /* Info.plist */,
+				9FD5BB71D5F2E25801E890A8 /* App */,
 			);
 			path = "soundcloudql-swift";
 			sourceTree = "<group>";
@@ -258,7 +266,6 @@
 			files = (
 				EB80F2E21C8B0C9A00E7C7DD /* LaunchScreen.storyboard in Resources */,
 				EB80F2DF1C8B0C9A00E7C7DD /* Assets.xcassets in Resources */,
-				EB80F2DD1C8B0C9A00E7C7DD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +339,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB80F2DA1C8B0C9A00E7C7DD /* ViewController.swift in Sources */,
-				EB80F2D81C8B0C9A00E7C7DD /* AppDelegate.swift in Sources */,
+				9FD5B88D83DCF4CFD2F2F9FF /* AppDelegate.swift in Sources */,
+				9FD5B4438B9F351BB6E96B87 /* AppCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,14 +376,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EB80F2DB1C8B0C9A00E7C7DD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EB80F2DC1C8B0C9A00E7C7DD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EB80F2E01C8B0C9A00E7C7DD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
