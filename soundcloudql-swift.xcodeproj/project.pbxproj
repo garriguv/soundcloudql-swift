@@ -16,6 +16,7 @@
 		9FD5B868CB29D6D3823851A7 /* ProfileCoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BBCFE55151C7BF88CBAA /* ProfileCoordinatorSpec.swift */; };
 		9FD5B88D83DCF4CFD2F2F9FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B606DD49330528B32028 /* AppDelegate.swift */; };
 		9FD5B90F4BB1F9AD12DB2BC8 /* ApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B8E16EC6DE899D7FCDB2 /* ApiController.swift */; };
+		9FD5BAB1B7876ABEDD7A8230 /* profile.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B886228A4B7D57E98F0F /* profile.graphql */; };
 		9FD5BAE314CB8BCC5D70445E /* query.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B4D8FAB80E43B514CB43 /* query.graphql */; };
 		9FD5BB4928ABB8E8F46994F1 /* EnvironmentSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B5A75F2423AAA98C6D70 /* EnvironmentSpec.swift */; };
 		9FD5BD542F48AA674F5A0D1C /* RequestFactorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BE7DF139A759DB44ED0B /* RequestFactorySpec.swift */; };
@@ -55,6 +56,7 @@
 		9FD5B5A75F2423AAA98C6D70 /* EnvironmentSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentSpec.swift; sourceTree = "<group>"; };
 		9FD5B606DD49330528B32028 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FD5B866B412859B4898F4FB /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		9FD5B886228A4B7D57E98F0F /* profile.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = profile.graphql; sourceTree = "<group>"; };
 		9FD5B8C076C29E9E728666A2 /* RequestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		9FD5B8E16EC6DE899D7FCDB2 /* ApiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiController.swift; sourceTree = "<group>"; };
 		9FD5B9AD248F5B0C74C36DB8 /* AppCoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinatorSpec.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				9FD5BE5E2A900A54A5A72576 /* ProfileCoordinator.swift */,
 				9FD5BD2661F65F03F3C3ED6E /* ProfileCollectionViewController.swift */,
+				9FD5B886228A4B7D57E98F0F /* profile.graphql */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				EB80F2E21C8B0C9A00E7C7DD /* LaunchScreen.storyboard in Resources */,
 				EB3F859B1C8B2A4900E5F0AC /* Environment.plist in Resources */,
 				EB80F2DF1C8B0C9A00E7C7DD /* Assets.xcassets in Resources */,
+				9FD5BAB1B7876ABEDD7A8230 /* profile.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
