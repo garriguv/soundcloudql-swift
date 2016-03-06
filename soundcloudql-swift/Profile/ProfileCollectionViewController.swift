@@ -8,9 +8,8 @@ class ProfileCollectionViewController: UICollectionViewController {
 
     let controller = ApiController.sharedInstance
     controller.fetch(withGraphQLQuery: "profile", variables: [ "id": "2" ]) {
-      (json: [String: AnyObject]?, error: ApiControllerError?) in
-      print("json \(json)")
-      print("error \(error)")
+      (response) in
+      print("\(response)")
     }
   }
 

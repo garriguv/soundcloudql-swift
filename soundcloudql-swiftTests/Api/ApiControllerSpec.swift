@@ -68,8 +68,8 @@ class ApiControllerSpec: QuickSpec {
         it("returns GraphQLQueryNotFound") {
           waitUntil { done in
             subject.fetch(withGraphQLQuery: "query", variables: [String: String]()) {
-              (_, error: ApiControllerError?) in
-              expect(error).to(equal(ApiControllerError.GraphQLQueryNotFound))
+              (response: ApiResponse) in
+              expect(response).to(equal(ApiResponse.Error(.GraphQLQueryNotFound)))
               done()
             }
           }
@@ -95,8 +95,8 @@ class ApiControllerSpec: QuickSpec {
           it("returns NetworkError") {
             waitUntil { done in
               subject.fetch(withGraphQLQuery: "query", variables: [String: String]()) {
-                (_, error: ApiControllerError?) in
-                expect(error).to(equal(ApiControllerError.NetworkError(networkError)))
+                (response: ApiResponse) in
+                expect(response).to(equal(ApiResponse.Error(.NetworkError(networkError))))
                 done()
               }
             }
@@ -117,8 +117,8 @@ class ApiControllerSpec: QuickSpec {
           it("returns JSONSerialization") {
             waitUntil { done in
               subject.fetch(withGraphQLQuery: "query", variables: [String: String]()) {
-                (_, error: ApiControllerError?) in
-                expect(error).to(equal(ApiControllerError.JSONSerialization(nil)))
+                (response: ApiResponse) in
+                expect(response).to(equal(ApiResponse.Error(.JSONSerialization(nil))))
                 done()
               }
             }
@@ -141,8 +141,8 @@ class ApiControllerSpec: QuickSpec {
           it("returns a dictionary") {
             waitUntil { done in
               subject.fetch(withGraphQLQuery: "query", variables: [String: String]()) {
-                (dictionary: [String: AnyObject]?, _: ApiControllerError?) in
-                expect(dictionary).to(equal(expectedDictionary))
+                (response: ApiResponse) in
+                expect(response).to(equal(ApiResponse.GraphQL(expectedDictionary)))
                 done()
               }
             }
