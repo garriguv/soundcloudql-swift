@@ -22,6 +22,7 @@
 		9FD5BD542F48AA674F5A0D1C /* RequestFactorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BE7DF139A759DB44ED0B /* RequestFactorySpec.swift */; };
 		9FD5BD54A5F952F3787E150B /* AppCoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B9AD248F5B0C74C36DB8 /* AppCoordinatorSpec.swift */; };
 		9FD5BDBCA78F8CF6F286A8F9 /* ApiControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B519F741B2491EB205BC /* ApiControllerSpec.swift */; };
+		9FD5BE3581680A4763BA031C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BDFBA311E65A466E89CE /* main.swift */; };
 		9FD5BFD51D338175F26C1759 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BE5E2A900A54A5A72576 /* ProfileCoordinator.swift */; };
 		EB3F85991C8B286200E5F0AC /* Environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB3F85981C8B286200E5F0AC /* Environment.plist */; };
 		EB3F859B1C8B2A4900E5F0AC /* Environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB3F859A1C8B2A4900E5F0AC /* Environment.plist */; };
@@ -62,6 +63,7 @@
 		9FD5B9AD248F5B0C74C36DB8 /* AppCoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinatorSpec.swift; sourceTree = "<group>"; };
 		9FD5BBCFE55151C7BF88CBAA /* ProfileCoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoordinatorSpec.swift; sourceTree = "<group>"; };
 		9FD5BD2661F65F03F3C3ED6E /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
+		9FD5BDFBA311E65A466E89CE /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9FD5BE3C25B741AF3345FB88 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		9FD5BE5E2A900A54A5A72576 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		9FD5BE7DF139A759DB44ED0B /* RequestFactorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFactorySpec.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				9FD5B606DD49330528B32028 /* AppDelegate.swift */,
 				9FD5BF88F4A2402972CF436F /* AppCoordinator.swift */,
+				9FD5BDFBA311E65A466E89CE /* main.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				9FD5B63CDBF34038A333E960 /* Environment.swift in Sources */,
 				9FD5B73BA27FD28B74A4711D /* RequestFactory.swift in Sources */,
 				9FD5B90F4BB1F9AD12DB2BC8 /* ApiController.swift in Sources */,
+				9FD5BE3581680A4763BA031C /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
