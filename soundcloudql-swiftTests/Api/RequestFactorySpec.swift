@@ -26,7 +26,7 @@ class RequestFactorySpec: QuickSpec {
 
         beforeEach {
           request = {
-            return subject.request("query", variables: [ "id": "2" ])!
+            return subject.request(withGraphQLQuery:"query", variables: [ "id": "2" ])!
           }
         }
 
@@ -56,7 +56,7 @@ class RequestFactorySpec: QuickSpec {
 
       context("when the query does not exist") {
         it("does not return any request") {
-          expect(subject.request("nope", variables: [String: String]())).to(beNil())
+          expect(subject.request(withGraphQLQuery:"nope", variables: [String: String]())).to(beNil())
         }
       }
     }

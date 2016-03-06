@@ -10,7 +10,7 @@ class RequestFactory {
     self.environment = environment
   }
 
-  func request(queryName: String, variables: [String: String]) -> NSURLRequest? {
+  func request(withGraphQLQuery queryName: String, variables: [String: String]) -> NSURLRequest? {
     guard
       let query = graphQLQuery(queryName),
       let body = body(withQuery: query, variables: variables) else {
