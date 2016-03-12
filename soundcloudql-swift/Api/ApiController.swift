@@ -22,7 +22,7 @@ func == (lhs: ApiControllerError, rhs: ApiControllerError) -> Bool {
 }
 
 enum ApiResponse {
-  case GraphQL(NSDictionary)
+  case GraphQL([String: AnyObject])
   case Error(ApiControllerError)
 }
 
@@ -31,7 +31,7 @@ extension ApiResponse: Equatable {}
 func == (lhs: ApiResponse, rhs: ApiResponse) -> Bool {
   switch (lhs, rhs) {
     case (.GraphQL(let lhsObj), .GraphQL(let rhsObj)):
-      return lhsObj == rhsObj
+      return NSDictionary(dictionary: lhsObj).isEqualToDictionary(rhsObj)
     case (.Error(let lhsError), .Error(let rhsError)):
       return lhsError == rhsError
     default:
@@ -77,9 +77,9 @@ class ApiController {
     dataTask.resume()
   }
 
-  private static func jsonDictionary(data: NSData) throws -> NSDictionary {
+  private static func jsonDictionary(data: NSData) throws -> [String: AnyObject] {
     let json = try NSJSONSerialization.JSONObjectWithData(data, options: [])
-    if let dictionary = json as? NSDictionary {
+    if let dictionary = json as? [String: AnyObject] {
       return dictionary
     } else {
       throw ApiControllerError.JSONSerialization("Top level json object is not an NSDictionary: \(json)")

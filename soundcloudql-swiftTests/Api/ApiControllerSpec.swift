@@ -128,10 +128,10 @@ class ApiControllerSpec: QuickSpec {
         context("when the api and JSON serialization succeeds") {
           var networkResponse: NSHTTPURLResponse!
           var networkData: NSData!
-          var expectedDictionary: NSDictionary!
+          var expectedDictionary: [String: AnyObject]!
 
           beforeEach {
-            expectedDictionary = [ "data": [ "hello" : "world" ] ] as! NSDictionary
+            expectedDictionary = [ "data": [ "hello" : "world" ] ]
             networkResponse = NSHTTPURLResponse(URL: url, statusCode: 200, HTTPVersion: nil, headerFields: nil)
             networkData = try! NSJSONSerialization.dataWithJSONObject(expectedDictionary, options: [])
             session.__response = networkResponse
