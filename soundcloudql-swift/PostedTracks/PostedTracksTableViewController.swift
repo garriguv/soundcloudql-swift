@@ -3,7 +3,9 @@ import UIKit
 
 class PostedTracksTableViewController: UITableViewController {
   var userId: String!
+
   private var postedTracks: PostedTracks?
+  private var paginating: Bool = false
 }
 
 // View lifecycle
@@ -13,7 +15,7 @@ extension PostedTracksTableViewController {
 
     setup()
 
-    let postedTracksResolver = GraphQLQueryResolver(query: PostedTracksQuery(profileID: userId))
+    let postedTracksResolver = GraphQLQueryResolver(query: PostedTracksQuery(profileID: userId, limit: 50))
     postedTracksResolver.fetch() { (response: QueryResponse<PostedTracks>) in
       switch response {
       case .Success(let collection):
@@ -60,6 +62,28 @@ extension PostedTracksTableViewController {
 // UIScrollViewDelegate
 extension PostedTracksTableViewController {
   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    if let postedTracks = postedTracks where paginationShouldBeTriggered(scrollView) {
+      paginating = true
+      let query = PostedTracksQuery(profileID: userId, limit: 50, next: postedTracks.user.postedTracksCollection.next)
+      let nextPageResolver = GraphQLQueryResolver(query: query)
+      nextPageResolver.fetch() { (response: QueryResponse<PostedTracks>) in
+        switch response {
+        case .Success(let collection):
+          self.appendPostedTracks(collection)
+        case .Error(let error):
+          print(error)
+        }
+        self.paginating = false
+      }
+    }
+  }
+
+  private func paginationShouldBeTriggered(scrollView: UIScrollView) -> Bool {
+    if let postedTracks = postedTracks where postedTracks.user.postedTracksCollection.next != nil && !self.paginating {
+      return (scrollView.contentSize.height - scrollView.frame.size.height) - scrollView.contentOffset.y < tableView.frame.size.height
+    } else {
+      return false
+    }
   }
 }
 
@@ -76,10 +100,21 @@ extension PostedTracksTableViewController {
     tableView.reloadData()
   }
 
+  private func appendPostedTracks(newCollection: PostedTracks) {
+    guard let _postedTracks = postedTracks else {
+      preconditionFailure("Trying to paginate before having any tracks")
+    }
+    let tracksCollection = _postedTracks.user.postedTracksCollection.collection + newCollection.user.postedTracksCollection.collection
+    let collection = UserPostedTracksCollection(collection: tracksCollection, next: newCollection.user.postedTracksCollection.next)
+    let user = PostedTracksUser(postedTracksCollection: collection)
+    postedTracks = PostedTracks(user: user)
+    tableView.reloadData()
+  }
+
   private func trackAtIndexPath(indexPath: NSIndexPath) -> Track {
-    guard let postedTracksCollection = postedTracks else {
+    guard let postedTracks = postedTracks else {
       preconditionFailure("trying to access a track (\(indexPath)) without a profile")
     }
-    return postedTracksCollection.user.postedTracksCollection.collection[indexPath.row]
+    return postedTracks.user.postedTracksCollection.collection[indexPath.row]
   }
 }

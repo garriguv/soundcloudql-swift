@@ -1,6 +1,6 @@
-query UserProfileQuery($id: ID!, $next: String) {
+query UserProfileQuery($id: ID!, $limit: Int!, $next: String) {
   user(id: $id) {
-    postedTracksCollection(limit: 10, next: $next) {
+    postedTracksCollection(limit: $limit, next: $next) {
       collection {
         ...SmallTrack
       }

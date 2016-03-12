@@ -10,6 +10,7 @@ class GraphQLQueryResolver<Query: GraphQLQuery> {
   }
 
   func fetch(closure: (QueryResponse<Query.Object>) -> ()) {
+    print("resolving \(query)")
     apiController.fetch(withGraphQLQuery: query.name, variables: query.variables) { apiResponse in
       switch (apiResponse) {
         case .GraphQL(let dictionary):
