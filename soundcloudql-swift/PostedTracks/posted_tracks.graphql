@@ -1,4 +1,4 @@
-query UserProfileQuery($id: ID!, $limit: Int!, $next: String) {
+query PostedTracksQuery($id: ID!, $limit: Int!, $next: String) {
   user(id: $id) {
     postedTracksCollection(limit: $limit, next: $next) {
       collection {
