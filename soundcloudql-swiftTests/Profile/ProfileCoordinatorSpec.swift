@@ -21,7 +21,7 @@ class ProfileCoordinatorSpec: QuickSpec {
     beforeEach {
       navigationController = TestNavigationController()
 
-      subject = ProfileCoordinator(navigationController)
+      subject = ProfileCoordinator(navigationController, userId: "2")
     }
 
     describe("start()") {

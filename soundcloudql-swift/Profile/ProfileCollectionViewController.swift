@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 
 class ProfileTableViewController: UITableViewController {
+  var userId: String!
   private var profile: Profile?
 }
 
@@ -12,7 +13,7 @@ extension ProfileTableViewController {
 
     registerCells()
 
-    let profileResolver = GraphQLQueryResolver(query: ProfileQuery(profileID: "2"))
+    let profileResolver = GraphQLQueryResolver(query: ProfileQuery(profileID: userId))
     profileResolver.fetch() { (response: QueryResponse<Profile>) in
       switch response {
       case .Success(let profile):

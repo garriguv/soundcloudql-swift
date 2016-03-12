@@ -19,7 +19,7 @@ class AppCoordinator : Coordinator {
 
   private func startProfile() -> UINavigationController {
     let navigationController = UINavigationController()
-    let profileCoordinator = ProfileCoordinator(navigationController)
+    let profileCoordinator = ProfileCoordinator(navigationController, userId: "2")
     childCoordinators.append(profileCoordinator)
     profileCoordinator.start()
     return navigationController
