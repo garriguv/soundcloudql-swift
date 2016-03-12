@@ -1,8 +1,8 @@
 import Foundation
 import UIKit
 
-class BigUserCollectionViewCell: UICollectionViewCell {
-  @IBOutlet weak var imageView: UIImageView!
+class BigUserTableViewCell: UITableViewCell {
+  @IBOutlet weak var userArtworkImageView: UIImageView!
   @IBOutlet weak var usernameLabel: UILabel!
   @IBOutlet weak var cityLabel: UILabel!
 

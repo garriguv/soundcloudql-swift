@@ -1,16 +1,15 @@
 import Foundation
 import UIKit
 
-class ProfileCollectionViewController: UICollectionViewController {
+class ProfileTableViewController: UITableViewController {
   private var profile: Profile?
 }
 
 // View lifecycle
-extension ProfileCollectionViewController {
+extension ProfileTableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    setupCollectionView()
     registerCells()
 
     let profileResolver = GraphQLQueryResolver(query: ProfileQuery(profileID: "2"))
@@ -25,16 +24,16 @@ extension ProfileCollectionViewController {
   }
 }
 
-// UICollectionViewDataSource
-extension ProfileCollectionViewController {
-  override func numberOfSectionsInCollectionView(_ collectionView: UICollectionView) -> Int {
+// UITableViewDataSource
+extension ProfileTableViewController {
+  override func numberOfSectionsInTableView(_ tableView: UITableView) -> Int {
     if let profile = profile {
       return 3
     }
     return 0
   }
 
-  override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if let profile = profile {
       switch section {
       case 0:
@@ -50,34 +49,62 @@ extension ProfileCollectionViewController {
     return 0
   }
 
-  override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+  override func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     switch indexPath.section {
     case 0:
-      let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Cell.BigUser.reuseIdentifier, forIndexPath: indexPath) as! BigUserCollectionViewCell
+      let cell = tableView.dequeueReusableCellWithIdentifier(Cell.BigUser.reuseIdentifier, forIndexPath: indexPath) as! BigUserTableViewCell
       let user = profile!.user
       cell.present(user)
       return cell
     default:
-      let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Cell.Track.reuseIdentifier, forIndexPath: indexPath) as! TrackCollectionViewCell
+      let cell = tableView.dequeueReusableCellWithIdentifier("TrackCell") ?? UITableViewCell(style: .Subtitle, reuseIdentifier: "TrackCell")
       let track = trackAtIndexPath(indexPath)
-      cell.present(track)
+      cell.textLabel?.text = track.title
       return cell
     }
   }
 
-  override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-    switch kind {
-    case UICollectionElementKindSectionHeader:
-      let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: View.CollectionHeader.reuseIdentifier, forIndexPath: indexPath) as! CollectionSectionHeader
-      view.present(sectionHeaderTitle(indexPath.section))
-      return view
-    case UICollectionElementKindSectionFooter:
-      let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: View.CollectionFooter.reuseIdentifier, forIndexPath: indexPath) as! CollectionSectionFooter
-      view.present(sectionFooterMessage(indexPath.section))
-      return view
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    switch section {
+    case 1:
+      return "posted tracks"
+    case 2:
+      return "liked tracks"
     default:
-      preconditionFailure("Unknown supplementary view kind \(kind)")
+      return nil
     }
+  }
+}
+
+// UITableViewDelegate
+extension ProfileTableViewController {
+  override func tableView(_ tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    switch indexPath.section {
+    case 0:
+      return 150
+    default:
+      return 50
+    }
+  }
+
+  override func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  }
+}
+
+// Private
+extension ProfileTableViewController {
+  private func setupCollectionView() {
+    tableView.backgroundColor = UIColor.whiteColor()
+  }
+
+  private func registerCells() {
+    Cell.BigUser.register(inTableView: tableView)
+  }
+
+  private func updateProfile(newProfile: Profile) {
+    profile = newProfile
+    tableView.reloadData()
   }
 
   private func trackAtIndexPath(indexPath: NSIndexPath) -> Track {
@@ -91,67 +118,6 @@ extension ProfileCollectionViewController {
       return profile.user.likedTracksCollection.collection[indexPath.row]
     default:
       preconditionFailure("invalid section \(indexPath.section)")
-    }
-  }
-}
-
-// UICollectionViewDelegateFlowLayout
-extension ProfileCollectionViewController {
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-    switch indexPath.section {
-    case 0:
-      return CGSize(width: collectionView.frame.width, height: BigUserCollectionViewCell.height)
-    default:
-      return CGSize(width: collectionView.frame.width, height: TrackCollectionViewCell.height)
-    }
-  }
-
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-    return section == 0 ? CGSize.zero : CGSize(width: collectionView.frame.width, height: CollectionSectionHeader.height)
-  }
-
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-    return section == 0 ? CGSize.zero : CGSize(width: collectionView.frame.width, height: CollectionSectionFooter.height)
-  }
-}
-
-// Private
-extension ProfileCollectionViewController {
-  private func setupCollectionView() {
-    collectionView?.backgroundColor = UIColor.whiteColor()
-  }
-
-  private func registerCells() {
-    Cell.Track.register(inCollectionView: collectionView)
-    Cell.BigUser.register(inCollectionView: collectionView)
-    View.CollectionHeader.register(inCollectionView: collectionView, supplementaryViewKind: UICollectionElementKindSectionHeader)
-    View.CollectionFooter.register(inCollectionView: collectionView, supplementaryViewKind: UICollectionElementKindSectionFooter)
-  }
-
-  private func updateProfile(newProfile: Profile) {
-    profile = newProfile
-    collectionView?.reloadData()
-  }
-
-  private func sectionHeaderTitle(section: Int) -> String {
-    switch section {
-    case 1:
-      return "posted tracks"
-    case 2:
-      return "liked tracks"
-    default:
-      preconditionFailure("missing title for section \(section)")
-    }
-  }
-
-  private func sectionFooterMessage(section: Int) -> String {
-    switch section {
-    case 1:
-      return "more posted tracks >"
-    case 2:
-      return "more liked tracks >"
-    default:
-      preconditionFailure("missing title for section \(section)")
     }
   }
 }

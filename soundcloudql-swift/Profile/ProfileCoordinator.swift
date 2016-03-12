@@ -9,11 +9,7 @@ class ProfileCoordinator : Coordinator {
   }
 
   func start() {
-    let layout = UICollectionViewFlowLayout()
-    layout.scrollDirection = .Vertical
-    layout.minimumLineSpacing = 0
-    layout.minimumInteritemSpacing = 0
-    let viewController = ProfileCollectionViewController(collectionViewLayout: layout)
+    let viewController = ProfileTableViewController()
     viewController.title = "Profile"
     navigationController.pushViewController(viewController, animated: false)
   }

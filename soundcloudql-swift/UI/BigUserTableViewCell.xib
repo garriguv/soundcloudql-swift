@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BigUserTableViewCell" rowHeight="315" id="mKA-WQ-dzt" customClass="BigUserTableViewCell" customModule="soundcloudql_swift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="482" height="315"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mKA-WQ-dzt" id="7PD-SQ-OwD">
+                <rect key="frame" x="0.0" y="0.0" width="482" height="314"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wv6-Ux-DUR">
+                        <rect key="frame" x="0.0" y="0.0" width="482" height="315"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;username&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGg-3o-o9x">
+                        <rect key="frame" x="16" y="272" width="120" height="26"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40245456559999998" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;city&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvR-Ly-fwg">
+                        <rect key="frame" x="144" y="283" width="37" height="15"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="zGg-3o-o9x" firstAttribute="leading" secondItem="7PD-SQ-OwD" secondAttribute="leadingMargin" constant="8" id="4SA-Ms-Uil"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="zGg-3o-o9x" secondAttribute="bottom" constant="8" id="NI1-FL-biN"/>
+                    <constraint firstItem="fvR-Ly-fwg" firstAttribute="leading" secondItem="zGg-3o-o9x" secondAttribute="trailing" constant="8" id="iwI-M4-FgW"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="fvR-Ly-fwg" secondAttribute="bottom" constant="8" id="zFa-G8-aI1"/>
+                </constraints>
+            </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="wv6-Ux-DUR" firstAttribute="leading" secondItem="mKA-WQ-dzt" secondAttribute="leading" id="EGn-BR-F3u"/>
+                <constraint firstAttribute="bottom" secondItem="wv6-Ux-DUR" secondAttribute="bottom" id="SwX-dh-uUB"/>
+                <constraint firstItem="wv6-Ux-DUR" firstAttribute="top" secondItem="mKA-WQ-dzt" secondAttribute="top" id="VFB-5e-peW"/>
+                <constraint firstAttribute="trailing" secondItem="wv6-Ux-DUR" secondAttribute="trailing" id="YRq-3i-Q3D"/>
+            </constraints>
+            <connections>
+                <outlet property="cityLabel" destination="fvR-Ly-fwg" id="cNg-lk-Is1"/>
+                <outlet property="userArtworkImageView" destination="wv6-Ux-DUR" id="PGO-2t-uYc"/>
+                <outlet property="usernameLabel" destination="zGg-3o-o9x" id="fGm-Pj-2y4"/>
+            </connections>
+            <point key="canvasLocation" x="299" y="834.5"/>
+        </tableViewCell>
+    </objects>
+</document>

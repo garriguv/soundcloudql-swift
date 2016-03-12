@@ -28,7 +28,7 @@ class ProfileCoordinatorSpec: QuickSpec {
       it("pushes an instance of ProfileCollectionViewController") {
         subject.start()
 
-        expect(navigationController.__pushedViewController).to(beAnInstanceOf(ProfileCollectionViewController))
+        expect(navigationController.__pushedViewController).to(beAnInstanceOf(ProfileTableViewController))
       }
 
       it("pushes a view controller without animating") {
