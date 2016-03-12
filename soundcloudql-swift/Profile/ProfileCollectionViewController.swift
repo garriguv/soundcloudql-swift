@@ -1,6 +1,5 @@
 import Foundation
 import UIKit
-import Kingfisher
 
 class ProfileTableViewController: UITableViewController {
   private var profile: Profile?
@@ -64,14 +63,9 @@ extension ProfileTableViewController {
         cell.accessoryType = .DisclosureIndicator
         return cell
       } else {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TrackCell") ?? UITableViewCell(style: .Subtitle, reuseIdentifier: "TrackCell")
+        let cell = tableView.dequeueReusableCellWithIdentifier(Cell.Track.reuseIdentifier, forIndexPath: indexPath) as! TrackTableViewCell
         let track = trackAtIndexPath(indexPath)
-        cell.textLabel?.text = track.title
-        if let artworkUrl = track.artworkUrl {
-          cell.imageView?.kf_setImageWithURL(NSURL(string: artworkUrl)!)
-        } else {
-          cell.imageView?.image = nil
-        }
+        cell.present(track)
         return cell
       }
     }
@@ -94,9 +88,9 @@ extension ProfileTableViewController {
   override func tableView(_ tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     switch indexPath.section {
     case 0:
-      return 150
+      return BigUserTableViewCell.height
     default:
-      return 50
+      return TrackTableViewCell.height
     }
   }
 
@@ -112,6 +106,7 @@ extension ProfileTableViewController {
   }
 
   private func registerCells() {
+    Cell.Track.register(inTableView: tableView)
     Cell.BigUser.register(inTableView: tableView)
   }
 

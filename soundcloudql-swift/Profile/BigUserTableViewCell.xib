@@ -47,8 +47,8 @@
                 <constraint firstAttribute="trailing" secondItem="wv6-Ux-DUR" secondAttribute="trailing" id="YRq-3i-Q3D"/>
             </constraints>
             <connections>
+                <outlet property="avatarImageView" destination="wv6-Ux-DUR" id="jzB-8K-Urv"/>
                 <outlet property="cityLabel" destination="fvR-Ly-fwg" id="cNg-lk-Is1"/>
-                <outlet property="userArtworkImageView" destination="wv6-Ux-DUR" id="PGO-2t-uYc"/>
                 <outlet property="usernameLabel" destination="zGg-3o-o9x" id="fGm-Pj-2y4"/>
             </connections>
             <point key="canvasLocation" x="299" y="834.5"/>

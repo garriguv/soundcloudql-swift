@@ -3,7 +3,7 @@ import UIKit
 import Kingfisher
 
 class BigUserTableViewCell: UITableViewCell {
-  @IBOutlet weak var userArtworkImageView: UIImageView!
+  @IBOutlet weak var avatarImageView: UIImageView!
   @IBOutlet weak var usernameLabel: UILabel!
   @IBOutlet weak var cityLabel: UILabel!
 
@@ -13,7 +13,7 @@ class BigUserTableViewCell: UITableViewCell {
     usernameLabel.text = user.username
     cityLabel.text = user.city
     if let avatarUrl = user.avatarUrl {
-      userArtworkImageView.kf_setImageWithURL(NSURL(string: avatarUrl)!)
+      avatarImageView.kf_setImageWithURL(NSURL(string: avatarUrl)!)
     }
   }
 }

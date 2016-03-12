@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 
 enum Cell: String {
+  case Track = "TrackTableViewCell"
   case BigUser = "BigUserTableViewCell"
 }
 
