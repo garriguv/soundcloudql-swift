@@ -45,10 +45,10 @@ extension LikedTracks: GraphQLCollectionObject {
   }
 
   func appendObjects(object: LikedTracks) -> LikedTracks {
-    let tracksCollection = object.user.likedTracksCollection.collection + object.user.likedTracksCollection.collection
+    let tracksCollection = user.likedTracksCollection.collection + object.user.likedTracksCollection.collection
     let collection = UserLikedTracksCollection(collection: tracksCollection, next: object.user.likedTracksCollection.next)
-    let user = LikedTracksUser(likedTracksCollection: collection)
-    return LikedTracks(user: user)
+    let _user = LikedTracksUser(likedTracksCollection: collection)
+    return LikedTracks(user: _user)
   }
 }
 

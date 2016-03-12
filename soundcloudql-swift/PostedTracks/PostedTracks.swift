@@ -45,10 +45,10 @@ extension PostedTracks: GraphQLCollectionObject {
   }
 
   func appendObjects(object: PostedTracks) -> PostedTracks {
-    let tracksCollection = object.user.postedTracksCollection.collection + object.user.postedTracksCollection.collection
+    let tracksCollection = user.postedTracksCollection.collection + object.user.postedTracksCollection.collection
     let collection = UserPostedTracksCollection(collection: tracksCollection, next: object.user.postedTracksCollection.next)
-    let user = PostedTracksUser(postedTracksCollection: collection)
-    return PostedTracks(user: user)
+    let _user = PostedTracksUser(postedTracksCollection: collection)
+    return PostedTracks(user: _user)
   }
 }
 
