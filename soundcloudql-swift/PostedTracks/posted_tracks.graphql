@@ -1,0 +1,17 @@
+query UserProfileQuery($id: ID!, $next: String) {
+  user(id: $id) {
+    postedTracksCollection(limit: 10, next: $next) {
+      collection {
+        ...SmallTrack
+      }
+      next
+    }
+  }
+}
+
+fragment SmallTrack on Track {
+  id
+  title
+  permalinkUrl
+  artworkUrl
+}

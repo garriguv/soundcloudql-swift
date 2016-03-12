@@ -1,8 +1,15 @@
 import Foundation
 import UIKit
 
+protocol ProfileTableViewControllerDelegate {
+  func didTapMorePostedTracks()
+  func didTapMoreLikedTracks()
+}
+
 class ProfileTableViewController: UITableViewController {
   var userId: String!
+  var profileDelegate: ProfileTableViewControllerDelegate?
+
   private var profile: Profile?
 }
 
@@ -11,7 +18,9 @@ extension ProfileTableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    registerCells()
+    title = "profile"
+
+    setup()
 
     let profileResolver = GraphQLQueryResolver(query: ProfileQuery(profileID: userId))
     profileResolver.fetch() { (response: QueryResponse<Profile>) in
@@ -97,6 +106,19 @@ extension ProfileTableViewController {
 
   override func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
+    switch indexPath.section {
+    case 1:
+      if (indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1) {
+        profileDelegate?.didTapMorePostedTracks()
+      }
+    case 2:
+      if (indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1) {
+        profileDelegate?.didTapMoreLikedTracks()
+      }
+    default:
+      break
+    }
   }
 }
 
@@ -106,7 +128,9 @@ extension ProfileTableViewController {
     tableView.backgroundColor = UIColor.whiteColor()
   }
 
-  private func registerCells() {
+  private func setup() {
+    title = "profile"
+
     Cell.Track.register(inTableView: tableView)
     Cell.BigUser.register(inTableView: tableView)
   }
