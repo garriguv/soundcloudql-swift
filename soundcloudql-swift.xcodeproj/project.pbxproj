@@ -9,17 +9,18 @@
 /* Begin PBXBuildFile section */
 		1699F33111882F0B0E8E1245 /* Pods_soundcloudql_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455FA149825439F16E8DC64E /* Pods_soundcloudql_swift.framework */; };
 		62794A16C600772F8DDE5B14 /* Pods_soundcloudql_swiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CADF51EA26512D32948B714D /* Pods_soundcloudql_swiftTests.framework */; };
-		9FD5B123F819C92A4D9DCB04 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B2DA0645501B0DB4C5AB /* TrackTableViewCell.swift */; };
 		9FD5B2353E88AB4EBB99D5CF /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BD2661F65F03F3C3ED6E /* ProfileCollectionViewController.swift */; };
 		9FD5B23E7C72D28800383196 /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF81D45254A30410C97E /* UIComponents.swift */; };
 		9FD5B27E45BCF446B7B16168 /* PostedTracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B824BF38B02EA0216EBC /* PostedTracks.swift */; };
 		9FD5B4438B9F351BB6E96B87 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF88F4A2402972CF436F /* AppCoordinator.swift */; };
 		9FD5B46DBD321CD738C7A847 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B3AE31247892AB253C53 /* Profile.swift */; };
+		9FD5B6341009A373E6F8A5F2 /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B90249B8AB384813D210 /* TrackTableViewCell.xib */; };
 		9FD5B63CDBF34038A333E960 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B866B412859B4898F4FB /* Environment.swift */; };
 		9FD5B67E9D5346E39F046A8A /* posted_tracks.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B494E8F63986540DBAC0 /* posted_tracks.graphql */; };
 		9FD5B697BA2E5647E9E8C365 /* BigUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5BF32B8C67A75BD3DBB18 /* BigUserTableViewCell.xib */; };
 		9FD5B6AABD481BB31AF3A5AE /* BigUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B42C28A3E00B03C4CA09 /* BigUserTableViewCell.swift */; };
 		9FD5B73BA27FD28B74A4711D /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B8C076C29E9E728666A2 /* RequestFactory.swift */; };
+		9FD5B762DDC5E1262D9CFB53 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B1400AEBE25BCB160CE8 /* TrackTableViewCell.swift */; };
 		9FD5B7FAFF7F517AF9D0ED36 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BE3C25B741AF3345FB88 /* Coordinator.swift */; };
 		9FD5B7FE5672495593ED3DD2 /* PostedTracksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B3EF02ACA266C99EE73D /* PostedTracksTableViewController.swift */; };
 		9FD5B868CB29D6D3823851A7 /* ProfileCoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BBCFE55151C7BF88CBAA /* ProfileCoordinatorSpec.swift */; };
@@ -39,7 +40,6 @@
 		9FD5BFD51D338175F26C1759 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BE5E2A900A54A5A72576 /* ProfileCoordinator.swift */; };
 		EB3F85991C8B286200E5F0AC /* Environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB3F85981C8B286200E5F0AC /* Environment.plist */; };
 		EB3F859B1C8B2A4900E5F0AC /* Environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB3F859A1C8B2A4900E5F0AC /* Environment.plist */; };
-		EB3F85A91C949FC800E5F0AC /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3F85A81C949FC800E5F0AC /* TrackTableViewCell.xib */; };
 		EB80F2DA1C8B0C9A00E7C7DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB80F2D91C8B0C9A00E7C7DD /* ViewController.swift */; };
 		EB80F2DF1C8B0C9A00E7C7DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB80F2DE1C8B0C9A00E7C7DD /* Assets.xcassets */; };
 		EB80F2E21C8B0C9A00E7C7DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB80F2E01C8B0C9A00E7C7DD /* LaunchScreen.storyboard */; };
@@ -69,7 +69,7 @@
 		455FA149825439F16E8DC64E /* Pods_soundcloudql_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_soundcloudql_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59C63ADEBD34683D91A58BE3 /* Pods-soundcloudql-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundcloudql-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-soundcloudql-swift/Pods-soundcloudql-swift.debug.xcconfig"; sourceTree = "<group>"; };
 		87D2F3052DEA78C166E6DC9A /* Pods-soundcloudql-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundcloudql-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-soundcloudql-swift/Pods-soundcloudql-swift.release.xcconfig"; sourceTree = "<group>"; };
-		9FD5B2DA0645501B0DB4C5AB /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
+		9FD5B1400AEBE25BCB160CE8 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		9FD5B3AE31247892AB253C53 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		9FD5B3EF02ACA266C99EE73D /* PostedTracksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostedTracksTableViewController.swift; sourceTree = "<group>"; };
 		9FD5B42C28A3E00B03C4CA09 /* BigUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigUserTableViewCell.swift; sourceTree = "<group>"; };
@@ -84,6 +84,7 @@
 		9FD5B8881E7DC513B3283235 /* PostedTracksCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostedTracksCoordinator.swift; sourceTree = "<group>"; };
 		9FD5B8C076C29E9E728666A2 /* RequestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		9FD5B8E16EC6DE899D7FCDB2 /* ApiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiController.swift; sourceTree = "<group>"; };
+		9FD5B90249B8AB384813D210 /* TrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
 		9FD5B9AD248F5B0C74C36DB8 /* AppCoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinatorSpec.swift; sourceTree = "<group>"; };
 		9FD5BB62C1F1E6227F27FC33 /* GraphQLQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLQuery.swift; sourceTree = "<group>"; };
 		9FD5BB745E53893A350B407C /* GraphQLQueryResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLQueryResolver.swift; sourceTree = "<group>"; };
@@ -100,7 +101,6 @@
 		CADF51EA26512D32948B714D /* Pods_soundcloudql_swiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_soundcloudql_swiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB3F85981C8B286200E5F0AC /* Environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environment.plist; sourceTree = "<group>"; };
 		EB3F859A1C8B2A4900E5F0AC /* Environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environment.plist; sourceTree = "<group>"; };
-		EB3F85A81C949FC800E5F0AC /* TrackTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
 		EB80F2D41C8B0C9A00E7C7DD /* soundcloudql-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "soundcloudql-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB80F2D91C8B0C9A00E7C7DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EB80F2DE1C8B0C9A00E7C7DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -153,6 +153,8 @@
 			isa = PBXGroup;
 			children = (
 				9FD5BF81D45254A30410C97E /* UIComponents.swift */,
+				9FD5B90249B8AB384813D210 /* TrackTableViewCell.xib */,
+				9FD5B1400AEBE25BCB160CE8 /* TrackTableViewCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -178,8 +180,6 @@
 				9FD5B3AE31247892AB253C53 /* Profile.swift */,
 				9FD5BF32B8C67A75BD3DBB18 /* BigUserTableViewCell.xib */,
 				9FD5B42C28A3E00B03C4CA09 /* BigUserTableViewCell.swift */,
-				9FD5B2DA0645501B0DB4C5AB /* TrackTableViewCell.swift */,
-				EB3F85A81C949FC800E5F0AC /* TrackTableViewCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -442,10 +442,10 @@
 				EB80F2E21C8B0C9A00E7C7DD /* LaunchScreen.storyboard in Resources */,
 				EB3F859B1C8B2A4900E5F0AC /* Environment.plist in Resources */,
 				EB80F2DF1C8B0C9A00E7C7DD /* Assets.xcassets in Resources */,
-				EB3F85A91C949FC800E5F0AC /* TrackTableViewCell.xib in Resources */,
 				9FD5BAB1B7876ABEDD7A8230 /* profile.graphql in Resources */,
 				9FD5B697BA2E5647E9E8C365 /* BigUserTableViewCell.xib in Resources */,
 				9FD5B67E9D5346E39F046A8A /* posted_tracks.graphql in Resources */,
+				9FD5B6341009A373E6F8A5F2 /* TrackTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,10 +580,10 @@
 				9FD5BF269351C035C551B79C /* GraphQLQueryResolver.swift in Sources */,
 				9FD5B23E7C72D28800383196 /* UIComponents.swift in Sources */,
 				9FD5B6AABD481BB31AF3A5AE /* BigUserTableViewCell.swift in Sources */,
-				9FD5B123F819C92A4D9DCB04 /* TrackTableViewCell.swift in Sources */,
 				9FD5B91430F5EDD8B490E4E3 /* PostedTracksCoordinator.swift in Sources */,
 				9FD5B7FE5672495593ED3DD2 /* PostedTracksTableViewController.swift in Sources */,
 				9FD5B27E45BCF446B7B16168 /* PostedTracks.swift in Sources */,
+				9FD5B762DDC5E1262D9CFB53 /* TrackTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
