@@ -80,7 +80,7 @@ extension PostedTracksTableViewController {
 
   private func paginationShouldBeTriggered(scrollView: UIScrollView) -> Bool {
     if let postedTracks = postedTracks where postedTracks.user.postedTracksCollection.next != nil && !self.paginating {
-      return (scrollView.contentSize.height - scrollView.frame.size.height) - scrollView.contentOffset.y < tableView.frame.size.height
+      return (scrollView.contentSize.height - scrollView.frame.size.height) - scrollView.contentOffset.y < tableView.frame.size.height * 2
     } else {
       return false
     }

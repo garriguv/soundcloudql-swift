@@ -12,6 +12,8 @@ class TrackTableViewCell: UITableViewCell {
     titleLabel.text = track.title
     if let artworkUrl = track.artworkUrl {
       artworkImageView.kf_setImageWithURL(NSURL(string: artworkUrl)!)
+    } else {
+      artworkImageView.image = nil
     }
   }
 }
