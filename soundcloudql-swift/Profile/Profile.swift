@@ -4,7 +4,7 @@ struct ProfileQuery: GraphQLQuery {
   typealias Object = Profile
 
   let name = "profile"
-  let variables: [String: String]
+  let variables: [String: AnyObject]
 
   init(profileID: String) {
     self.variables = [ "id": profileID ]

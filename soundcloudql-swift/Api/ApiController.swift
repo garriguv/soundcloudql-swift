@@ -51,7 +51,7 @@ class ApiController {
     self.requestFactory = requestFactory
   }
 
-  func fetch(withGraphQLQuery graphQLQueryName: String, variables: [String: String], completion: (ApiResponse) -> ()) {
+  func fetch(withGraphQLQuery graphQLQueryName: String, variables: [String: AnyObject], completion: (ApiResponse) -> ()) {
     guard let request = requestFactory.request(withGraphQLQuery: graphQLQueryName, variables: variables) else {
       completion(.Error(.GraphQLQueryNotFound))
       return

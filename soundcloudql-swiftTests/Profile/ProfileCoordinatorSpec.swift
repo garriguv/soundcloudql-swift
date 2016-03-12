@@ -36,12 +36,6 @@ class ProfileCoordinatorSpec: QuickSpec {
 
         expect(navigationController.__pushedViewControllerAnimated).to(beFalse())
       }
-
-      it("sets the pushed view controller title") {
-        subject.start()
-
-        expect(navigationController.__pushedViewController?.title).to(equal("Profile"))
-      }
     }
   }
 }

@@ -4,10 +4,10 @@ struct PostedTracksQuery: GraphQLQuery {
   typealias Object = PostedTracks
 
   let name = "posted_tracks"
-  let variables: [String: String]
+  let variables: [String: AnyObject]
 
-  init(profileID: String, next: String? = nil) {
-    var variables = [ "id": profileID ]
+  init(profileID: String, limit: Int, next: String? = nil) {
+    var variables: [String: AnyObject] = [ "id": profileID, "limit" : limit ]
     if let next = next {
       variables["next"] = next
     }

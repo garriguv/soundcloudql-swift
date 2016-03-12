@@ -38,7 +38,7 @@ class TestNSURLSession: NSURLSession {
 class TestRequestFactory: RequestFactory {
   var __request: NSURLRequest?
 
-  override func request(withGraphQLQuery queryName: String, variables: [String:String]) -> NSURLRequest? {
+  override func request(withGraphQLQuery queryName: String, variables: [String:AnyObject]) -> NSURLRequest? {
     return __request
   }
 }

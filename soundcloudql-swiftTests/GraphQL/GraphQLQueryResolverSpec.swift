@@ -8,7 +8,7 @@ struct TestGraphQLQuery: GraphQLQuery {
   var name: String {
     return "test_query"
   }
-  var variables: [String:String] {
+  var variables: [String:AnyObject] {
     return [ "id" : "2" ]
   }
 }
@@ -37,7 +37,7 @@ class TestApiController: ApiController {
 
   init() { }
 
-  override func fetch(withGraphQLQuery graphQLQueryName: String, variables: [String:String], completion: (ApiResponse) -> ()) {
+  override func fetch(withGraphQLQuery graphQLQueryName: String, variables: [String:AnyObject], completion: (ApiResponse) -> ()) {
     completion(__response)
   }
 }
