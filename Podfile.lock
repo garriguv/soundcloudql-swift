@@ -1,15 +1,18 @@
 PODS:
+  - Kingfisher (2.1.0)
   - Nimble (3.1.0)
   - Quick (0.9.1)
 
 DEPENDENCIES:
+  - Kingfisher (~> 2.1.0)
   - Nimble (~> 3.1.0)
   - Quick (~> 0.9.1)
 
 SPEC CHECKSUMS:
+  Kingfisher: 3ac09acad75a25ab22f6d7cef3de10d61dd4792d
   Nimble: 79d40f4d69d47314229bbabacaa02b8838c779b9
   Quick: a5221fc21788b6aeda934805e68b061839bc3165
 
-PODFILE CHECKSUM: 41938e44f39ca05cd848412217aea876d7572753
+PODFILE CHECKSUM: 119c7a99a834f95a793c7a2c0ec1aee738556cf4
 
 COCOAPODS: 1.0.0.beta.4
