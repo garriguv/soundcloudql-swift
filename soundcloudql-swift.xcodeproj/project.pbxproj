@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		1699F33111882F0B0E8E1245 /* Pods_soundcloudql_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455FA149825439F16E8DC64E /* Pods_soundcloudql_swift.framework */; };
 		62794A16C600772F8DDE5B14 /* Pods_soundcloudql_swiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CADF51EA26512D32948B714D /* Pods_soundcloudql_swiftTests.framework */; };
+		9FD5B028D692B2861D847564 /* liked_tracks.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B119ADD9DBD84EA56EE9 /* liked_tracks.graphql */; };
 		9FD5B2353E88AB4EBB99D5CF /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BD2661F65F03F3C3ED6E /* ProfileCollectionViewController.swift */; };
 		9FD5B23E7C72D28800383196 /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF81D45254A30410C97E /* UIComponents.swift */; };
 		9FD5B27E45BCF446B7B16168 /* PostedTracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B824BF38B02EA0216EBC /* PostedTracks.swift */; };
 		9FD5B4438B9F351BB6E96B87 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF88F4A2402972CF436F /* AppCoordinator.swift */; };
 		9FD5B46DBD321CD738C7A847 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B3AE31247892AB253C53 /* Profile.swift */; };
+		9FD5B483F3494F7A09E2DAEF /* TestCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BE88340FF02753D1F761 /* TestCoordinatorDelegate.swift */; };
+		9FD5B55C7AC0B6D3CE7E5916 /* LikedTracksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B1A67F005EEB119C5A42 /* LikedTracksCoordinator.swift */; };
 		9FD5B6341009A373E6F8A5F2 /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B90249B8AB384813D210 /* TrackTableViewCell.xib */; };
 		9FD5B63CDBF34038A333E960 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B866B412859B4898F4FB /* Environment.swift */; };
 		9FD5B67E9D5346E39F046A8A /* posted_tracks.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B494E8F63986540DBAC0 /* posted_tracks.graphql */; };
@@ -22,7 +25,6 @@
 		9FD5B73BA27FD28B74A4711D /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B8C076C29E9E728666A2 /* RequestFactory.swift */; };
 		9FD5B762DDC5E1262D9CFB53 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B1400AEBE25BCB160CE8 /* TrackTableViewCell.swift */; };
 		9FD5B7FAFF7F517AF9D0ED36 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BE3C25B741AF3345FB88 /* Coordinator.swift */; };
-		9FD5B7FE5672495593ED3DD2 /* PostedTracksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B3EF02ACA266C99EE73D /* PostedTracksTableViewController.swift */; };
 		9FD5B868CB29D6D3823851A7 /* ProfileCoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BBCFE55151C7BF88CBAA /* ProfileCoordinatorSpec.swift */; };
 		9FD5B88D83DCF4CFD2F2F9FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B606DD49330528B32028 /* AppDelegate.swift */; };
 		9FD5B90F4BB1F9AD12DB2BC8 /* ApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B8E16EC6DE899D7FCDB2 /* ApiController.swift */; };
@@ -36,6 +38,8 @@
 		9FD5BDBCA78F8CF6F286A8F9 /* ApiControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B519F741B2491EB205BC /* ApiControllerSpec.swift */; };
 		9FD5BE0FE859E50B351E04BF /* GraphQLQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BB62C1F1E6227F27FC33 /* GraphQLQuery.swift */; };
 		9FD5BE3581680A4763BA031C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BDFBA311E65A466E89CE /* main.swift */; };
+		9FD5BEC86CCCA1A3A1937479 /* CollectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B97432706B453A9347F5 /* CollectionTableViewController.swift */; };
+		9FD5BEFD9F7A19C7381A9AEE /* LikedTracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BFFA3A55C22A79C4A9F8 /* LikedTracks.swift */; };
 		9FD5BF269351C035C551B79C /* GraphQLQueryResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BB745E53893A350B407C /* GraphQLQueryResolver.swift */; };
 		9FD5BFD51D338175F26C1759 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BE5E2A900A54A5A72576 /* ProfileCoordinator.swift */; };
 		EB3F85991C8B286200E5F0AC /* Environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB3F85981C8B286200E5F0AC /* Environment.plist */; };
@@ -69,9 +73,10 @@
 		455FA149825439F16E8DC64E /* Pods_soundcloudql_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_soundcloudql_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59C63ADEBD34683D91A58BE3 /* Pods-soundcloudql-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundcloudql-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-soundcloudql-swift/Pods-soundcloudql-swift.debug.xcconfig"; sourceTree = "<group>"; };
 		87D2F3052DEA78C166E6DC9A /* Pods-soundcloudql-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundcloudql-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-soundcloudql-swift/Pods-soundcloudql-swift.release.xcconfig"; sourceTree = "<group>"; };
+		9FD5B119ADD9DBD84EA56EE9 /* liked_tracks.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = liked_tracks.graphql; sourceTree = "<group>"; };
 		9FD5B1400AEBE25BCB160CE8 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
+		9FD5B1A67F005EEB119C5A42 /* LikedTracksCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedTracksCoordinator.swift; sourceTree = "<group>"; };
 		9FD5B3AE31247892AB253C53 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		9FD5B3EF02ACA266C99EE73D /* PostedTracksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostedTracksTableViewController.swift; sourceTree = "<group>"; };
 		9FD5B42C28A3E00B03C4CA09 /* BigUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigUserTableViewCell.swift; sourceTree = "<group>"; };
 		9FD5B494E8F63986540DBAC0 /* posted_tracks.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = posted_tracks.graphql; sourceTree = "<group>"; };
 		9FD5B4D8FAB80E43B514CB43 /* query.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = query.graphql; sourceTree = "<group>"; };
@@ -85,6 +90,7 @@
 		9FD5B8C076C29E9E728666A2 /* RequestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		9FD5B8E16EC6DE899D7FCDB2 /* ApiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiController.swift; sourceTree = "<group>"; };
 		9FD5B90249B8AB384813D210 /* TrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
+		9FD5B97432706B453A9347F5 /* CollectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTableViewController.swift; sourceTree = "<group>"; };
 		9FD5B9AD248F5B0C74C36DB8 /* AppCoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinatorSpec.swift; sourceTree = "<group>"; };
 		9FD5BB62C1F1E6227F27FC33 /* GraphQLQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLQuery.swift; sourceTree = "<group>"; };
 		9FD5BB745E53893A350B407C /* GraphQLQueryResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLQueryResolver.swift; sourceTree = "<group>"; };
@@ -95,9 +101,11 @@
 		9FD5BE3C25B741AF3345FB88 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		9FD5BE5E2A900A54A5A72576 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		9FD5BE7DF139A759DB44ED0B /* RequestFactorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFactorySpec.swift; sourceTree = "<group>"; };
+		9FD5BE88340FF02753D1F761 /* TestCoordinatorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCoordinatorDelegate.swift; sourceTree = "<group>"; };
 		9FD5BF32B8C67A75BD3DBB18 /* BigUserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BigUserTableViewCell.xib; sourceTree = "<group>"; };
 		9FD5BF81D45254A30410C97E /* UIComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
 		9FD5BF88F4A2402972CF436F /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		9FD5BFFA3A55C22A79C4A9F8 /* LikedTracks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedTracks.swift; sourceTree = "<group>"; };
 		CADF51EA26512D32948B714D /* Pods_soundcloudql_swiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_soundcloudql_swiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB3F85981C8B286200E5F0AC /* Environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environment.plist; sourceTree = "<group>"; };
 		EB3F859A1C8B2A4900E5F0AC /* Environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environment.plist; sourceTree = "<group>"; };
@@ -205,7 +213,6 @@
 			children = (
 				9FD5B494E8F63986540DBAC0 /* posted_tracks.graphql */,
 				9FD5B8881E7DC513B3283235 /* PostedTracksCoordinator.swift */,
-				9FD5B3EF02ACA266C99EE73D /* PostedTracksTableViewController.swift */,
 				9FD5B824BF38B02EA0216EBC /* PostedTracks.swift */,
 			);
 			path = PostedTracks;
@@ -217,6 +224,22 @@
 				9FD5BBCFE55151C7BF88CBAA /* ProfileCoordinatorSpec.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		9FD5BAD59B6C55D6B0D9126D /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				9FD5B97432706B453A9347F5 /* CollectionTableViewController.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		9FD5BB158617189D6DF77CCB /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				9FD5BE88340FF02753D1F761 /* TestCoordinatorDelegate.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		9FD5BB71D5F2E25801E890A8 /* App */ = {
@@ -257,6 +280,16 @@
 			path = Api;
 			sourceTree = "<group>";
 		};
+		9FD5BCB94CDF086A9E6D19E6 /* LikedTracks */ = {
+			isa = PBXGroup;
+			children = (
+				9FD5B119ADD9DBD84EA56EE9 /* liked_tracks.graphql */,
+				9FD5BFFA3A55C22A79C4A9F8 /* LikedTracks.swift */,
+				9FD5B1A67F005EEB119C5A42 /* LikedTracksCoordinator.swift */,
+			);
+			path = LikedTracks;
+			sourceTree = "<group>";
+		};
 		EB80F2CB1C8B0C9A00E7C7DD = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +326,8 @@
 				9FD5BC436821EE52E229288C /* GraphQL */,
 				9FD5B07719E1F083752DE162 /* UI */,
 				9FD5B742BF8803316FF94D93 /* PostedTracks */,
+				9FD5BCB94CDF086A9E6D19E6 /* LikedTracks */,
+				9FD5BAD59B6C55D6B0D9126D /* Collection */,
 			);
 			path = "soundcloudql-swift";
 			sourceTree = "<group>";
@@ -305,6 +340,7 @@
 				9FD5BA9C71F8AA74C94D5BAC /* Profile */,
 				9FD5B0BE3C8B1F68FAB74813 /* Api */,
 				9FD5B3C47F27813E97F66F47 /* GraphQL */,
+				9FD5BB158617189D6DF77CCB /* Coordinator */,
 			);
 			path = "soundcloudql-swiftTests";
 			sourceTree = "<group>";
@@ -446,6 +482,7 @@
 				9FD5B697BA2E5647E9E8C365 /* BigUserTableViewCell.xib in Resources */,
 				9FD5B67E9D5346E39F046A8A /* posted_tracks.graphql in Resources */,
 				9FD5B6341009A373E6F8A5F2 /* TrackTableViewCell.xib in Resources */,
+				9FD5B028D692B2861D847564 /* liked_tracks.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,9 +618,11 @@
 				9FD5B23E7C72D28800383196 /* UIComponents.swift in Sources */,
 				9FD5B6AABD481BB31AF3A5AE /* BigUserTableViewCell.swift in Sources */,
 				9FD5B91430F5EDD8B490E4E3 /* PostedTracksCoordinator.swift in Sources */,
-				9FD5B7FE5672495593ED3DD2 /* PostedTracksTableViewController.swift in Sources */,
 				9FD5B27E45BCF446B7B16168 /* PostedTracks.swift in Sources */,
 				9FD5B762DDC5E1262D9CFB53 /* TrackTableViewCell.swift in Sources */,
+				9FD5BEFD9F7A19C7381A9AEE /* LikedTracks.swift in Sources */,
+				9FD5BEC86CCCA1A3A1937479 /* CollectionTableViewController.swift in Sources */,
+				9FD5B55C7AC0B6D3CE7E5916 /* LikedTracksCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +636,7 @@
 				9FD5BD542F48AA674F5A0D1C /* RequestFactorySpec.swift in Sources */,
 				9FD5BDBCA78F8CF6F286A8F9 /* ApiControllerSpec.swift in Sources */,
 				9FD5BD98E55316F85A9BFD63 /* GraphQLQueryResolverSpec.swift in Sources */,
+				9FD5B483F3494F7A09E2DAEF /* TestCoordinatorDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

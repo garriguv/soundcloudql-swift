@@ -1,0 +1,17 @@
+query LikedTracksQuery($id: ID!, $limit: Int!, $next: String) {
+  user(id: $id) {
+    likedTracksCollection(limit: $limit, next: $next) {
+      collection {
+        ...SmallTrack
+      }
+      next
+    }
+  }
+}
+
+fragment SmallTrack on Track {
+  id
+  title
+  permalinkUrl
+  artworkUrl
+}

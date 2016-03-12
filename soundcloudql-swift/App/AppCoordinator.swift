@@ -4,6 +4,7 @@ import UIKit
 class AppCoordinator {
   private let tabBarController: UITabBarController
 
+  internal weak var delegate: CoordinatorDelegate? = nil
   private var childCoordinators: [Coordinator]
 
   init(_ tabBarController: UITabBarController) {
@@ -20,10 +21,15 @@ extension AppCoordinator: Coordinator {
   }
 }
 
+extension AppCoordinator: CoordinatorDelegate {
+  func didFinishCoordinating<T:Coordinator>(coordinator: T) {
+  }
+}
+
 extension AppCoordinator {
   private func startProfile() -> UINavigationController {
     let navigationController = UINavigationController()
-    let profileCoordinator = ProfileCoordinator(navigationController, userId: "2")
+    let profileCoordinator = ProfileCoordinator(navigationController, userId: "2", delegate: self)
     childCoordinators.append(profileCoordinator)
     profileCoordinator.start()
     return navigationController

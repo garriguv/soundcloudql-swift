@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class PostedTracksCoordinator: Coordinator {
+class LikedTracksCoordinator {
   private let navigationController: UINavigationController
   private let userId: String
   internal weak var delegate: CoordinatorDelegate?
@@ -11,11 +11,19 @@ class PostedTracksCoordinator: Coordinator {
     self.userId = userId
     self.delegate = delegate
   }
+}
 
+extension LikedTracksCoordinator: Coordinator {
   func start() {
     let viewController = CollectionTableViewController()
-    viewController.collectionEngine = GraphQLCollectionEngineDelegate<PostedTracksQuery, PostedTracks>(userId: userId)
-    viewController.title = "posted tracks"
+    viewController.collectionEngine = GraphQLCollectionEngineDelegate<LikedTracksQuery, LikedTracks>(userId: userId)
+    viewController.title = "liked tracks"
     navigationController.pushViewController(viewController, animated: true)
+  }
+}
+
+extension LikedTracksCoordinator: CollectionTableViewControllerDelegate {
+  func viewDidDisappear() {
+    delegate?.didFinishCoordinating(self)
   }
 }
