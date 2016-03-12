@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import Kingfisher
 
 class BigUserTableViewCell: UITableViewCell {
   @IBOutlet weak var userArtworkImageView: UIImageView!
@@ -11,5 +12,8 @@ class BigUserTableViewCell: UITableViewCell {
   func present(user: User) {
     usernameLabel.text = user.username
     cityLabel.text = user.city
+    if let avatarUrl = user.avatarUrl {
+      userArtworkImageView.kf_setImageWithURL(NSURL(string: avatarUrl)!)
+    }
   }
 }

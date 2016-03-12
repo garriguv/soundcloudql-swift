@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import Kingfisher
 
 class ProfileTableViewController: UITableViewController {
   private var profile: Profile?
@@ -66,6 +67,11 @@ extension ProfileTableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("TrackCell") ?? UITableViewCell(style: .Subtitle, reuseIdentifier: "TrackCell")
         let track = trackAtIndexPath(indexPath)
         cell.textLabel?.text = track.title
+        if let artworkUrl = track.artworkUrl {
+          cell.imageView?.kf_setImageWithURL(NSURL(string: artworkUrl)!)
+        } else {
+          cell.imageView?.image = nil
+        }
         return cell
       }
     }

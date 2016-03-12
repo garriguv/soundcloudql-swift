@@ -41,19 +41,17 @@ extension User: GraphQLObject {
     guard let id = json["id"] as? String,
     let username = json["username"] as? String,
     let permalinkUrl = json["permalinkUrl"] as? String,
-    let city = json["city"] as? String?,
-    let avatarUrl = json["avatarUrl"] as? String?,
     let postedTracksCollectionJson = json["postedTracksCollection"] as? [String: AnyObject],
     let postedTracksCollection = UserPostedTracksCollection(json: postedTracksCollectionJson),
-    let likedTracksCollectionJson = json["postedTracksCollection"] as? [String: AnyObject],
+    let likedTracksCollectionJson = json["likedTracksCollection"] as? [String: AnyObject],
     let likedTracksCollection = UserLikedTracksCollection(json: likedTracksCollectionJson) else {
       return nil
     }
     self.id = id
     self.username = username
     self.permalinkUrl = permalinkUrl
-    self.city = city
-    self.avatarUrl = avatarUrl
+    self.city = json["city"] as? String
+    self.avatarUrl = json["avatarUrl"] as? String
     self.postedTracksCollection = postedTracksCollection
     self.likedTracksCollection = likedTracksCollection
   }
@@ -66,12 +64,11 @@ struct UserPostedTracksCollection {
 
 extension UserPostedTracksCollection: GraphQLObject {
   init?(json: [String: AnyObject]) {
-    guard let collection = json["collection"] as? [[String: AnyObject]],
-    let next = json["next"] as? String? else {
+    guard let collection = json["collection"] as? [[String: AnyObject]] else {
       return nil
     }
     self.collection = collection.map { Track(json: $0)! }
-    self.next = next
+    self.next = json["next"] as? String
   }
 }
 
@@ -82,12 +79,11 @@ struct UserLikedTracksCollection {
 
 extension UserLikedTracksCollection: GraphQLObject {
   init?(json: [String: AnyObject]) {
-    guard let collection = json["collection"] as? [[String: AnyObject]],
-    let next = json["next"] as? String? else {
+    guard let collection = json["collection"] as? [[String: AnyObject]] else {
       return nil
     }
     self.collection = collection.map { Track(json: $0)! }
-    self.next = next
+    self.next = json["next"] as? String
   }
 }
 
@@ -95,6 +91,7 @@ struct Track {
   let id: String
   let title: String
   let permalinkUrl: String
+  let artworkUrl: String?
 }
 
 extension Track: GraphQLObject {
@@ -107,5 +104,6 @@ extension Track: GraphQLObject {
     self.id = id
     self.title = title
     self.permalinkUrl = permalinkUrl
+    self.artworkUrl = json["artworkUrl"] as? String
   }
 }

@@ -24,4 +24,5 @@ fragment SmallTrack on Track {
   id
   title
   permalinkUrl
+  artworkUrl
 }
