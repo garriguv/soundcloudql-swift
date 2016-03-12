@@ -39,9 +39,9 @@ extension ProfileTableViewController {
       case 0:
         return 1
       case 1:
-        return profile.user.postedTracksCollection.collection.count
+        return profile.user.postedTracksCollection.collection.count + 1
       case 2:
-        return profile.user.likedTracksCollection.collection.count
+        return profile.user.likedTracksCollection.collection.count + 1
       default:
         return 0
       }
@@ -57,10 +57,17 @@ extension ProfileTableViewController {
       cell.present(user)
       return cell
     default:
-      let cell = tableView.dequeueReusableCellWithIdentifier("TrackCell") ?? UITableViewCell(style: .Subtitle, reuseIdentifier: "TrackCell")
-      let track = trackAtIndexPath(indexPath)
-      cell.textLabel?.text = track.title
-      return cell
+      if indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1 {
+        let cell = tableView.dequeueReusableCellWithIdentifier("FooterCell") ?? UITableViewCell(style: .Default, reuseIdentifier: "FooterCell")
+        cell.textLabel?.text = "more \(self.tableView(tableView, titleForHeaderInSection: indexPath.section)!)"
+        cell.accessoryType = .DisclosureIndicator
+        return cell
+      } else {
+        let cell = tableView.dequeueReusableCellWithIdentifier("TrackCell") ?? UITableViewCell(style: .Subtitle, reuseIdentifier: "TrackCell")
+        let track = trackAtIndexPath(indexPath)
+        cell.textLabel?.text = track.title
+        return cell
+      }
     }
   }
 
