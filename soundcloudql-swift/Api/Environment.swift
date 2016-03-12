@@ -11,17 +11,17 @@ class Environment {
 
   var graphQLURL: NSURL {
     guard let urlString = self.environment["graphql_url"] as? String, let url = NSURL(string: urlString) else {
-      fatalError("Could not load graphql_url in environment \(self.environment)")
+      preconditionFailure("Could not load graphql_url in environment \(self.environment)")
     }
     return url
   }
 
   private static func loadEnvironment(bundle: NSBundle) -> [String: AnyObject] {
     guard let environmentURL = bundle.URLForResource("Environment", withExtension: "plist") else {
-      fatalError("could not find environment in bundle \(bundle)")
+      preconditionFailure("could not find environment in bundle \(bundle)")
     }
     guard let dictionary = NSDictionary(contentsOfURL: environmentURL) as? [String: AnyObject] else {
-      fatalError("could not load environment at \(environmentURL)")
+      preconditionFailure("could not load environment at \(environmentURL)")
     }
     return dictionary
   }
