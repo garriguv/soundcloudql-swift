@@ -25,8 +25,7 @@ func == (lhs: TestObject, rhs: TestObject) -> Bool {
 
 extension TestObject: GraphQLObject {
   init?(json: [String:AnyObject]) {
-    guard let data = json["data"] as? [String: AnyObject],
-    let id = data["id"] as? String else {
+    guard let id = json["id"] as? String else {
       return nil;
     }
     self.id = id
@@ -71,7 +70,7 @@ class GraphQLQueryResolverSpec: QuickSpec {
                 case .Success(let object):
                   expect(object).to(equal(TestObject(id: "2")))
                 default:
-                  assertionFailure("boom")
+                  assertionFailure("boom \(response)")
                 }
               }
               done()
@@ -91,7 +90,7 @@ class GraphQLQueryResolverSpec: QuickSpec {
                 case .Error(let error):
                   expect(error).to(equal(QueryError.SerializationError))
                 default:
-                  assertionFailure("boom")
+                  assertionFailure("boom \(response)")
                 }
               }
               done()
@@ -112,7 +111,7 @@ class GraphQLQueryResolverSpec: QuickSpec {
               case .Error(let error):
                 expect(error).to(equal(QueryError.ApiError(.GraphQLQueryNotFound)))
               default:
-                assertionFailure("boom")
+                assertionFailure("boom \(response)")
               }
             }
             done()

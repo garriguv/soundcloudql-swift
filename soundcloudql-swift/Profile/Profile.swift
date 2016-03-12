@@ -17,8 +17,7 @@ struct Profile {
 
 extension Profile: GraphQLObject {
   init?(json: [String: AnyObject]) {
-    guard let data = json["data"] as? [String: AnyObject],
-    let userJson = data["user"] as? [String: AnyObject],
+    guard let userJson = json["user"] as? [String: AnyObject],
     let user = User(json: userJson) else {
       return nil
     }

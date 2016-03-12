@@ -13,7 +13,7 @@ class GraphQLQueryResolver<Query: GraphQLQuery> {
     apiController.fetch(withGraphQLQuery: query.name, variables: query.variables) { apiResponse in
       switch (apiResponse) {
         case .GraphQL(let dictionary):
-          if let object = Query.Object(json: dictionary) {
+          if let json = dictionary["data"] as? [String: AnyObject], let object = Query.Object(json: json) {
             dispatch_async(dispatch_get_main_queue()) {
               closure(.Success(object))
             }
