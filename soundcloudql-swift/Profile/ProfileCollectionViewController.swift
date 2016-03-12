@@ -6,10 +6,9 @@ class ProfileCollectionViewController: UICollectionViewController {
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
 
-    let controller = ApiController.sharedInstance
-    controller.fetch(withGraphQLQuery: "profile", variables: [ "id": "2" ]) {
-      (response) in
-      print("\(response)")
+    let profileResolver = GraphQLQueryResolver(query: ProfileQuery(profileID: "2"))
+    profileResolver.fetch() { response in
+      print(response)
     }
   }
 
