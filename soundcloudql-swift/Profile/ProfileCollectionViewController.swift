@@ -65,6 +65,21 @@ extension ProfileCollectionViewController {
     }
   }
 
+  override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    switch kind {
+    case UICollectionElementKindSectionHeader:
+      let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: View.CollectionHeader.reuseIdentifier, forIndexPath: indexPath) as! CollectionSectionHeader
+      view.present(sectionHeaderTitle(indexPath.section))
+      return view
+    case UICollectionElementKindSectionFooter:
+      let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: View.CollectionFooter.reuseIdentifier, forIndexPath: indexPath) as! CollectionSectionFooter
+      view.present(sectionFooterMessage(indexPath.section))
+      return view
+    default:
+      preconditionFailure("Unknown supplementary view kind \(kind)")
+    }
+  }
+
   private func trackAtIndexPath(indexPath: NSIndexPath) -> Track {
     guard let profile = profile else {
       preconditionFailure("trying to access a track (\(indexPath)) without a profile")
@@ -90,6 +105,14 @@ extension ProfileCollectionViewController {
       return CGSize(width: collectionView.frame.width, height: TrackCollectionViewCell.height)
     }
   }
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    return section == 0 ? CGSize.zero : CGSize(width: collectionView.frame.width, height: CollectionSectionHeader.height)
+  }
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    return section == 0 ? CGSize.zero : CGSize(width: collectionView.frame.width, height: CollectionSectionFooter.height)
+  }
 }
 
 // Private
@@ -99,12 +122,36 @@ extension ProfileCollectionViewController {
   }
 
   private func registerCells() {
-    Cell.Track.register(collectionView)
-    Cell.BigUser.register(collectionView)
+    Cell.Track.register(inCollectionView: collectionView)
+    Cell.BigUser.register(inCollectionView: collectionView)
+    View.CollectionHeader.register(inCollectionView: collectionView, supplementaryViewKind: UICollectionElementKindSectionHeader)
+    View.CollectionFooter.register(inCollectionView: collectionView, supplementaryViewKind: UICollectionElementKindSectionFooter)
   }
 
   private func updateProfile(newProfile: Profile) {
     profile = newProfile
     collectionView?.reloadData()
+  }
+
+  private func sectionHeaderTitle(section: Int) -> String {
+    switch section {
+    case 1:
+      return "posted tracks"
+    case 2:
+      return "liked tracks"
+    default:
+      preconditionFailure("missing title for section \(section)")
+    }
+  }
+
+  private func sectionFooterMessage(section: Int) -> String {
+    switch section {
+    case 1:
+      return "more posted tracks >"
+    case 2:
+      return "more liked tracks >"
+    default:
+      preconditionFailure("missing title for section \(section)")
+    }
   }
 }
