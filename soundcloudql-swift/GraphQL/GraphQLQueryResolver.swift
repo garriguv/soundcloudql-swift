@@ -14,12 +14,18 @@ class GraphQLQueryResolver<Query: GraphQLQuery> {
       switch (apiResponse) {
         case .GraphQL(let dictionary):
           if let object = Query.Object(json: dictionary) {
-            closure(.Success(object))
+            dispatch_async(dispatch_get_main_queue()) {
+              closure(.Success(object))
+            }
           } else {
-            closure(.Error(.SerializationError))
+            dispatch_async(dispatch_get_main_queue()) {
+              closure(.Error(.SerializationError))
+            }
           }
         case .Error(let error):
-          closure(.Error(.ApiError(error)))
+          dispatch_async(dispatch_get_main_queue()) {
+            closure(.Error(.ApiError(error)))
+          }
       }
     }
   }
