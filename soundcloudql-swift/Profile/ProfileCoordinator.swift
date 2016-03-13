@@ -25,6 +25,10 @@ extension ProfileCoordinator: Coordinator, CoordinatorDelegate {
 }
 
 extension ProfileCoordinator: ProfileTableViewControllerDelegate {
+  func viewDidDisappear() {
+    delegate?.didFinishCoordinating(self)
+  }
+
   func didTapFollowers() {
     let followersCoordinator = FollowersCoordinator(navigationController, userId: userId, delegate: self)
     childCoordinators.append(followersCoordinator)

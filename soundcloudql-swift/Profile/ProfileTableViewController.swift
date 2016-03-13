@@ -6,6 +6,8 @@ enum ProfileSections: Int {
 }
 
 protocol ProfileTableViewControllerDelegate {
+  func viewDidDisappear()
+
   func didTapFollowers()
   func didTapFollowings()
   func didTapMorePostedTracks()
