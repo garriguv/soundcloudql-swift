@@ -37,7 +37,9 @@ extension ProfileCoordinator: ProfileTableViewControllerDelegate {
   }
 
   func didTapFollowings() {
-    print(__FUNCTION__)
+    let followingsCoordinator = FollowingsCoordinator(navigationController, userId: userId, delegate: self)
+    childCoordinators.append(followingsCoordinator)
+    followingsCoordinator.start()
   }
 
   func didTapMorePostedTracks() {
