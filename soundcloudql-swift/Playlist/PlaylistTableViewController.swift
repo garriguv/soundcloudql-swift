@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 
 protocol PlaylistTableViewControllerDelegate: class {
+  func viewDidDisappear()
 }
 
 enum PlaylistSections: Int {
@@ -31,6 +32,12 @@ extension PlaylistTableViewController {
         print(error)
       }
     }
+  }
+
+  override func viewDidDisappear(animated: Bool) {
+    super.viewDidDisappear(animated)
+
+    playlistDelegate?.viewDidDisappear()
   }
 }
 

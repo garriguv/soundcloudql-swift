@@ -25,4 +25,7 @@ extension PlaylistCoordinator: Coordinator, CoordinatorDelegate {
 }
 
 extension PlaylistCoordinator: PlaylistTableViewControllerDelegate {
+  func viewDidDisappear() {
+    delegate?.didFinishCoordinating(self)
+  }
 }
