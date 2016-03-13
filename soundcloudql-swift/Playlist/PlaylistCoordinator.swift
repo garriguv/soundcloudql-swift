@@ -28,4 +28,13 @@ extension PlaylistCoordinator: PlaylistTableViewControllerDelegate {
   func viewDidDisappear() {
     delegate?.didFinishCoordinating(self)
   }
+
+  func didTapTrack(trackId trackId: String, permalinkUrl: String) {
+  }
+
+  func didTapUser(userId userId: String, permalinkUrl: String) {
+    let profileCoordinator = ProfileCoordinator(navigationController, userId: userId, delegate: self)
+    childCoordinators.append(profileCoordinator)
+    profileCoordinator.start()
+  }
 }

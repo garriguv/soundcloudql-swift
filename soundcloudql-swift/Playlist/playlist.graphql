@@ -29,4 +29,5 @@ fragment MiniUser on User {
   id
   username
   avatarUrl
+  permalinkUrl
 }

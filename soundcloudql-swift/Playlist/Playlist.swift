@@ -50,17 +50,20 @@ struct PlaylistUser {
   let id: String
   let username: String
   let avatarUrl: String?
+  let permalinkUrl: String
 }
 
 extension PlaylistUser: GraphQLObject {
   init?(json: [String:AnyObject]) {
     guard let id = json["id"] as? String,
-    let username = json["username"] as? String else {
+    let username = json["username"] as? String,
+    let permalinkUrl = json["permalinkUrl"] as? String else {
       return nil
     }
     self.id = id
     self.username = username
     self.avatarUrl = json["avatarUrl"] as? String
+    self.permalinkUrl = permalinkUrl
   }
 }
 

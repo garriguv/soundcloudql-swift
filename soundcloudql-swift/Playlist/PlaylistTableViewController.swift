@@ -3,6 +3,9 @@ import UIKit
 
 protocol PlaylistTableViewControllerDelegate: class {
   func viewDidDisappear()
+
+  func didTapTrack(trackId trackId: String, permalinkUrl: String)
+  func didTapUser(userId userId: String, permalinkUrl: String)
 }
 
 enum PlaylistSections: Int {
@@ -34,10 +37,10 @@ extension PlaylistTableViewController {
     }
   }
 
-  override func viewDidDisappear(animated: Bool) {
-    super.viewDidDisappear(animated)
-
-    playlistDelegate?.viewDidDisappear()
+  override func didMoveToParentViewController(parent: UIViewController?) {
+    if (parent == nil) {
+      playlistDelegate?.viewDidDisappear()
+    }
   }
 }
 
@@ -99,20 +102,26 @@ extension PlaylistTableViewController {
 extension PlaylistTableViewController {
   override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     switch PlaylistSections(rawValue: indexPath.section)! {
-      case .Playlist:
-        return BigPlaylistTableViewCell.height
-      case .User:
-        return UserTableViewCell.height
-      case .Tracks:
-        return TrackTableViewCell.height
-      default:
-        preconditionFailure("invalid section in indexpath \(indexPath)")
+    case .Playlist:
+      return BigPlaylistTableViewCell.height
+    case .User:
+      return UserTableViewCell.height
+    case .Tracks:
+      return TrackTableViewCell.height
+    default:
+      preconditionFailure("invalid section in indexpath \(indexPath)")
     }
     return 0
   }
 
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    switch PlaylistSections(rawValue: indexPath.section)! {
+    case .User:
+      playlistDelegate?.didTapUser(userId: playlist!.userConnection.id, permalinkUrl: playlist!.userConnection.permalinkUrl)
+    default:
+      break
+    }
   }
 }
 
