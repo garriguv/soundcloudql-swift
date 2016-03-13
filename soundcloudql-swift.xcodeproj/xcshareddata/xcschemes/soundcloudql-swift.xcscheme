@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EB80F2D31C8B0C9A00E7C7DD"
-               BuildableName = "SC QL.app"
+               BuildableName = "soundcloudql-swift.app"
                BlueprintName = "soundcloudql-swift"
                ReferencedContainer = "container:soundcloudql-swift.xcodeproj">
             </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EB80F2D31C8B0C9A00E7C7DD"
-            BuildableName = "SC QL.app"
+            BuildableName = "soundcloudql-swift.app"
             BlueprintName = "soundcloudql-swift"
             ReferencedContainer = "container:soundcloudql-swift.xcodeproj">
          </BuildableReference>
