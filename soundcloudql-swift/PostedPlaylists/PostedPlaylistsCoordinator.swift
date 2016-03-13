@@ -15,7 +15,7 @@ class PostedPlaylistsCoordinator {
   }
 }
 
-extension PostedPlaylistsCoordinator: Coordinator {
+extension PostedPlaylistsCoordinator: Coordinator, CoordinatorDelegate, CollectionTableViewControllerDelegate {
   func start() {
     let viewController = CollectionTableViewController()
     viewController.collectionEngine = GraphQLCollectionEngineDelegate<PostedPlaylistsCollection>(userId: userId)
@@ -24,10 +24,3 @@ extension PostedPlaylistsCoordinator: Coordinator {
     navigationController.pushViewController(viewController, animated: true)
   }
 }
-
-extension PostedPlaylistsCoordinator: CollectionTableViewControllerDelegate {
-  func viewDidDisappear() {
-    delegate?.didFinishCoordinating(self)
-  }
-}
-

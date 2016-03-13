@@ -15,18 +15,12 @@ class PostedTracksCoordinator {
   }
 }
 
-extension PostedTracksCoordinator: Coordinator {
+extension PostedTracksCoordinator: Coordinator, CoordinatorDelegate, CollectionTableViewControllerDelegate {
   func start() {
     let viewController = CollectionTableViewController()
     viewController.collectionEngine = GraphQLCollectionEngineDelegate<PostedTracksCollection>(userId: userId)
     viewController.collectionDelegate = self
     viewController.title = "posted tracks"
     navigationController.pushViewController(viewController, animated: true)
-  }
-}
-
-extension PostedTracksCoordinator: CollectionTableViewControllerDelegate {
-  func viewDidDisappear() {
-    delegate?.didFinishCoordinating(self)
   }
 }

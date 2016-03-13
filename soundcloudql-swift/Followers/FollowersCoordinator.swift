@@ -15,7 +15,7 @@ class FollowersCoordinator {
   }
 }
 
-extension FollowersCoordinator: Coordinator {
+extension FollowersCoordinator: Coordinator, CoordinatorDelegate, CollectionTableViewControllerDelegate {
   func start() {
     let viewController = CollectionTableViewController()
     viewController.collectionEngine = GraphQLCollectionEngineDelegate<FollowersCollection>(userId: userId)
@@ -24,10 +24,3 @@ extension FollowersCoordinator: Coordinator {
     navigationController.pushViewController(viewController, animated: true)
   }
 }
-
-extension FollowersCoordinator: CollectionTableViewControllerDelegate {
-  func viewDidDisappear() {
-    delegate?.didFinishCoordinating(self)
-  }
-}
-

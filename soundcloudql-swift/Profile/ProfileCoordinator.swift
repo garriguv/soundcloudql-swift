@@ -15,19 +15,12 @@ class ProfileCoordinator {
   }
 }
 
-extension ProfileCoordinator: Coordinator {
+extension ProfileCoordinator: Coordinator, CoordinatorDelegate {
   func start() {
     let viewController = ProfileTableViewController()
     viewController.userId = userId
     viewController.profileDelegate = self
     navigationController.pushViewController(viewController, animated: false)
-  }
-}
-
-extension ProfileCoordinator: CoordinatorDelegate {
-  func didFinishCoordinating(coordinator: Coordinator) {
-    let index = childCoordinators.indexOf { $0 === coordinator }!
-    childCoordinators.removeAtIndex(index)
   }
 }
 

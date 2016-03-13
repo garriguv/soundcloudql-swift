@@ -15,18 +15,12 @@ class LikedTracksCoordinator {
   }
 }
 
-extension LikedTracksCoordinator: Coordinator {
+extension LikedTracksCoordinator: Coordinator, CoordinatorDelegate, CollectionTableViewControllerDelegate {
   func start() {
     let viewController = CollectionTableViewController()
     viewController.collectionEngine = GraphQLCollectionEngineDelegate<LikedTracksCollection>(userId: userId)
     viewController.collectionDelegate = self
     viewController.title = "liked tracks"
     navigationController.pushViewController(viewController, animated: true)
-  }
-}
-
-extension LikedTracksCoordinator: CollectionTableViewControllerDelegate {
-  func viewDidDisappear() {
-    delegate?.didFinishCoordinating(self)
   }
 }

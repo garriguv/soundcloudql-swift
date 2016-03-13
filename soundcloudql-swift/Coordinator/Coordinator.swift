@@ -17,3 +17,9 @@ extension Coordinator {
     childCoordinators.removeAtIndex(index)
   }
 }
+
+extension Coordinator where Self: CollectionTableViewControllerDelegate {
+  func viewDidDisappear() {
+    delegate?.didFinishCoordinating(self)
+  }
+}
