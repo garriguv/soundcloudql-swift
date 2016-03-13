@@ -5,24 +5,42 @@ query UserProfileQuery($id: ID!) {
     avatarUrl
     permalinkUrl
     city
-    postedTracksCollection(limit: 10) {
+    followersCount
+    followingsCount
+    postedTracksCollection(limit: 5) {
       collection {
-        ...SmallTrack
+        ...MiniTrack
       }
       next
     }
-    likedTracksCollection(limit: 10) {
+    likedTracksCollection(limit: 5) {
       collection {
-        ...SmallTrack
+        ...MiniTrack
+      }
+      next
+    }
+    postedPlaylistsCollection(limit: 5) {
+      collection {
+        ...MiniPlaylist
       }
       next
     }
   }
 }
 
-fragment SmallTrack on Track {
+fragment MiniTrack on Track {
   id
   title
   permalinkUrl
   artworkUrl
+  duration
+}
+
+fragment MiniPlaylist on Playlist {
+  id
+  title
+  permalinkUrl
+  artworkUrl
+  tracksCount
+  duration
 }

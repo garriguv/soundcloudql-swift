@@ -30,6 +30,14 @@ extension ProfileCoordinator: CoordinatorDelegate {
 }
 
 extension ProfileCoordinator: ProfileTableViewControllerDelegate {
+  func didTapFollowers() {
+    print(__FUNCTION__)
+  }
+
+  func didTapFollowings() {
+    print(__FUNCTION__)
+  }
+
   func didTapMorePostedTracks() {
     let postedTracksCoordinator = PostedTracksCoordinator(navigationController, userId: userId, delegate: self)
     childCoordinators.append(postedTracksCoordinator)
@@ -40,5 +48,9 @@ extension ProfileCoordinator: ProfileTableViewControllerDelegate {
     let likedTracksCoordinator = LikedTracksCoordinator(navigationController, userId: userId, delegate: self)
     childCoordinators.append(likedTracksCoordinator)
     likedTracksCoordinator.start()
+  }
+
+  func didTapMorePostedPlaylists() {
+    print(__FUNCTION__)
   }
 }

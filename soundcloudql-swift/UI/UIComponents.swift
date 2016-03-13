@@ -3,6 +3,7 @@ import UIKit
 
 enum Cell: String {
   case Track = "TrackTableViewCell"
+  case Playlist = "PlaylistTableViewCell"
   case BigUser = "BigUserTableViewCell"
 }
 

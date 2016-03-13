@@ -10,6 +10,7 @@
 		1699F33111882F0B0E8E1245 /* Pods_soundcloudql_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455FA149825439F16E8DC64E /* Pods_soundcloudql_swift.framework */; };
 		62794A16C600772F8DDE5B14 /* Pods_soundcloudql_swiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CADF51EA26512D32948B714D /* Pods_soundcloudql_swiftTests.framework */; };
 		9FD5B028D692B2861D847564 /* liked_tracks.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B119ADD9DBD84EA56EE9 /* liked_tracks.graphql */; };
+		9FD5B0E5B751E7274F07F6BF /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B244B6EFA770A01358C9 /* PlaylistTableViewCell.swift */; };
 		9FD5B2353E88AB4EBB99D5CF /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BD2661F65F03F3C3ED6E /* ProfileCollectionViewController.swift */; };
 		9FD5B23E7C72D28800383196 /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF81D45254A30410C97E /* UIComponents.swift */; };
 		9FD5B27E45BCF446B7B16168 /* PostedTracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B824BF38B02EA0216EBC /* PostedTracks.swift */; };
@@ -44,6 +45,7 @@
 		9FD5BFD51D338175F26C1759 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BE5E2A900A54A5A72576 /* ProfileCoordinator.swift */; };
 		EB3F85991C8B286200E5F0AC /* Environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB3F85981C8B286200E5F0AC /* Environment.plist */; };
 		EB3F859B1C8B2A4900E5F0AC /* Environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB3F859A1C8B2A4900E5F0AC /* Environment.plist */; };
+		EB3F85AB1C958A0D00E5F0AC /* PlaylistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3F85AA1C958A0D00E5F0AC /* PlaylistTableViewCell.xib */; };
 		EB80F2DA1C8B0C9A00E7C7DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB80F2D91C8B0C9A00E7C7DD /* ViewController.swift */; };
 		EB80F2DF1C8B0C9A00E7C7DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB80F2DE1C8B0C9A00E7C7DD /* Assets.xcassets */; };
 		EB80F2E21C8B0C9A00E7C7DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB80F2E01C8B0C9A00E7C7DD /* LaunchScreen.storyboard */; };
@@ -76,6 +78,7 @@
 		9FD5B119ADD9DBD84EA56EE9 /* liked_tracks.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = liked_tracks.graphql; sourceTree = "<group>"; };
 		9FD5B1400AEBE25BCB160CE8 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		9FD5B1A67F005EEB119C5A42 /* LikedTracksCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedTracksCoordinator.swift; sourceTree = "<group>"; };
+		9FD5B244B6EFA770A01358C9 /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		9FD5B3AE31247892AB253C53 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		9FD5B42C28A3E00B03C4CA09 /* BigUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigUserTableViewCell.swift; sourceTree = "<group>"; };
 		9FD5B494E8F63986540DBAC0 /* posted_tracks.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = posted_tracks.graphql; sourceTree = "<group>"; };
@@ -109,6 +112,7 @@
 		CADF51EA26512D32948B714D /* Pods_soundcloudql_swiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_soundcloudql_swiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB3F85981C8B286200E5F0AC /* Environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environment.plist; sourceTree = "<group>"; };
 		EB3F859A1C8B2A4900E5F0AC /* Environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environment.plist; sourceTree = "<group>"; };
+		EB3F85AA1C958A0D00E5F0AC /* PlaylistTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistTableViewCell.xib; sourceTree = "<group>"; };
 		EB80F2D41C8B0C9A00E7C7DD /* soundcloudql-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "soundcloudql-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB80F2D91C8B0C9A00E7C7DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EB80F2DE1C8B0C9A00E7C7DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 				9FD5BF81D45254A30410C97E /* UIComponents.swift */,
 				9FD5B90249B8AB384813D210 /* TrackTableViewCell.xib */,
 				9FD5B1400AEBE25BCB160CE8 /* TrackTableViewCell.swift */,
+				9FD5B244B6EFA770A01358C9 /* PlaylistTableViewCell.swift */,
+				EB3F85AA1C958A0D00E5F0AC /* PlaylistTableViewCell.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -477,6 +483,7 @@
 			files = (
 				EB80F2E21C8B0C9A00E7C7DD /* LaunchScreen.storyboard in Resources */,
 				EB3F859B1C8B2A4900E5F0AC /* Environment.plist in Resources */,
+				EB3F85AB1C958A0D00E5F0AC /* PlaylistTableViewCell.xib in Resources */,
 				EB80F2DF1C8B0C9A00E7C7DD /* Assets.xcassets in Resources */,
 				9FD5BAB1B7876ABEDD7A8230 /* profile.graphql in Resources */,
 				9FD5B697BA2E5647E9E8C365 /* BigUserTableViewCell.xib in Resources */,
@@ -623,6 +630,7 @@
 				9FD5BEFD9F7A19C7381A9AEE /* LikedTracks.swift in Sources */,
 				9FD5BEC86CCCA1A3A1937479 /* CollectionTableViewController.swift in Sources */,
 				9FD5B55C7AC0B6D3CE7E5916 /* LikedTracksCoordinator.swift in Sources */,
+				9FD5B0E5B751E7274F07F6BF /* PlaylistTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

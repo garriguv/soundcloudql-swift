@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaylistTableViewCell" rowHeight="135" id="IW8-Vq-8LP" customClass="PlaylistTableViewCell" customModule="soundcloudql_swift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="135"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IW8-Vq-8LP" id="Ogh-wL-9Ye">
+                <rect key="frame" x="0.0" y="0.0" width="400" height="134"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="md1-Dg-mba">
+                        <rect key="frame" x="26" y="13" width="108" height="108"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="md1-Dg-mba" secondAttribute="height" multiplier="1:1" id="02j-6T-dcK"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;10 tracks&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3D3-rE-NmK">
+                        <rect key="frame" x="142" y="106" width="67" height="15"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;playlist title&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65l-nA-9mG">
+                        <rect key="frame" x="142" y="13" width="92" height="17"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="3D3-rE-NmK" secondAttribute="bottom" constant="5" id="4Ek-YL-uzV"/>
+                    <constraint firstItem="65l-nA-9mG" firstAttribute="top" secondItem="Ogh-wL-9Ye" secondAttribute="topMargin" constant="5" id="53y-pg-erF"/>
+                    <constraint firstItem="md1-Dg-mba" firstAttribute="centerY" secondItem="Ogh-wL-9Ye" secondAttribute="centerY" id="Clg-Nj-4Fi"/>
+                    <constraint firstItem="65l-nA-9mG" firstAttribute="leading" secondItem="md1-Dg-mba" secondAttribute="trailing" constant="8" id="SJa-HI-f1M"/>
+                    <constraint firstItem="md1-Dg-mba" firstAttribute="leading" secondItem="Ogh-wL-9Ye" secondAttribute="leadingMargin" constant="18" id="Wmu-uf-wns"/>
+                    <constraint firstItem="3D3-rE-NmK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="65l-nA-9mG" secondAttribute="bottom" constant="8" id="fko-7F-ljV"/>
+                    <constraint firstItem="md1-Dg-mba" firstAttribute="height" secondItem="Ogh-wL-9Ye" secondAttribute="height" multiplier="0.8" constant="1" id="ooX-RR-sFp"/>
+                    <constraint firstItem="3D3-rE-NmK" firstAttribute="leading" secondItem="md1-Dg-mba" secondAttribute="trailing" constant="8" id="xvB-bG-wrN"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="65l-nA-9mG" secondAttribute="trailing" constant="8" id="yia-i7-Umy"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="artworkImageView" destination="md1-Dg-mba" id="0wF-so-mN6"/>
+                <outlet property="titleLabel" destination="65l-nA-9mG" id="rvo-PM-Gqh"/>
+                <outlet property="tracksCountLabel" destination="3D3-rE-NmK" id="eb1-5f-OrH"/>
+            </connections>
+            <point key="canvasLocation" x="297" y="513.5"/>
+        </tableViewCell>
+    </objects>
+</document>
