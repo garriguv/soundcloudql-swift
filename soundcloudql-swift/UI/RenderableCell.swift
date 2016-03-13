@@ -6,6 +6,7 @@ protocol RenderableCell {
 
   static func register(inTableView tableView: UITableView)
   static var reuseIdentifier: String { get }
+  static var height: CGFloat { get }
 }
 
 extension RenderableCell where Self: UITableViewCell {

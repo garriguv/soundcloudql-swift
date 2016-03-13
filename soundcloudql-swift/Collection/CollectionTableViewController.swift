@@ -51,7 +51,7 @@ extension CollectionTableViewController {
 
 extension CollectionTableViewController {
   override func tableView(_ tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    return TrackTableViewCell.height
+    return collectionEngine.cellHeight()
   }
 
   override func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

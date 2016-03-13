@@ -6,11 +6,11 @@ class BigUserTableViewCell: UITableViewCell {
   @IBOutlet weak var avatarImageView: UIImageView!
   @IBOutlet weak var usernameLabel: UILabel!
   @IBOutlet weak var cityLabel: UILabel!
-
-  static let height: CGFloat = 150
 }
 
 extension BigUserTableViewCell: RenderableCell {
+  @nonobjc static let height: CGFloat = 150
+
   func render(object: GraphQLObject) {
     if let user = object as? User {
       usernameLabel.text = user.username

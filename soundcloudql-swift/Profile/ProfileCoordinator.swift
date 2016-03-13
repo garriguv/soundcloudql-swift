@@ -51,6 +51,8 @@ extension ProfileCoordinator: ProfileTableViewControllerDelegate {
   }
 
   func didTapMorePostedPlaylists() {
-    print(__FUNCTION__)
+    let postedPlaylistsCoordinator = PostedPlaylistsCoordinator(navigationController, userId: userId, delegate: self)
+    childCoordinators.append(postedPlaylistsCoordinator)
+    postedPlaylistsCoordinator.start()
   }
 }

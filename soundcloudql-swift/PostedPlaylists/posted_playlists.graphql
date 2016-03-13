@@ -1,0 +1,19 @@
+query PostedPlaylistsQuery($id: ID!, $limit: Int!, $next: String) {
+  user(id: $id) {
+    postedPlaylistsCollection(limit: $limit, next: $next) {
+      collection {
+        ...MiniPlaylist
+      }
+      next
+    }
+  }
+}
+
+fragment MiniPlaylist on Playlist {
+  id
+  title
+  permalinkUrl
+  artworkUrl
+  tracksCount
+  duration
+}

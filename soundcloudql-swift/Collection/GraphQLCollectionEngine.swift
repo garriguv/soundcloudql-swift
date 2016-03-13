@@ -14,6 +14,8 @@ protocol GraphQLCollectionEngine {
 
   func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 
+  func cellHeight() -> CGFloat
+
   func shouldPaginate() -> Bool
 }
 
@@ -81,6 +83,10 @@ class GraphQLCollectionEngineDelegate
     let cell = tableView.dequeueReusableCellWithIdentifier(Cell.reuseIdentifier, forIndexPath: indexPath) as! RenderableCell
     cell.render(itemAtIndexPath(indexPath))
     return cell as! UITableViewCell
+  }
+
+  func cellHeight() -> CGFloat {
+    return Cell.height
   }
 
   private func itemAtIndexPath(indexPath: NSIndexPath) -> CollectionObject {

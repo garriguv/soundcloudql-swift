@@ -5,11 +5,11 @@ class PlaylistTableViewCell: UITableViewCell {
   @IBOutlet weak var artworkImageView: UIImageView!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var tracksCountLabel: UILabel!
-
-  static let height: CGFloat = 70
 }
 
 extension PlaylistTableViewCell: RenderableCell {
+  @nonobjc static let height: CGFloat = 70
+
   func render(object: GraphQLObject) {
     if let playlist = object as? Playlist {
       titleLabel.text = playlist.title
