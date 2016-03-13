@@ -20,7 +20,7 @@ extension ProfileCoordinator: Coordinator, CoordinatorDelegate {
     let viewController = ProfileTableViewController()
     viewController.userId = userId
     viewController.profileDelegate = self
-    navigationController.pushViewController(viewController, animated: false)
+    navigationController.pushViewController(viewController, animated: true)
   }
 }
 

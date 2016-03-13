@@ -3,6 +3,7 @@ import UIKit
 
 protocol CollectionTableViewControllerDelegate: class {
   func viewDidDisappear()
+  func didSelectObject(object: GraphQLObject)
 }
 
 class CollectionTableViewController: UITableViewController {
@@ -16,7 +17,7 @@ extension CollectionTableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    collectionEngine.tableView = tableView  
+    collectionEngine.tableView = tableView
     collectionEngine.setup()
     collectionEngine.initialFetch()
   }
@@ -53,6 +54,7 @@ extension CollectionTableViewController {
 
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    collectionDelegate?.didSelectObject(collectionEngine.objectAtIndexPath(indexPath))
   }
 }
 

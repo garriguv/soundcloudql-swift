@@ -163,3 +163,5 @@ extension MiniPlaylist: GraphQLObject {
     self.duration = duration
   }
 }
+
+extension MiniPlaylist: PlaylistRenderable {}

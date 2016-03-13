@@ -20,7 +20,7 @@ extension PlaylistCoordinator: Coordinator, CoordinatorDelegate {
     let viewController = PlaylistTableViewController()
     viewController.playlistId = playlistId
     viewController.playlistDelegate = self
-    navigationController.pushViewController(viewController, animated: false)
+    navigationController.pushViewController(viewController, animated: true)
   }
 }
 

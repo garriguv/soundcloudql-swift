@@ -14,6 +14,8 @@ protocol GraphQLCollectionEngine {
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 
+  func objectAtIndexPath(indexPath: NSIndexPath) -> GraphQLObject
+
   func cellHeight() -> CGFloat
 
   func shouldPaginate() -> Bool
@@ -91,15 +93,19 @@ class GraphQLCollectionEngineDelegate<Rendering: CollectionRendering>: GraphQLCo
     return cell as! UITableViewCell
   }
 
-  func cellHeight() -> CGFloat {
-    return Rendering.CollectionCell.height
+  func objectAtIndexPath(indexPath: NSIndexPath) -> GraphQLObject {
+    return itemAtIndexPath(indexPath)
   }
 
   private func itemAtIndexPath(indexPath: NSIndexPath) -> Rendering.CollectionQuery.Object.Object {
     guard let collection = collection else {
-      preconditionFailure("trying to access a track (\(indexPath)) without a collection")
+      preconditionFailure("trying to access an object (\(indexPath)) without a collection")
     }
     return collection.itemAtIndexPath(indexPath)
+  }
+
+  func cellHeight() -> CGFloat {
+    return Rendering.CollectionCell.height
   }
 
   func shouldPaginate() -> Bool {
