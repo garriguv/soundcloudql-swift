@@ -25,17 +25,18 @@ extension Coordinator where Self: CollectionTableViewControllerDelegate, Self: C
   }
 
   func didSelectObject(object: GraphQLObject) {
+    guard let navigationController = topNavigationController() else {
+      preconditionFailure("Something's weird here")
+    }
     if let track = object as? TrackRenderable {
-      print("open track \(track.title)")
     } else if let user = object as? UserRenderable {
-      print("open user \(user.username)")
+      let profileCoordinator = ProfileCoordinator(navigationController, userId: user.id, delegate: self)
+      childCoordinators.append(profileCoordinator)
+      profileCoordinator.start()
     } else if let playlist = object as? PlaylistRenderable {
-      print("open playlist \(playlist.title)")
-      if let navigationController = topNavigationController() {
-        let playlistCoordinator = PlaylistCoordinator(navigationController, playlistId: playlist.id, delegate: self)
-        childCoordinators.append(playlistCoordinator)
-        playlistCoordinator.start()
-      }
+      let playlistCoordinator = PlaylistCoordinator(navigationController, playlistId: playlist.id, delegate: self)
+      childCoordinators.append(playlistCoordinator)
+      playlistCoordinator.start()
     }
   }
 
