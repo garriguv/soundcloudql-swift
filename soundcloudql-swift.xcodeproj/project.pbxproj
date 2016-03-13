@@ -165,7 +165,7 @@
 		EB3F85AA1C958A0D00E5F0AC /* PlaylistTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistTableViewCell.xib; sourceTree = "<group>"; };
 		EB3F85AC1C95A3C600E5F0AC /* UserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 		EB3F85AE1C95C79600E5F0AC /* BigPlaylistTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BigPlaylistTableViewCell.xib; sourceTree = "<group>"; };
-		EB80F2D41C8B0C9A00E7C7DD /* soundcloudql-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "soundcloudql-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB80F2D41C8B0C9A00E7C7DD /* SC QL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SC QL.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB80F2D91C8B0C9A00E7C7DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EB80F2DE1C8B0C9A00E7C7DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB80F2E11C8B0C9A00E7C7DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -425,7 +425,7 @@
 		EB80F2D51C8B0C9A00E7C7DD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EB80F2D41C8B0C9A00E7C7DD /* soundcloudql-swift.app */,
+				EB80F2D41C8B0C9A00E7C7DD /* SC QL.app */,
 				EB80F2E81C8B0C9A00E7C7DD /* soundcloudql-swiftTests.xctest */,
 				EB80F2F31C8B0C9A00E7C7DD /* soundcloudql-swiftUITests.xctest */,
 			);
@@ -509,7 +509,7 @@
 			);
 			name = "soundcloudql-swift";
 			productName = "soundcloudql-swift";
-			productReference = EB80F2D41C8B0C9A00E7C7DD /* soundcloudql-swift.app */;
+			productReference = EB80F2D41C8B0C9A00E7C7DD /* SC QL.app */;
 			productType = "com.apple.product-type.application";
 		};
 		EB80F2E71C8B0C9A00E7C7DD /* soundcloudql-swiftTests */ = {
@@ -919,7 +919,7 @@
 				INFOPLIST_FILE = "soundcloudql-swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.garriguv.soundcloudql-swift";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "SC QL";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -934,7 +934,7 @@
 				INFOPLIST_FILE = "soundcloudql-swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.garriguv.soundcloudql-swift";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "SC QL";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
