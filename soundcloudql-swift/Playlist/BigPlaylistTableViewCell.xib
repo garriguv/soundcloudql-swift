@@ -15,9 +15,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="358" height="295"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="REF-3b-YZC">
-                        <rect key="frame" x="0.0" y="0.0" width="358" height="295"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;title&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mI-10-BdV">
                         <rect key="frame" x="8" y="261" width="61" height="26"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40245456559999998" colorSpace="calibratedRGB"/>
@@ -25,6 +22,9 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="REF-3b-YZC">
+                        <rect key="frame" x="0.0" y="0.0" width="358" height="295"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="REF-3b-YZC" firstAttribute="top" secondItem="BYX-fA-MfF" secondAttribute="topMargin" constant="-8" id="HTp-WF-VST"/>

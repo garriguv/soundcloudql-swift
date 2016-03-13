@@ -83,7 +83,6 @@ extension PlaylistTableViewController {
     default:
       preconditionFailure("invalid section in indexpath \(indexPath)")
     }
-    preconditionFailure("\(__FUNCTION__) invalid section \(indexPath.section)")
   }
 
   override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -99,6 +98,16 @@ extension PlaylistTableViewController {
 // UITableViewDelegate
 extension PlaylistTableViewController {
   override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    switch PlaylistSections(rawValue: indexPath.section)! {
+      case .Playlist:
+        return BigPlaylistTableViewCell.height
+      case .User:
+        return UserTableViewCell.height
+      case .Tracks:
+        return TrackTableViewCell.height
+      default:
+        preconditionFailure("invalid section in indexpath \(indexPath)")
+    }
     return 0
   }
 

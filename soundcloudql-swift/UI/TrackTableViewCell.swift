@@ -2,6 +2,11 @@ import Foundation
 import UIKit
 import Kingfisher
 
+protocol TrackRenderable {
+  var title: String { get }
+  var artworkUrl: String? { get }
+}
+
 class TrackTableViewCell: UITableViewCell {
   @IBOutlet weak var artworkImageView: UIImageView!
   @IBOutlet weak var titleLabel: UILabel!
@@ -11,7 +16,7 @@ extension TrackTableViewCell: RenderableCell {
   @nonobjc static let height: CGFloat = 50
 
   func render(object: GraphQLObject) {
-    if let track = object as? Track {
+    if let track = object as? TrackRenderable {
       titleLabel.text = track.title
       if let artworkUrl = track.artworkUrl {
         artworkImageView.kf_setImageWithURL(NSURL(string: artworkUrl)!)

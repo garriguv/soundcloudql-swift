@@ -135,6 +135,8 @@ extension Track: GraphQLObject {
   }
 }
 
+extension Track: TrackRenderable {}
+
 struct MiniPlaylist {
   let id: String
   let title: String
