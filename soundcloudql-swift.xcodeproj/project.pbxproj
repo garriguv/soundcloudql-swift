@@ -38,6 +38,7 @@
 		9FD5B868CB29D6D3823851A7 /* ProfileCoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BBCFE55151C7BF88CBAA /* ProfileCoordinatorSpec.swift */; };
 		9FD5B88D83DCF4CFD2F2F9FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B606DD49330528B32028 /* AppDelegate.swift */; };
 		9FD5B8928E61D7B402FA33F8 /* GraphQLCollectionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B7C100C34CDA16F2CF4B /* GraphQLCollectionEngine.swift */; };
+		9FD5B8F88409C0A7CADAE3C9 /* BigPlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B4CB82D58ACE21A10DA1 /* BigPlaylistTableViewCell.swift */; };
 		9FD5B90F4BB1F9AD12DB2BC8 /* ApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B8E16EC6DE899D7FCDB2 /* ApiController.swift */; };
 		9FD5B91430F5EDD8B490E4E3 /* PostedTracksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B8881E7DC513B3283235 /* PostedTracksCoordinator.swift */; };
 		9FD5B9E7EC9CED3F425FAA82 /* Followers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B850328403AC2EDBD52C /* Followers.swift */; };
@@ -68,6 +69,7 @@
 		EB3F859B1C8B2A4900E5F0AC /* Environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB3F859A1C8B2A4900E5F0AC /* Environment.plist */; };
 		EB3F85AB1C958A0D00E5F0AC /* PlaylistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3F85AA1C958A0D00E5F0AC /* PlaylistTableViewCell.xib */; };
 		EB3F85AD1C95A3C600E5F0AC /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3F85AC1C95A3C600E5F0AC /* UserTableViewCell.xib */; };
+		EB3F85AF1C95C79600E5F0AC /* BigPlaylistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3F85AE1C95C79600E5F0AC /* BigPlaylistTableViewCell.xib */; };
 		EB80F2DA1C8B0C9A00E7C7DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB80F2D91C8B0C9A00E7C7DD /* ViewController.swift */; };
 		EB80F2DF1C8B0C9A00E7C7DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB80F2DE1C8B0C9A00E7C7DD /* Assets.xcassets */; };
 		EB80F2E21C8B0C9A00E7C7DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB80F2E01C8B0C9A00E7C7DD /* LaunchScreen.storyboard */; };
@@ -115,6 +117,7 @@
 		9FD5B452C29D7A30196E1381 /* FollowingsCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowingsCollection.swift; sourceTree = "<group>"; };
 		9FD5B4948C44E331217AE910 /* NetworkActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivity.swift; sourceTree = "<group>"; };
 		9FD5B494E8F63986540DBAC0 /* posted_tracks.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = posted_tracks.graphql; sourceTree = "<group>"; };
+		9FD5B4CB82D58ACE21A10DA1 /* BigPlaylistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigPlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		9FD5B4D8FAB80E43B514CB43 /* query.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = query.graphql; sourceTree = "<group>"; };
 		9FD5B519F741B2491EB205BC /* ApiControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiControllerSpec.swift; sourceTree = "<group>"; };
 		9FD5B5A75F2423AAA98C6D70 /* EnvironmentSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentSpec.swift; sourceTree = "<group>"; };
@@ -157,6 +160,7 @@
 		EB3F859A1C8B2A4900E5F0AC /* Environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environment.plist; sourceTree = "<group>"; };
 		EB3F85AA1C958A0D00E5F0AC /* PlaylistTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistTableViewCell.xib; sourceTree = "<group>"; };
 		EB3F85AC1C95A3C600E5F0AC /* UserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
+		EB3F85AE1C95C79600E5F0AC /* BigPlaylistTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BigPlaylistTableViewCell.xib; sourceTree = "<group>"; };
 		EB80F2D41C8B0C9A00E7C7DD /* soundcloudql-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "soundcloudql-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB80F2D91C8B0C9A00E7C7DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EB80F2DE1C8B0C9A00E7C7DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -325,6 +329,8 @@
 				9FD5BEB234A899CA5F830FB3 /* Playlist.swift */,
 				9FD5BAEC391926C87AC0F87D /* PlaylistTableViewController.swift */,
 				9FD5BCBC52B01D81364FA1E4 /* PlaylistCoordinator.swift */,
+				9FD5B4CB82D58ACE21A10DA1 /* BigPlaylistTableViewCell.swift */,
+				EB3F85AE1C95C79600E5F0AC /* BigPlaylistTableViewCell.xib */,
 			);
 			path = Playlist;
 			sourceTree = "<group>";
@@ -581,6 +587,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB80F2E21C8B0C9A00E7C7DD /* LaunchScreen.storyboard in Resources */,
+				EB3F85AF1C95C79600E5F0AC /* BigPlaylistTableViewCell.xib in Resources */,
 				EB3F859B1C8B2A4900E5F0AC /* Environment.plist in Resources */,
 				EB3F85AB1C958A0D00E5F0AC /* PlaylistTableViewCell.xib in Resources */,
 				EB80F2DF1C8B0C9A00E7C7DD /* Assets.xcassets in Resources */,
@@ -752,6 +759,7 @@
 				9FD5BB0202A7A3C8CE55AA95 /* Playlist.swift in Sources */,
 				9FD5BDFE780281AC01C0DB12 /* PlaylistTableViewController.swift in Sources */,
 				9FD5BCFF29D06FBC04FCD7D1 /* PlaylistCoordinator.swift in Sources */,
+				9FD5B8F88409C0A7CADAE3C9 /* BigPlaylistTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
