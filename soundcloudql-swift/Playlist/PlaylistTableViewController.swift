@@ -120,6 +120,10 @@ extension PlaylistTableViewController {
     switch PlaylistSections(rawValue: indexPath.section)! {
     case .User:
       playlistDelegate?.didTapUser(userId: playlist!.userConnection.id, permalinkUrl: playlist!.userConnection.permalinkUrl)
+    case .Tracks:
+      if let track = playlist?.tracksCollection.collection[indexPath.row] {
+        playlistDelegate?.didTapTrack(trackId: track.id, permalinkUrl: track.permalinkUrl)
+      }
     default:
       break
     }

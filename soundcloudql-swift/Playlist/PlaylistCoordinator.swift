@@ -30,6 +30,9 @@ extension PlaylistCoordinator: PlaylistTableViewControllerDelegate {
   }
 
   func didTapTrack(trackId trackId: String, permalinkUrl: String) {
+    if let permalinkURL = NSURL(string: permalinkUrl) {
+      UIApplication.sharedApplication().openURL(permalinkURL)
+    }
   }
 
   func didTapUser(userId userId: String, permalinkUrl: String) {

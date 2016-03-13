@@ -29,6 +29,9 @@ extension Coordinator where Self: CollectionTableViewControllerDelegate, Self: C
       preconditionFailure("Something's weird here")
     }
     if let track = object as? TrackRenderable {
+      if let permalinkURL = NSURL(string: track.permalinkUrl) {
+        UIApplication.sharedApplication().openURL(permalinkURL)
+      }
     } else if let user = object as? UserRenderable {
       let profileCoordinator = ProfileCoordinator(navigationController, userId: user.id, delegate: self)
       childCoordinators.append(profileCoordinator)

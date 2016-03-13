@@ -3,6 +3,7 @@ import UIKit
 import Kingfisher
 
 protocol TrackRenderable {
+  var permalinkUrl: String { get }
   var title: String { get }
   var artworkUrl: String? { get }
 }

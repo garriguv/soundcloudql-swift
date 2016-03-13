@@ -60,6 +60,9 @@ extension ProfileCoordinator: ProfileTableViewControllerDelegate {
   }
 
   func didTapTrack(trackId trackId: String, permalinkUrl: String) {
+    if let permalinkURL = NSURL(string: permalinkUrl) {
+      UIApplication.sharedApplication().openURL(permalinkURL)
+    }
   }
 
   func didTapPlaylist(playlistId playlistId: String, permalinkUrl: String) {
