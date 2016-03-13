@@ -49,7 +49,7 @@ class GraphQLCollectionEngineDelegate<Rendering: CollectionRendering>: GraphQLCo
   }
 
   func initialFetch() {
-    let queryResolver = GraphQLQueryResolver(query: Rendering.CollectionQuery(userId: userId, limit: Rendering.batchSize, next: nil))
+    let queryResolver = GraphQLQueryResolver(query: Rendering.CollectionQuery(id: userId, limit: Rendering.batchSize, next: nil))
     queryResolver.fetch() {
       response in
       switch response {
@@ -66,7 +66,7 @@ class GraphQLCollectionEngineDelegate<Rendering: CollectionRendering>: GraphQLCo
       preconditionFailure("trying to paginate without a collection")
     }
     paginating = true
-    let query = Rendering.CollectionQuery(userId: userId, limit: Rendering.batchSize, next: collection.next())
+    let query = Rendering.CollectionQuery(id: userId, limit: Rendering.batchSize, next: collection.next())
     let nextPageResolver = GraphQLQueryResolver(query: query)
     nextPageResolver.fetch() {
       response in

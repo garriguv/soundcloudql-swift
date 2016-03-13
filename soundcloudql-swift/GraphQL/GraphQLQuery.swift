@@ -14,7 +14,7 @@ protocol GraphQLObject {
 protocol GraphQLCollectionQuery: GraphQLQuery {
   typealias Object: GraphQLCollectionObject
 
-  init(userId: String, limit: Int, next: String?)
+  init(id: String, limit: Int, next: String?)
 }
 
 protocol GraphQLCollectionObject: GraphQLObject {

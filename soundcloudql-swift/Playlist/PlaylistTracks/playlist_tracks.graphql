@@ -1,0 +1,18 @@
+query PlaylistTracks($id: ID!, $limit: Int, $next: String) {
+  playlist(id: $id) {
+    tracksCollection(limit: $limit, next: $next) {
+      collection {
+        ...MiniTrack
+      }
+      next
+    }
+  }
+}
+
+fragment MiniTrack on Track {
+  id
+  title
+  permalinkUrl
+  artworkUrl
+  duration
+}

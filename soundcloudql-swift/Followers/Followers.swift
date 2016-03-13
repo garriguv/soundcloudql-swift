@@ -6,8 +6,8 @@ struct FollowersQuery: GraphQLCollectionQuery {
   let name = "followers"
   let variables: [String: AnyObject]
 
-  init(userId: String, limit: Int, next: String? = nil) {
-    var variables: [String: AnyObject] = [ "id": userId, "limit" : limit ]
+  init(id: String, limit: Int, next: String? = nil) {
+    var variables: [String: AnyObject] = ["id": id, "limit" : limit ]
     if let next = next {
       variables["next"] = next
     }

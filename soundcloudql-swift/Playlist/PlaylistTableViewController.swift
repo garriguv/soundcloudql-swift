@@ -17,6 +17,7 @@ class PlaylistTableViewController: UITableViewController {
   weak var playlistDelegate: PlaylistTableViewControllerDelegate?
 
   private var playlist: Playlist?
+  private var paginating: Bool = false
 }
 
 // View lifecycle
@@ -91,7 +92,7 @@ extension PlaylistTableViewController {
   override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch PlaylistSections(rawValue: section)! {
     case .Tracks:
-      return "\(playlist!.tracksCollection.collection.count) tracks"
+      return "\(playlist!.tracksCount) tracks (\(playlist!.tracksCollection.collection.count) loaded)"
     default:
       return nil
     }
@@ -125,6 +126,40 @@ extension PlaylistTableViewController {
   }
 }
 
+// UIScrollViewDelegate
+extension PlaylistTableViewController {
+  override func scrollViewDidScroll(scrollView: UIScrollView) {
+    if paginationShouldBeTriggered(scrollView) {
+      let playlistTracksResolver = GraphQLQueryResolver(query: PlaylistTracksQuery(id: playlist!.id, limit: 50, next: playlist!.tracksCollection.next))
+      paginating = true
+      playlistTracksResolver.fetch() { (response: QueryResponse<PlaylistTracks>) in
+        self.paginating = false
+        switch response {
+        case .Success(let playlistTracks):
+          self.appendPlaylistTracks(playlistTracks)
+        case .Error(let error):
+          print(error)
+        }
+      }
+    }
+  }
+
+  private func paginationShouldBeTriggered(scrollView: UIScrollView) -> Bool {
+    if shouldPaginate() {
+      return (scrollView.contentSize.height - scrollView.frame.size.height) - scrollView.contentOffset.y < tableView.frame.size.height * 2
+    } else {
+      return false
+    }
+  }
+
+  private func shouldPaginate() -> Bool {
+    if let playlist = playlist {
+      return !paginating && playlist.tracksCollection.next != nil
+    }
+    return false
+  }
+}
+
 // Private
 extension PlaylistTableViewController {
   private func setup() {
@@ -137,6 +172,13 @@ extension PlaylistTableViewController {
 
   private func updatePlaylist(newPlaylist: Playlist) {
     playlist = newPlaylist
+    tableView.reloadData()
+  }
+
+  private func appendPlaylistTracks(newPlaylistTracks: PlaylistTracks) {
+    let collection = playlist!.tracksCollection.collection + newPlaylistTracks.playlist.tracksCollection.collection
+    let playlistTracksCollection = PlaylistTracksCollection(collection: collection, next: newPlaylistTracks.playlist.tracksCollection.next)
+    playlist = Playlist(id: playlist!.id, title: playlist!.title, description: playlist!.description, artworkUrl: playlist!.artworkUrl, tracksCount: playlist!.tracksCount, userConnection: playlist!.userConnection, tracksCollection: playlistTracksCollection)
     tableView.reloadData()
   }
 }
