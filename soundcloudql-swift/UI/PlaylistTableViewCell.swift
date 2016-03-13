@@ -11,7 +11,7 @@ extension PlaylistTableViewCell: RenderableCell {
   @nonobjc static let height: CGFloat = 70
 
   func render(object: GraphQLObject) {
-    if let playlist = object as? Playlist {
+    if let playlist = object as? MiniPlaylist {
       titleLabel.text = playlist.title
       tracksCountLabel.text = "\(playlist.tracksCount) tracks"
       if let artworkUrl = playlist.artworkUrl {

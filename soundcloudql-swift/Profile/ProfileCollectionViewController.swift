@@ -198,7 +198,7 @@ extension ProfileTableViewController {
     }
   }
 
-  private func playlistAtIndexPath(indexPath: NSIndexPath) -> Playlist {
+  private func playlistAtIndexPath(indexPath: NSIndexPath) -> MiniPlaylist {
     guard let profile = profile else {
       preconditionFailure("trying to access a track (\(indexPath)) without a profile")
     }

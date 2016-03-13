@@ -97,7 +97,7 @@ extension UserLikedTracksCollection: GraphQLObject {
 }
 
 struct UserPostedPlaylistsCollection {
-  let collection: [Playlist]
+  let collection: [MiniPlaylist]
   let next: String?
 }
 
@@ -106,7 +106,7 @@ extension UserPostedPlaylistsCollection: GraphQLObject {
     guard let collection = json["collection"] as? [[String: AnyObject]] else {
       return nil
     }
-    self.collection = collection.map { Playlist(json: $0)! }
+    self.collection = collection.map { MiniPlaylist(json: $0)! }
     self.next = json["next"] as? String
   }
 }
@@ -135,7 +135,7 @@ extension Track: GraphQLObject {
   }
 }
 
-struct Playlist {
+struct MiniPlaylist {
   let id: String
   let title: String
   let permalinkUrl: String
@@ -144,7 +144,7 @@ struct Playlist {
   let duration: Int
 }
 
-extension Playlist: GraphQLObject {
+extension MiniPlaylist: GraphQLObject {
   init?(json: [String: AnyObject]) {
     guard let id = json["id"] as? String,
     let title = json["title"] as? String,

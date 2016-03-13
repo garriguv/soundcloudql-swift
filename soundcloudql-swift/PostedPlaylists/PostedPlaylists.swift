@@ -30,13 +30,13 @@ extension PostedPlaylists: GraphQLObject {
 }
 
 extension PostedPlaylists: GraphQLCollectionObject {
-  typealias Object = Playlist
+  typealias Object = MiniPlaylist
 
   func numberOfItems() -> Int {
     return user.postedPlaylistsCollection.collection.count
   }
 
-  func itemAtIndexPath(indexPath: NSIndexPath) -> Playlist {
+  func itemAtIndexPath(indexPath: NSIndexPath) -> MiniPlaylist {
     return user.postedPlaylistsCollection.collection[indexPath.row]
   }
 
