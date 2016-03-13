@@ -16,7 +16,7 @@ class PostedPlaylistsCoordinator {
 extension PostedPlaylistsCoordinator: Coordinator {
   func start() {
     let viewController = CollectionTableViewController()
-    viewController.collectionEngine = GraphQLCollectionEngineDelegate<PostedPlaylistsQuery, PostedPlaylists, PlaylistTableViewCell>(userId: userId)
+    viewController.collectionEngine = GraphQLCollectionEngineDelegate<PostedPlaylistsCollection>(userId: userId)
     viewController.title = "posted playlists"
     navigationController.pushViewController(viewController, animated: true)
   }

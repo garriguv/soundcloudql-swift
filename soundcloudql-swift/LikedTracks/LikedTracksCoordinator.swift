@@ -16,7 +16,7 @@ class LikedTracksCoordinator {
 extension LikedTracksCoordinator: Coordinator {
   func start() {
     let viewController = CollectionTableViewController()
-    viewController.collectionEngine = GraphQLCollectionEngineDelegate<LikedTracksQuery, LikedTracks, TrackTableViewCell>(userId: userId)
+    viewController.collectionEngine = GraphQLCollectionEngineDelegate<LikedTracksCollection>(userId: userId)
     viewController.title = "liked tracks"
     navigationController.pushViewController(viewController, animated: true)
   }

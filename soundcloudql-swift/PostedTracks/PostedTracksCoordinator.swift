@@ -14,7 +14,7 @@ class PostedTracksCoordinator: Coordinator {
 
   func start() {
     let viewController = CollectionTableViewController()
-    viewController.collectionEngine = GraphQLCollectionEngineDelegate<PostedTracksQuery, PostedTracks, TrackTableViewCell>(userId: userId)
+    viewController.collectionEngine = GraphQLCollectionEngineDelegate<PostedTracksCollection>(userId: userId)
     viewController.title = "posted tracks"
     navigationController.pushViewController(viewController, animated: true)
   }

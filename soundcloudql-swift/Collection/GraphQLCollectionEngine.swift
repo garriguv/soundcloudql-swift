@@ -19,10 +19,17 @@ protocol GraphQLCollectionEngine {
   func shouldPaginate() -> Bool
 }
 
-class GraphQLCollectionEngineDelegate
-  <Query: GraphQLCollectionQuery, Collection: GraphQLCollectionObject, Cell: RenderableCell>: GraphQLCollectionEngine {
+protocol CollectionRendering {
+  typealias CollectionQuery: GraphQLCollectionQuery
+  typealias CollectionObject: GraphQLCollectionObject
+  typealias CollectionCell: RenderableCell
 
-  typealias CollectionObject = Collection.Object
+  static var batchSize: Int { get }
+}
+
+class GraphQLCollectionEngineDelegate<Rendering: CollectionRendering>: GraphQLCollectionEngine {
+
+  typealias CollectionObject = Rendering.CollectionObject.Object
 
   let userId: String
 
@@ -30,18 +37,18 @@ class GraphQLCollectionEngineDelegate
     self.userId = userId
   }
 
-  var collection: Collection?
+  var collection: Rendering.CollectionObject?
   var paginating: Bool = false
   weak var tableView: UITableView?
 
   func setup() {
     if let tableView = tableView {
-      Cell.register(inTableView: tableView)
+      Rendering.CollectionCell.register(inTableView: tableView)
     }
   }
 
   func initialFetch() {
-    let queryResolver = GraphQLQueryResolver(query: Query(userId: userId, limit: 50, next: nil))
+    let queryResolver = GraphQLQueryResolver(query: Rendering.CollectionQuery(userId: userId, limit: Rendering.batchSize, next: nil))
     queryResolver.fetch() {
       response in
       switch response {
@@ -58,7 +65,7 @@ class GraphQLCollectionEngineDelegate
       preconditionFailure("trying to paginate without a collection")
     }
     paginating = true
-    let query = Query(userId: userId, limit: 50, next: collection.next())
+    let query = Rendering.CollectionQuery(userId: userId, limit: Rendering.batchSize, next: collection.next())
     let nextPageResolver = GraphQLQueryResolver(query: query)
     nextPageResolver.fetch() {
       response in
@@ -80,16 +87,16 @@ class GraphQLCollectionEngineDelegate
   }
 
   func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(Cell.reuseIdentifier, forIndexPath: indexPath) as! RenderableCell
+    let cell = tableView.dequeueReusableCellWithIdentifier(Rendering.CollectionCell.reuseIdentifier, forIndexPath: indexPath) as! RenderableCell
     cell.render(itemAtIndexPath(indexPath))
     return cell as! UITableViewCell
   }
 
   func cellHeight() -> CGFloat {
-    return Cell.height
+    return Rendering.CollectionCell.height
   }
 
-  private func itemAtIndexPath(indexPath: NSIndexPath) -> CollectionObject {
+  private func itemAtIndexPath(indexPath: NSIndexPath) -> Rendering.CollectionObject.Object {
     guard let collection = collection else {
       preconditionFailure("trying to access a track (\(indexPath)) without a collection")
     }
@@ -100,16 +107,16 @@ class GraphQLCollectionEngineDelegate
     return collection != nil && !paginating && collection?.next() != nil
   }
 
-  private func updateCollection(newCollection: Query.Object) {
-    collection = newCollection as! Collection
+  private func updateCollection(newCollection: Rendering.CollectionQuery.Object) {
+    collection = newCollection as! Rendering.CollectionObject
     tableView?.reloadData()
   }
 
-  private func appendObjects(newCollection: Query.Object) {
+  private func appendObjects(newCollection: Rendering.CollectionQuery.Object) {
     guard let _collection = collection else {
       preconditionFailure("Trying to paginate before having any tracks")
     }
-    collection = _collection.appendObjects(newCollection as! Collection)
+    collection = _collection.appendObjects(newCollection as! Rendering.CollectionObject)
     tableView?.reloadData()
   }
 }
