@@ -39,3 +39,7 @@ fastlane/report.xml
 fastlane/test_output
 fastlane/screenshots
 fastlane/Appfile
+
+# SoundCloudQL-Swift
+
+soundcloudql-swift/Api/Environment.plist
