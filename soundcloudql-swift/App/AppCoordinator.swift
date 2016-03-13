@@ -5,7 +5,7 @@ class AppCoordinator {
   private let tabBarController: UITabBarController
 
   internal weak var delegate: CoordinatorDelegate? = nil
-  private var childCoordinators: [Coordinator]
+  internal var childCoordinators: [Coordinator]
 
   init(_ tabBarController: UITabBarController) {
     self.tabBarController = tabBarController
@@ -21,10 +21,7 @@ extension AppCoordinator: Coordinator {
   }
 }
 
-extension AppCoordinator: CoordinatorDelegate {
-  func didFinishCoordinating<T:Coordinator>(coordinator: T) {
-  }
-}
+extension AppCoordinator: CoordinatorDelegate {}
 
 extension AppCoordinator {
   private func startProfile() -> UINavigationController {

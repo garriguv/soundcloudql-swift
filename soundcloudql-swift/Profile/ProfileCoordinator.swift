@@ -4,9 +4,9 @@ import UIKit
 class ProfileCoordinator {
   private let navigationController: UINavigationController
   private let userId: String
-  internal weak var delegate: CoordinatorDelegate?
 
-  private var childCoordinators: [Coordinator] = []
+  internal weak var delegate: CoordinatorDelegate?
+  internal var childCoordinators: [Coordinator] = []
 
   init(_ navigationController: UINavigationController, userId: String, delegate: CoordinatorDelegate) {
     self.navigationController = navigationController
@@ -25,7 +25,9 @@ extension ProfileCoordinator: Coordinator {
 }
 
 extension ProfileCoordinator: CoordinatorDelegate {
-  func didFinishCoordinating<T:Coordinator>(coordinator: T) {
+  func didFinishCoordinating(coordinator: Coordinator) {
+    let index = childCoordinators.indexOf { $0 === coordinator }!
+    childCoordinators.removeAtIndex(index)
   }
 }
 

@@ -1,16 +1,13 @@
 import Foundation
 import UIKit
 
-protocol CollectionTableViewControllerDelegate {
+protocol CollectionTableViewControllerDelegate: class {
   func viewDidDisappear()
 }
 
 class CollectionTableViewController: UITableViewController {
   var collectionEngine: GraphQLCollectionEngine!
-
-  var collectionDelegate: CollectionTableViewControllerDelegate?
-
-  private var paginating: Bool = false
+  weak var collectionDelegate: CollectionTableViewControllerDelegate?
 }
 
 // View lifecycle
