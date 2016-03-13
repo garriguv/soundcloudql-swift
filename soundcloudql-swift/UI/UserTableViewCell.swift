@@ -3,6 +3,7 @@ import UIKit
 import Kingfisher
 
 protocol UserRenderable {
+  var id: String { get }
   var username: String { get }
   var avatarUrl: String? { get }
 }
