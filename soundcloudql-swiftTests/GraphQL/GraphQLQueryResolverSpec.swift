@@ -88,7 +88,7 @@ class GraphQLQueryResolverSpec: QuickSpec {
               subject.fetch { (response: QueryResponse<TestObject>) in
                 switch response {
                 case .Error(let error):
-                  expect(error).to(equal(QueryError.SerializationError))
+                  expect(error).to(equal(QueryError.SerializationError([ "data": [ "invalid": "data" ] ])))
                 default:
                   assertionFailure("boom \(response)")
                 }

@@ -20,7 +20,7 @@ class GraphQLQueryResolver<Query: GraphQLQuery> {
             }
           } else {
             dispatch_async(dispatch_get_main_queue()) {
-              closure(.Error(.SerializationError))
+              closure(.Error(.SerializationError(dictionary)))
             }
           }
         case .Error(let error):
@@ -39,7 +39,7 @@ enum QueryResponse<Object> {
 
 enum QueryError {
   case ApiError(ApiControllerError)
-  case SerializationError
+  case SerializationError([String: AnyObject])
 }
 
 extension QueryError: Equatable {}
@@ -48,8 +48,8 @@ func == (lhs: QueryError, rhs: QueryError) -> Bool {
   switch (lhs, rhs) {
   case (.ApiError(let lhsError), .ApiError(let rhsError)):
     return lhsError == rhsError
-  case (.SerializationError, .SerializationError):
-    return true
+  case (.SerializationError(let lhsDictionary), .SerializationError(let rhsDictionary)):
+    return NSDictionary(dictionary: lhsDictionary).isEqualToDictionary(rhsDictionary)
   default:
     return false
   }
