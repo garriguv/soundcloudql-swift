@@ -34,7 +34,7 @@ class ProfileCoordinatorSpec: QuickSpec {
       it("pushes a view controller without animating") {
         subject.start()
 
-        expect(navigationController.__pushedViewControllerAnimated).to(beFalse())
+        expect(navigationController.__pushedViewControllerAnimated).to(beTrue())
       }
     }
   }
