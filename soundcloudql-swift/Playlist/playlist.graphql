@@ -1,0 +1,32 @@
+query PlaylistQuery($id: ID!) {
+  playlist(id: $id) {
+    id
+    title
+    description
+    artworkUrl
+    tracksCount
+    userConnection {
+      ...MiniUser
+    }
+    tracksCollection(limit: 50) {
+      collection {
+        ...MiniTrack
+      }
+      next
+    }
+  }
+}
+
+fragment MiniTrack on Track {
+  id
+  title
+  permalinkUrl
+  artworkUrl
+  duration
+}
+
+fragment MiniUser on User {
+  id
+  username
+  avatarUrl
+}
