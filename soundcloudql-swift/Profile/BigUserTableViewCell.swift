@@ -15,8 +15,8 @@ extension BigUserTableViewCell: RenderableCell {
     if let user = object as? User {
       usernameLabel.text = user.username
       cityLabel.text = user.city
-      if let avatarUrl = user.avatarUrl {
-        avatarImageView.kf_setImageWithURL(NSURL(string: avatarUrl)!)
+      if let avatarUrl = user.avatarUrl, avatarURL = NSURL(string: avatarUrl) {
+        avatarImageView.kf_setImageWithURL(avatarURL)
       } else {
         avatarImageView.image = nil
       }

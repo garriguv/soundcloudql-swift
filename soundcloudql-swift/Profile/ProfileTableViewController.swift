@@ -25,8 +25,6 @@ extension ProfileTableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    title = "profile"
-
     setup()
 
     let profileResolver = GraphQLQueryResolver(query: ProfileQuery(profileId: userId))
@@ -167,10 +165,6 @@ extension ProfileTableViewController {
 
 // Private
 extension ProfileTableViewController {
-  private func setupCollectionView() {
-    tableView.backgroundColor = UIColor.whiteColor()
-  }
-
   private func setup() {
     title = "profile"
 
