@@ -22,10 +22,10 @@ extension CollectionTableViewController {
     collectionEngine.initialFetch()
   }
 
-  override func viewDidDisappear(animated: Bool) {
-    super.viewDidDisappear(animated)
-
-    collectionDelegate?.viewDidDisappear()
+  override func didMoveToParentViewController(parent: UIViewController?) {
+    if (parent == nil) {
+      collectionDelegate?.viewDidDisappear()
+    }
   }
 }
 
