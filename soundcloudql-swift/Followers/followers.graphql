@@ -1,0 +1,16 @@
+query FollowersQuery($id: ID!, $limit: Int!, $next: String) {
+  user(id: $id) {
+    followersCollection(limit: $limit, next: $next) {
+      collection {
+        ...MiniUser
+      }
+      next
+    }
+  }
+}
+
+fragment MiniUser on User {
+  id
+  username
+  avatarUrl
+}

@@ -9,17 +9,20 @@
 /* Begin PBXBuildFile section */
 		1699F33111882F0B0E8E1245 /* Pods_soundcloudql_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455FA149825439F16E8DC64E /* Pods_soundcloudql_swift.framework */; };
 		62794A16C600772F8DDE5B14 /* Pods_soundcloudql_swiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CADF51EA26512D32948B714D /* Pods_soundcloudql_swiftTests.framework */; };
+		9FD5B0138D82E1CDA0E70AC8 /* FollowersCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B18A15CD4D122A6037CB /* FollowersCollection.swift */; };
 		9FD5B028D692B2861D847564 /* liked_tracks.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B119ADD9DBD84EA56EE9 /* liked_tracks.graphql */; };
 		9FD5B0E5B751E7274F07F6BF /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B244B6EFA770A01358C9 /* PlaylistTableViewCell.swift */; };
 		9FD5B2353E88AB4EBB99D5CF /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BD2661F65F03F3C3ED6E /* ProfileCollectionViewController.swift */; };
 		9FD5B23743A983C2882BCB9E /* posted_playlists.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B6AB34D4E855F11E8DCD /* posted_playlists.graphql */; };
 		9FD5B2402535A88EE4CD3106 /* PostedTracksCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BE82C1FA8425F2F1A6E0 /* PostedTracksCollection.swift */; };
 		9FD5B27E45BCF446B7B16168 /* PostedTracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B824BF38B02EA0216EBC /* PostedTracks.swift */; };
+		9FD5B2D3601BF4705BBC1AF1 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B1FF80C0AD9735D1733A /* UserTableViewCell.swift */; };
 		9FD5B379CD1C6D47B36265A4 /* PostedPlaylistsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B037B999000E620B422D /* PostedPlaylistsCoordinator.swift */; };
 		9FD5B4438B9F351BB6E96B87 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF88F4A2402972CF436F /* AppCoordinator.swift */; };
 		9FD5B46DBD321CD738C7A847 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B3AE31247892AB253C53 /* Profile.swift */; };
 		9FD5B483F3494F7A09E2DAEF /* TestCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BE88340FF02753D1F761 /* TestCoordinatorDelegate.swift */; };
 		9FD5B55C7AC0B6D3CE7E5916 /* LikedTracksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B1A67F005EEB119C5A42 /* LikedTracksCoordinator.swift */; };
+		9FD5B6048EE8ED1E630F6AA5 /* FollowersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B0BB6AA8228A5A72C197 /* FollowersCoordinator.swift */; };
 		9FD5B6341009A373E6F8A5F2 /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B90249B8AB384813D210 /* TrackTableViewCell.xib */; };
 		9FD5B63CDBF34038A333E960 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B866B412859B4898F4FB /* Environment.swift */; };
 		9FD5B67E9D5346E39F046A8A /* posted_tracks.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B494E8F63986540DBAC0 /* posted_tracks.graphql */; };
@@ -34,6 +37,7 @@
 		9FD5B8928E61D7B402FA33F8 /* GraphQLCollectionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B7C100C34CDA16F2CF4B /* GraphQLCollectionEngine.swift */; };
 		9FD5B90F4BB1F9AD12DB2BC8 /* ApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B8E16EC6DE899D7FCDB2 /* ApiController.swift */; };
 		9FD5B91430F5EDD8B490E4E3 /* PostedTracksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B8881E7DC513B3283235 /* PostedTracksCoordinator.swift */; };
+		9FD5B9E7EC9CED3F425FAA82 /* Followers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B850328403AC2EDBD52C /* Followers.swift */; };
 		9FD5BAB1B7876ABEDD7A8230 /* profile.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B886228A4B7D57E98F0F /* profile.graphql */; };
 		9FD5BAE314CB8BCC5D70445E /* query.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B4D8FAB80E43B514CB43 /* query.graphql */; };
 		9FD5BB309768A34F7D46E566 /* LikedTracksCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B41C969D5997521231F2 /* LikedTracksCollection.swift */; };
@@ -49,10 +53,12 @@
 		9FD5BEC86CCCA1A3A1937479 /* CollectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B97432706B453A9347F5 /* CollectionTableViewController.swift */; };
 		9FD5BEFD9F7A19C7381A9AEE /* LikedTracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BFFA3A55C22A79C4A9F8 /* LikedTracks.swift */; };
 		9FD5BF269351C035C551B79C /* GraphQLQueryResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BB745E53893A350B407C /* GraphQLQueryResolver.swift */; };
+		9FD5BFB2801109AAD95512DE /* followers.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5BE0C8961FC8151CFF6DA /* followers.graphql */; };
 		9FD5BFD51D338175F26C1759 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BE5E2A900A54A5A72576 /* ProfileCoordinator.swift */; };
 		EB3F85991C8B286200E5F0AC /* Environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB3F85981C8B286200E5F0AC /* Environment.plist */; };
 		EB3F859B1C8B2A4900E5F0AC /* Environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB3F859A1C8B2A4900E5F0AC /* Environment.plist */; };
 		EB3F85AB1C958A0D00E5F0AC /* PlaylistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3F85AA1C958A0D00E5F0AC /* PlaylistTableViewCell.xib */; };
+		EB3F85AD1C95A3C600E5F0AC /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3F85AC1C95A3C600E5F0AC /* UserTableViewCell.xib */; };
 		EB80F2DA1C8B0C9A00E7C7DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB80F2D91C8B0C9A00E7C7DD /* ViewController.swift */; };
 		EB80F2DF1C8B0C9A00E7C7DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB80F2DE1C8B0C9A00E7C7DD /* Assets.xcassets */; };
 		EB80F2E21C8B0C9A00E7C7DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB80F2E01C8B0C9A00E7C7DD /* LaunchScreen.storyboard */; };
@@ -83,9 +89,12 @@
 		59C63ADEBD34683D91A58BE3 /* Pods-soundcloudql-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundcloudql-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-soundcloudql-swift/Pods-soundcloudql-swift.debug.xcconfig"; sourceTree = "<group>"; };
 		87D2F3052DEA78C166E6DC9A /* Pods-soundcloudql-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundcloudql-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-soundcloudql-swift/Pods-soundcloudql-swift.release.xcconfig"; sourceTree = "<group>"; };
 		9FD5B037B999000E620B422D /* PostedPlaylistsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostedPlaylistsCoordinator.swift; sourceTree = "<group>"; };
+		9FD5B0BB6AA8228A5A72C197 /* FollowersCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersCoordinator.swift; sourceTree = "<group>"; };
 		9FD5B119ADD9DBD84EA56EE9 /* liked_tracks.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = liked_tracks.graphql; sourceTree = "<group>"; };
 		9FD5B1400AEBE25BCB160CE8 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
+		9FD5B18A15CD4D122A6037CB /* FollowersCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersCollection.swift; sourceTree = "<group>"; };
 		9FD5B1A67F005EEB119C5A42 /* LikedTracksCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedTracksCoordinator.swift; sourceTree = "<group>"; };
+		9FD5B1FF80C0AD9735D1733A /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		9FD5B1FF9F8B82659625E86B /* RenderableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderableCell.swift; sourceTree = "<group>"; };
 		9FD5B244B6EFA770A01358C9 /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		9FD5B3AE31247892AB253C53 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -99,6 +108,7 @@
 		9FD5B6AB34D4E855F11E8DCD /* posted_playlists.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = posted_playlists.graphql; sourceTree = "<group>"; };
 		9FD5B7C100C34CDA16F2CF4B /* GraphQLCollectionEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLCollectionEngine.swift; sourceTree = "<group>"; };
 		9FD5B824BF38B02EA0216EBC /* PostedTracks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostedTracks.swift; sourceTree = "<group>"; };
+		9FD5B850328403AC2EDBD52C /* Followers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Followers.swift; sourceTree = "<group>"; };
 		9FD5B866B412859B4898F4FB /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9FD5B886228A4B7D57E98F0F /* profile.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = profile.graphql; sourceTree = "<group>"; };
 		9FD5B8881E7DC513B3283235 /* PostedTracksCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostedTracksCoordinator.swift; sourceTree = "<group>"; };
@@ -115,6 +125,7 @@
 		9FD5BC51656D98FBACB569A2 /* GraphQLQueryResolverSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLQueryResolverSpec.swift; sourceTree = "<group>"; };
 		9FD5BD2661F65F03F3C3ED6E /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
 		9FD5BDFBA311E65A466E89CE /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		9FD5BE0C8961FC8151CFF6DA /* followers.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = followers.graphql; sourceTree = "<group>"; };
 		9FD5BE3C25B741AF3345FB88 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		9FD5BE5E2A900A54A5A72576 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		9FD5BE7DF139A759DB44ED0B /* RequestFactorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFactorySpec.swift; sourceTree = "<group>"; };
@@ -127,6 +138,7 @@
 		EB3F85981C8B286200E5F0AC /* Environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environment.plist; sourceTree = "<group>"; };
 		EB3F859A1C8B2A4900E5F0AC /* Environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environment.plist; sourceTree = "<group>"; };
 		EB3F85AA1C958A0D00E5F0AC /* PlaylistTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistTableViewCell.xib; sourceTree = "<group>"; };
+		EB3F85AC1C95A3C600E5F0AC /* UserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 		EB80F2D41C8B0C9A00E7C7DD /* soundcloudql-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "soundcloudql-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB80F2D91C8B0C9A00E7C7DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EB80F2DE1C8B0C9A00E7C7DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -183,6 +195,8 @@
 				9FD5B244B6EFA770A01358C9 /* PlaylistTableViewCell.swift */,
 				EB3F85AA1C958A0D00E5F0AC /* PlaylistTableViewCell.xib */,
 				9FD5B1FF9F8B82659625E86B /* RenderableCell.swift */,
+				9FD5B1FF80C0AD9735D1733A /* UserTableViewCell.swift */,
+				EB3F85AC1C95A3C600E5F0AC /* UserTableViewCell.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -248,6 +262,17 @@
 				9FD5BE82C1FA8425F2F1A6E0 /* PostedTracksCollection.swift */,
 			);
 			path = PostedTracks;
+			sourceTree = "<group>";
+		};
+		9FD5B95A8A0AFE7B6AB6E553 /* Followers */ = {
+			isa = PBXGroup;
+			children = (
+				9FD5BE0C8961FC8151CFF6DA /* followers.graphql */,
+				9FD5B850328403AC2EDBD52C /* Followers.swift */,
+				9FD5B18A15CD4D122A6037CB /* FollowersCollection.swift */,
+				9FD5B0BB6AA8228A5A72C197 /* FollowersCoordinator.swift */,
+			);
+			path = Followers;
 			sourceTree = "<group>";
 		};
 		9FD5BA9C71F8AA74C94D5BAC /* Profile */ = {
@@ -363,6 +388,7 @@
 				9FD5BCB94CDF086A9E6D19E6 /* LikedTracks */,
 				9FD5BAD59B6C55D6B0D9126D /* Collection */,
 				9FD5B639211BF8C595E69952 /* PostedPlaylists */,
+				9FD5B95A8A0AFE7B6AB6E553 /* Followers */,
 			);
 			path = "soundcloudql-swift";
 			sourceTree = "<group>";
@@ -520,6 +546,8 @@
 				9FD5B6341009A373E6F8A5F2 /* TrackTableViewCell.xib in Resources */,
 				9FD5B028D692B2861D847564 /* liked_tracks.graphql in Resources */,
 				9FD5B23743A983C2882BCB9E /* posted_playlists.graphql in Resources */,
+				EB3F85AD1C95A3C600E5F0AC /* UserTableViewCell.xib in Resources */,
+				9FD5BFB2801109AAD95512DE /* followers.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,6 +695,10 @@
 				9FD5BB309768A34F7D46E566 /* LikedTracksCollection.swift in Sources */,
 				9FD5BB8ECD0AF2BA3621CA14 /* PostedPlaylistsCollection.swift in Sources */,
 				9FD5B2402535A88EE4CD3106 /* PostedTracksCollection.swift in Sources */,
+				9FD5B2D3601BF4705BBC1AF1 /* UserTableViewCell.swift in Sources */,
+				9FD5B9E7EC9CED3F425FAA82 /* Followers.swift in Sources */,
+				9FD5B0138D82E1CDA0E70AC8 /* FollowersCollection.swift in Sources */,
+				9FD5B6048EE8ED1E630F6AA5 /* FollowersCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
