@@ -12,7 +12,7 @@ protocol GraphQLCollectionEngine {
 
   func numberOfItems() -> Int
 
-  func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 
   func cellHeight() -> CGFloat
 
@@ -85,7 +85,7 @@ class GraphQLCollectionEngineDelegate<Rendering: CollectionRendering>: GraphQLCo
     return 0
   }
 
-  func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(Rendering.CollectionCell.reuseIdentifier, forIndexPath: indexPath) as! RenderableCell
     cell.render(itemAtIndexPath(indexPath))
     return cell as! UITableViewCell
@@ -107,7 +107,7 @@ class GraphQLCollectionEngineDelegate<Rendering: CollectionRendering>: GraphQLCo
   }
 
   private func updateCollection(newCollection: Rendering.CollectionQuery.Object) {
-    collection = newCollection as! Rendering.CollectionQuery.Object
+    collection = newCollection
     tableView?.reloadData()
   }
 
@@ -115,7 +115,7 @@ class GraphQLCollectionEngineDelegate<Rendering: CollectionRendering>: GraphQLCo
     guard let _collection = collection else {
       preconditionFailure("Trying to paginate before having any tracks")
     }
-    collection = _collection.appendObjects(newCollection as! Rendering.CollectionQuery.Object)
+    collection = _collection.appendObjects(newCollection)
     tableView?.reloadData()
   }
 }

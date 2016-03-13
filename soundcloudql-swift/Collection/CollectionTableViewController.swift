@@ -24,7 +24,7 @@ extension CollectionTableViewController {
     collectionEngine.initialFetch()
   }
 
-  override func viewDidDisappear(_ animated: Bool) {
+  override func viewDidDisappear(animated: Bool) {
     super.viewDidDisappear(animated)
 
     collectionDelegate?.viewDidDisappear()
@@ -34,15 +34,15 @@ extension CollectionTableViewController {
 // UITableViewDataSource
 
 extension CollectionTableViewController {
-  override func numberOfSectionsInTableView(_ tableView: UITableView) -> Int {
+  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
 
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return collectionEngine.numberOfItems()
   }
 
-  override func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     return collectionEngine.tableView(tableView, cellForRowAtIndexPath: indexPath)
   }
 }
@@ -50,11 +50,11 @@ extension CollectionTableViewController {
 // UITableViewDelegate
 
 extension CollectionTableViewController {
-  override func tableView(_ tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     return collectionEngine.cellHeight()
   }
 
-  override func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
 }
@@ -62,7 +62,7 @@ extension CollectionTableViewController {
 // UIScrollViewDelegate
 
 extension CollectionTableViewController {
-  override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+  override func scrollViewDidScroll(scrollView: UIScrollView) {
     if paginationShouldBeTriggered(scrollView) {
       collectionEngine.paginate()
     }

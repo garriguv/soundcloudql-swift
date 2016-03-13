@@ -43,14 +43,14 @@ extension ProfileTableViewController {
 
 // UITableViewDataSource
 extension ProfileTableViewController {
-  override func numberOfSectionsInTableView(_ tableView: UITableView) -> Int {
-    if let profile = profile {
+  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    if let _ = profile {
       return ProfileSections.Count.rawValue
     }
     return 0
   }
 
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if let profile = profile {
       switch ProfileSections(rawValue: section)! {
       case .PostedTracks:
@@ -66,7 +66,7 @@ extension ProfileTableViewController {
     return 0
   }
 
-  override func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     switch ProfileSections(rawValue: indexPath.section)! {
     case .User:
       let cell = tableView.dequeueReusableCellWithIdentifier(BigUserTableViewCell.reuseIdentifier, forIndexPath: indexPath) as! BigUserTableViewCell
@@ -112,7 +112,7 @@ extension ProfileTableViewController {
     }
   }
 
-  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+  override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch ProfileSections(rawValue: section)! {
     case .PostedTracks:
       return "posted tracks"
@@ -128,7 +128,7 @@ extension ProfileTableViewController {
 
 // UITableViewDelegate
 extension ProfileTableViewController {
-  override func tableView(_ tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     switch ProfileSections(rawValue: indexPath.section)! {
     case .User:
       return BigUserTableViewCell.height
@@ -139,7 +139,7 @@ extension ProfileTableViewController {
     }
   }
 
-  override func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
     switch ProfileSections(rawValue: indexPath.section)! {

@@ -5,8 +5,8 @@ import UIKit
 
 func runningTestBundle() -> Bool {
   let environment = NSProcessInfo.processInfo().environment
-  if let injectBundle = environment["XCInjectBundle"] as? NSString {
-    return injectBundle.pathExtension == "xctest"
+  if let injectBundle = environment["XCInjectBundle"] {
+    return NSString(string: injectBundle).pathExtension == "xctest"
   }
   return false
 }
