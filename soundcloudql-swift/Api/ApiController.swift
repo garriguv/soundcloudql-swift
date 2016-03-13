@@ -56,7 +56,9 @@ class ApiController {
       completion(.Error(.GraphQLQueryNotFound))
       return
     }
+    NetworkActivity.increase()
     let dataTask = session.dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
+      NetworkActivity.decrease()
       guard
         let httpResponse = response as? NSHTTPURLResponse where httpResponse.statusCode == 200,
         let jsonData = data else {

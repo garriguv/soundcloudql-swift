@@ -25,6 +25,7 @@
 		9FD5B6048EE8ED1E630F6AA5 /* FollowersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B0BB6AA8228A5A72C197 /* FollowersCoordinator.swift */; };
 		9FD5B6341009A373E6F8A5F2 /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B90249B8AB384813D210 /* TrackTableViewCell.xib */; };
 		9FD5B634990A7DC8F6507924 /* FollowingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BB363165D2CEB92A0F58 /* FollowingsCoordinator.swift */; };
+		9FD5B637E1F3C61A7F417479 /* NetworkActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B4948C44E331217AE910 /* NetworkActivity.swift */; };
 		9FD5B63CDBF34038A333E960 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B866B412859B4898F4FB /* Environment.swift */; };
 		9FD5B67E9D5346E39F046A8A /* posted_tracks.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B494E8F63986540DBAC0 /* posted_tracks.graphql */; };
 		9FD5B697BA2E5647E9E8C365 /* BigUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5BF32B8C67A75BD3DBB18 /* BigUserTableViewCell.xib */; };
@@ -107,6 +108,7 @@
 		9FD5B41C969D5997521231F2 /* LikedTracksCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedTracksCollection.swift; sourceTree = "<group>"; };
 		9FD5B42C28A3E00B03C4CA09 /* BigUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigUserTableViewCell.swift; sourceTree = "<group>"; };
 		9FD5B452C29D7A30196E1381 /* FollowingsCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowingsCollection.swift; sourceTree = "<group>"; };
+		9FD5B4948C44E331217AE910 /* NetworkActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivity.swift; sourceTree = "<group>"; };
 		9FD5B494E8F63986540DBAC0 /* posted_tracks.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = posted_tracks.graphql; sourceTree = "<group>"; };
 		9FD5B4D8FAB80E43B514CB43 /* query.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = query.graphql; sourceTree = "<group>"; };
 		9FD5B519F741B2491EB205BC /* ApiControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiControllerSpec.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				EB3F859A1C8B2A4900E5F0AC /* Environment.plist */,
 				9FD5B8C076C29E9E728666A2 /* RequestFactory.swift */,
 				9FD5B8E16EC6DE899D7FCDB2 /* ApiController.swift */,
+				9FD5B4948C44E331217AE910 /* NetworkActivity.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				TargetAttributes = {
 					EB80F2D31C8B0C9A00E7C7DD = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = X73EL3QFZB;
 					};
 					EB80F2E71C8B0C9A00E7C7DD = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -723,6 +727,7 @@
 				9FD5BFE25864B3CCC7FC1E5F /* Followings.swift in Sources */,
 				9FD5BE2AB00542E411ADF947 /* FollowingsCollection.swift in Sources */,
 				9FD5B634990A7DC8F6507924 /* FollowingsCoordinator.swift in Sources */,
+				9FD5B637E1F3C61A7F417479 /* NetworkActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,10 +866,13 @@
 			baseConfigurationReference = 59C63ADEBD34683D91A58BE3 /* Pods-soundcloudql-swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "soundcloudql-swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.garriguv.soundcloudql-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -873,10 +881,13 @@
 			baseConfigurationReference = 87D2F3052DEA78C166E6DC9A /* Pods-soundcloudql-swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "soundcloudql-swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.garriguv.soundcloudql-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

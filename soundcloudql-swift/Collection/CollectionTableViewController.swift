@@ -16,7 +16,7 @@ extension CollectionTableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    collectionEngine.tableView = tableView
+    collectionEngine.tableView = tableView  
     collectionEngine.setup()
     collectionEngine.initialFetch()
   }
