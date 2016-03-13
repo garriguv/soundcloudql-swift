@@ -11,6 +11,9 @@ protocol ProfileTableViewControllerDelegate {
   func didTapMorePostedTracks()
   func didTapMoreLikedTracks()
   func didTapMorePostedPlaylists()
+
+  func didTapTrack(trackId trackId: String, permalinkUrl: String)
+  func didTapPlaylist(playlistId playlistId: String, permalinkUrl: String)
 }
 
 class ProfileTableViewController: UITableViewController {
@@ -148,14 +151,23 @@ extension ProfileTableViewController {
     case .PostedTracks:
       if (indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1) {
         profileDelegate?.didTapMorePostedTracks()
+      } else {
+        let track = trackAtIndexPath(indexPath)
+        profileDelegate?.didTapTrack(trackId: track.id, permalinkUrl: track.permalinkUrl)
       }
     case .LikedTracks:
       if (indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1) {
         profileDelegate?.didTapMoreLikedTracks()
+      } else {
+        let track = trackAtIndexPath(indexPath)
+        profileDelegate?.didTapTrack(trackId: track.id, permalinkUrl: track.permalinkUrl)
       }
     case .PostedPlaylists:
       if (indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1) {
         profileDelegate?.didTapMorePostedPlaylists()
+      } else {
+        let playlist = playlistAtIndexPath(indexPath)
+        profileDelegate?.didTapPlaylist(playlistId: playlist.id, permalinkUrl: playlist.permalinkUrl)
       }
     default:
       break

@@ -54,4 +54,13 @@ extension ProfileCoordinator: ProfileTableViewControllerDelegate {
     childCoordinators.append(postedPlaylistsCoordinator)
     postedPlaylistsCoordinator.start()
   }
+
+  func didTapTrack(trackId trackId: String, permalinkUrl: String) {
+  }
+
+  func didTapPlaylist(playlistId playlistId: String, permalinkUrl: String) {
+    let playlistCoordinator = PlaylistCoordinator(navigationController, playlistId: playlistId, delegate: self)
+    childCoordinators.append(playlistCoordinator)
+    playlistCoordinator.start()
+  }
 }
