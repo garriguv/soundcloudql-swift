@@ -21,7 +21,6 @@ protocol GraphQLCollectionEngine {
 
 protocol CollectionRendering {
   typealias CollectionQuery: GraphQLCollectionQuery
-  typealias CollectionObject: GraphQLCollectionObject
   typealias CollectionCell: RenderableCell
 
   static var batchSize: Int { get }
@@ -29,7 +28,7 @@ protocol CollectionRendering {
 
 class GraphQLCollectionEngineDelegate<Rendering: CollectionRendering>: GraphQLCollectionEngine {
 
-  typealias CollectionObject = Rendering.CollectionObject.Object
+  typealias CollectionObject = Rendering.CollectionQuery.Object.Object
 
   let userId: String
 
@@ -37,7 +36,7 @@ class GraphQLCollectionEngineDelegate<Rendering: CollectionRendering>: GraphQLCo
     self.userId = userId
   }
 
-  var collection: Rendering.CollectionObject?
+  var collection: Rendering.CollectionQuery.Object?
   var paginating: Bool = false
   weak var tableView: UITableView?
 
@@ -96,7 +95,7 @@ class GraphQLCollectionEngineDelegate<Rendering: CollectionRendering>: GraphQLCo
     return Rendering.CollectionCell.height
   }
 
-  private func itemAtIndexPath(indexPath: NSIndexPath) -> Rendering.CollectionObject.Object {
+  private func itemAtIndexPath(indexPath: NSIndexPath) -> Rendering.CollectionQuery.Object.Object {
     guard let collection = collection else {
       preconditionFailure("trying to access a track (\(indexPath)) without a collection")
     }
@@ -108,7 +107,7 @@ class GraphQLCollectionEngineDelegate<Rendering: CollectionRendering>: GraphQLCo
   }
 
   private func updateCollection(newCollection: Rendering.CollectionQuery.Object) {
-    collection = newCollection as! Rendering.CollectionObject
+    collection = newCollection as! Rendering.CollectionQuery.Object
     tableView?.reloadData()
   }
 
@@ -116,7 +115,7 @@ class GraphQLCollectionEngineDelegate<Rendering: CollectionRendering>: GraphQLCo
     guard let _collection = collection else {
       preconditionFailure("Trying to paginate before having any tracks")
     }
-    collection = _collection.appendObjects(newCollection as! Rendering.CollectionObject)
+    collection = _collection.appendObjects(newCollection as! Rendering.CollectionQuery.Object)
     tableView?.reloadData()
   }
 }
