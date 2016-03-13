@@ -4,6 +4,10 @@ import UIKit
 protocol PlaylistTableViewControllerDelegate: class {
 }
 
+enum PlaylistSections: Int {
+  case Playlist = 0, User, Tracks, Count
+}
+
 class PlaylistTableViewController: UITableViewController {
   var playlistId: String!
   weak var playlistDelegate: PlaylistTableViewControllerDelegate?
@@ -27,6 +31,72 @@ extension PlaylistTableViewController {
         print(error)
       }
     }
+  }
+}
+
+// UITableViewDataSource
+extension PlaylistTableViewController {
+  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    if playlist != nil {
+      return PlaylistSections.Count.rawValue
+    }
+    return 0
+  }
+
+  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if let playlist = playlist {
+      switch PlaylistSections(rawValue: section)! {
+      case .Playlist:
+        return 1
+      case .User:
+        return 1
+      case .Tracks:
+        return playlist.tracksCollection.collection.count
+      default:
+        preconditionFailure("invalid section \(section)")
+      }
+    }
+    return 0
+  }
+
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    switch PlaylistSections(rawValue: indexPath.section)! {
+    case .Playlist:
+      let cell = tableView.dequeueReusableCellWithIdentifier(BigPlaylistTableViewCell.reuseIdentifier, forIndexPath: indexPath) as! BigPlaylistTableViewCell
+      cell.render(playlist!)
+      return cell
+    case .User:
+      let cell = tableView.dequeueReusableCellWithIdentifier(UserTableViewCell.reuseIdentifier, forIndexPath: indexPath) as! UserTableViewCell
+      cell.render(playlist!.userConnection)
+      return cell
+    case .Tracks:
+      let cell = tableView.dequeueReusableCellWithIdentifier(TrackTableViewCell.reuseIdentifier, forIndexPath: indexPath) as! TrackTableViewCell
+      cell.render(playlist!.tracksCollection.collection[indexPath.row])
+      return cell
+    default:
+      preconditionFailure("invalid section in indexpath \(indexPath)")
+    }
+    preconditionFailure("\(__FUNCTION__) invalid section \(indexPath.section)")
+  }
+
+  override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    switch PlaylistSections(rawValue: section)! {
+    case .Tracks:
+      return "\(playlist!.tracksCollection.collection.count) tracks"
+    default:
+      return nil
+    }
+  }
+}
+
+// UITableViewDelegate
+extension PlaylistTableViewController {
+  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    return 0
+  }
+
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
 }
 
