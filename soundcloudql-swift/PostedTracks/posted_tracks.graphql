@@ -2,16 +2,17 @@ query PostedTracksQuery($id: ID!, $limit: Int!, $next: String) {
   user(id: $id) {
     postedTracksCollection(limit: $limit, next: $next) {
       collection {
-        ...SmallTrack
+        ...MiniTrack
       }
       next
     }
   }
 }
 
-fragment SmallTrack on Track {
+fragment MiniTrack on Track {
   id
   title
   permalinkUrl
   artworkUrl
+  duration
 }

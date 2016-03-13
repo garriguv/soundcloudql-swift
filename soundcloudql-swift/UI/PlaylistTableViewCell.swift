@@ -7,14 +7,18 @@ class PlaylistTableViewCell: UITableViewCell {
   @IBOutlet weak var tracksCountLabel: UILabel!
 
   static let height: CGFloat = 70
+}
 
-  func present(playlist: Playlist) {
-    titleLabel.text = playlist.title
-    tracksCountLabel.text = "\(playlist.tracksCount) tracks"
-    if let artworkUrl = playlist.artworkUrl {
-      artworkImageView.kf_setImageWithURL(NSURL(string: artworkUrl)!)
-    } else {
-      artworkImageView.image = nil
+extension PlaylistTableViewCell: RenderableCell {
+  func render(object: GraphQLObject) {
+    if let playlist = object as? Playlist {
+      titleLabel.text = playlist.title
+      tracksCountLabel.text = "\(playlist.tracksCount) tracks"
+      if let artworkUrl = playlist.artworkUrl {
+        artworkImageView.kf_setImageWithURL(NSURL(string: artworkUrl)!)
+      } else {
+        artworkImageView.image = nil
+      }
     }
   }
 }

@@ -12,14 +12,14 @@ protocol GraphQLObject {
 }
 
 protocol GraphQLCollectionQuery: GraphQLQuery {
-  typealias Object: GraphQLCollectionObject
-
   init(userId: String, limit: Int, next: String?)
 }
 
 protocol GraphQLCollectionObject: GraphQLObject {
+  typealias Object: GraphQLObject
+
   func numberOfItems() -> Int
-  func itemAtIndexPath(indexPath: NSIndexPath) -> Track
+  func itemAtIndexPath(indexPath: NSIndexPath) -> Object
   func next() -> String?
   func appendObjects(object: Self) -> Self
 }

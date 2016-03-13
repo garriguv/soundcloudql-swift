@@ -69,9 +69,9 @@ extension ProfileTableViewController {
   override func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     switch ProfileSections(rawValue: indexPath.section)! {
     case .User:
-      let cell = tableView.dequeueReusableCellWithIdentifier(Cell.BigUser.reuseIdentifier, forIndexPath: indexPath) as! BigUserTableViewCell
+      let cell = tableView.dequeueReusableCellWithIdentifier(BigUserTableViewCell.reuseIdentifier, forIndexPath: indexPath) as! BigUserTableViewCell
       let user = profile!.user
-      cell.present(user)
+      cell.render(user)
       return cell
     case .Followers:
       let cell = tableView.dequeueReusableCellWithIdentifier("FooterCell") ?? UITableViewCell(style: .Default, reuseIdentifier: "FooterCell")
@@ -90,9 +90,9 @@ extension ProfileTableViewController {
         cell.accessoryType = .DisclosureIndicator
         return cell
       } else {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Cell.Track.reuseIdentifier, forIndexPath: indexPath) as! TrackTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(TrackTableViewCell.reuseIdentifier, forIndexPath: indexPath) as! TrackTableViewCell
         let track = trackAtIndexPath(indexPath)
-        cell.present(track)
+        cell.render(track)
         return cell
       }
     case .PostedPlaylists:
@@ -102,9 +102,9 @@ extension ProfileTableViewController {
         cell.accessoryType = .DisclosureIndicator
         return cell
       } else {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Cell.Playlist.reuseIdentifier, forIndexPath: indexPath) as! PlaylistTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(PlaylistTableViewCell.reuseIdentifier, forIndexPath: indexPath) as! PlaylistTableViewCell
         let playlist = playlistAtIndexPath(indexPath)
-        cell.present(playlist)
+        cell.render(playlist)
         return cell
       }
     default:
@@ -174,9 +174,9 @@ extension ProfileTableViewController {
   private func setup() {
     title = "profile"
 
-    Cell.Track.register(inTableView: tableView)
-    Cell.Playlist.register(inTableView: tableView)
-    Cell.BigUser.register(inTableView: tableView)
+    TrackTableViewCell.register(inTableView: tableView)
+    PlaylistTableViewCell.register(inTableView: tableView)
+    BigUserTableViewCell.register(inTableView: tableView)
   }
 
   private func updateProfile(newProfile: Profile) {

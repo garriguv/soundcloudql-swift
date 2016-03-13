@@ -30,7 +30,7 @@ extension PostedTracks: GraphQLObject {
 }
 
 extension PostedTracks: GraphQLCollectionObject {
-  typealias CollectionObject = PostedTracks
+  typealias Object = Track
 
   func numberOfItems() -> Int {
     return user.postedTracksCollection.collection.count
