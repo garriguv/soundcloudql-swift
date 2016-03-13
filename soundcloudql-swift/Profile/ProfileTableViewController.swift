@@ -29,7 +29,7 @@ extension ProfileTableViewController {
 
     setup()
 
-    let profileResolver = GraphQLQueryResolver(query: ProfileQuery(profileID: userId))
+    let profileResolver = GraphQLQueryResolver(query: ProfileQuery(profileId: userId))
     profileResolver.fetch() { (response: QueryResponse<Profile>) in
       switch response {
       case .Success(let profile):

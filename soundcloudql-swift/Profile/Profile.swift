@@ -6,8 +6,8 @@ struct ProfileQuery: GraphQLQuery {
   let name = "profile"
   let variables: [String: AnyObject]
 
-  init(profileID: String) {
-    self.variables = [ "id": profileID ]
+  init(profileId: String) {
+    self.variables = [ "id": profileId]
   }
 }
 

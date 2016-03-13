@@ -12,7 +12,7 @@
 		9FD5B0138D82E1CDA0E70AC8 /* FollowersCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B18A15CD4D122A6037CB /* FollowersCollection.swift */; };
 		9FD5B028D692B2861D847564 /* liked_tracks.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B119ADD9DBD84EA56EE9 /* liked_tracks.graphql */; };
 		9FD5B0E5B751E7274F07F6BF /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B244B6EFA770A01358C9 /* PlaylistTableViewCell.swift */; };
-		9FD5B2353E88AB4EBB99D5CF /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BD2661F65F03F3C3ED6E /* ProfileCollectionViewController.swift */; };
+		9FD5B2353E88AB4EBB99D5CF /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BD2661F65F03F3C3ED6E /* ProfileTableViewController.swift */; };
 		9FD5B23743A983C2882BCB9E /* posted_playlists.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9FD5B6AB34D4E855F11E8DCD /* posted_playlists.graphql */; };
 		9FD5B2402535A88EE4CD3106 /* PostedTracksCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BE82C1FA8425F2F1A6E0 /* PostedTracksCollection.swift */; };
 		9FD5B27E45BCF446B7B16168 /* PostedTracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5B824BF38B02EA0216EBC /* PostedTracks.swift */; };
@@ -133,7 +133,7 @@
 		9FD5BB745E53893A350B407C /* GraphQLQueryResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLQueryResolver.swift; sourceTree = "<group>"; };
 		9FD5BBCFE55151C7BF88CBAA /* ProfileCoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoordinatorSpec.swift; sourceTree = "<group>"; };
 		9FD5BC51656D98FBACB569A2 /* GraphQLQueryResolverSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLQueryResolverSpec.swift; sourceTree = "<group>"; };
-		9FD5BD2661F65F03F3C3ED6E /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
+		9FD5BD2661F65F03F3C3ED6E /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		9FD5BDFBA311E65A466E89CE /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9FD5BE0C8961FC8151CFF6DA /* followers.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = followers.graphql; sourceTree = "<group>"; };
 		9FD5BE3C25B741AF3345FB88 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				9FD5BE5E2A900A54A5A72576 /* ProfileCoordinator.swift */,
-				9FD5BD2661F65F03F3C3ED6E /* ProfileCollectionViewController.swift */,
+				9FD5BD2661F65F03F3C3ED6E /* ProfileTableViewController.swift */,
 				9FD5B886228A4B7D57E98F0F /* profile.graphql */,
 				9FD5B3AE31247892AB253C53 /* Profile.swift */,
 				9FD5BF32B8C67A75BD3DBB18 /* BigUserTableViewCell.xib */,
@@ -697,7 +697,7 @@
 				9FD5B4438B9F351BB6E96B87 /* AppCoordinator.swift in Sources */,
 				9FD5BFD51D338175F26C1759 /* ProfileCoordinator.swift in Sources */,
 				9FD5B7FAFF7F517AF9D0ED36 /* Coordinator.swift in Sources */,
-				9FD5B2353E88AB4EBB99D5CF /* ProfileCollectionViewController.swift in Sources */,
+				9FD5B2353E88AB4EBB99D5CF /* ProfileTableViewController.swift in Sources */,
 				9FD5B63CDBF34038A333E960 /* Environment.swift in Sources */,
 				9FD5B73BA27FD28B74A4711D /* RequestFactory.swift in Sources */,
 				9FD5B90F4BB1F9AD12DB2BC8 /* ApiController.swift in Sources */,
