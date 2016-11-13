@@ -1,9 +1,5 @@
 language: objective-c
 osx_image: xcode8
-install:
-  - gem install bundler
-  - bundle install
-  - bundle exec pod repo update
 before_script:
   - cp soundcloudql-swift/Api/Environment.plist.sample soundcloudql-swift/Api/Environment.plist
 script:
