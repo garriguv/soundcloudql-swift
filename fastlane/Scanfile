@@ -1,4 +1,4 @@
 scheme 'soundcloudql-swift'
 open_report false
 clean true
-destination 'platform=iOS Simulator,OS=9.2,name=iPhone 6s'
+device 'iPhone 6'
