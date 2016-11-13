@@ -4,10 +4,10 @@ struct PostedTracksQuery: GraphQLCollectionQuery {
   typealias Object = PostedTracks
 
   let name = "posted_tracks"
-  let variables: [String: AnyObject]
+  let variables: [String: Any]
 
   init(id: String, limit: Int, next: String? = nil) {
-    var variables: [String: AnyObject] = ["id": id, "limit" : limit ]
+    var variables: [String: Any] = ["id": id, "limit" : limit ]
     if let next = next {
       variables["next"] = next
     }
@@ -20,8 +20,8 @@ struct PostedTracks {
 }
 
 extension PostedTracks: GraphQLObject {
-  init?(json: [String: AnyObject]) {
-    guard let userJson = json["user"] as? [String: AnyObject],
+  init?(json: [String: Any]) {
+    guard let userJson = json["user"] as? [String: Any],
     let user = PostedTracksUser(json: userJson) else {
       return nil
     }
@@ -36,7 +36,7 @@ extension PostedTracks: GraphQLCollectionObject {
     return user.postedTracksCollection.collection.count
   }
 
-  func itemAtIndexPath(indexPath: NSIndexPath) -> Track {
+  func itemAtIndexPath(_ indexPath: IndexPath) -> Track {
     return user.postedTracksCollection.collection[indexPath.row]
   }
 
@@ -44,7 +44,7 @@ extension PostedTracks: GraphQLCollectionObject {
     return user.postedTracksCollection.next
   }
 
-  func appendObjects(object: PostedTracks) -> PostedTracks {
+  func appendObjects(_ object: PostedTracks) -> PostedTracks {
     let tracksCollection = user.postedTracksCollection.collection + object.user.postedTracksCollection.collection
     let collection = UserPostedTracksCollection(collection: tracksCollection, next: object.user.postedTracksCollection.next)
     let _user = PostedTracksUser(postedTracksCollection: collection)
@@ -58,8 +58,8 @@ struct PostedTracksUser {
 }
 
 extension PostedTracksUser: GraphQLObject {
-  init?(json: [String:AnyObject]) {
-    guard let postedTracksCollectionJson = json["postedTracksCollection"] as? [String: AnyObject],
+  init?(json: [String:Any]) {
+    guard let postedTracksCollectionJson = json["postedTracksCollection"] as? [String: Any],
       let postedTracksCollection = UserPostedTracksCollection(json: postedTracksCollectionJson) else {
       return nil
     }

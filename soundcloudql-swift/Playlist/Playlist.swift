@@ -4,7 +4,7 @@ struct PlaylistQuery: GraphQLQuery {
   typealias Object = Playlist
 
   let name = "playlist"
-  let variables: [String: AnyObject]
+  let variables: [String: Any]
 
   init(playlistId: String) {
     self.variables = [ "id": playlistId ]
@@ -22,14 +22,14 @@ struct Playlist {
 }
 
 extension Playlist: GraphQLObject {
-  init?(json: [String:AnyObject]) {
-    guard let playlistJson = json["playlist"] as? [String: AnyObject],
+  init?(json: [String:Any]) {
+    guard let playlistJson = json["playlist"] as? [String: Any],
     let id = playlistJson["id"] as? String,
     let title = playlistJson["title"] as? String,
     let tracksCount = playlistJson["tracksCount"] as? Int,
-    let userConnectionJson = playlistJson["userConnection"] as? [String: AnyObject],
+    let userConnectionJson = playlistJson["userConnection"] as? [String: Any],
     let userConnection = PlaylistUser(json: userConnectionJson),
-    let tracksCollectionJson = playlistJson["tracksCollection"] as? [String: AnyObject],
+    let tracksCollectionJson = playlistJson["tracksCollection"] as? [String: Any],
     let tracksCollection = PlaylistTracksCollection(json: tracksCollectionJson)
     else {
       return nil
@@ -54,7 +54,7 @@ struct PlaylistUser {
 }
 
 extension PlaylistUser: GraphQLObject {
-  init?(json: [String:AnyObject]) {
+  init?(json: [String:Any]) {
     guard let id = json["id"] as? String,
     let username = json["username"] as? String,
     let permalinkUrl = json["permalinkUrl"] as? String else {
@@ -75,8 +75,8 @@ struct PlaylistTracksCollection {
 }
 
 extension PlaylistTracksCollection: GraphQLObject {
-  init?(json: [String:AnyObject]) {
-    guard let collectionJson = json["collection"] as? [[String: AnyObject]] else {
+  init?(json: [String:Any]) {
+    guard let collectionJson = json["collection"] as? [[String: Any]] else {
       return nil;
     }
     self.collection = collectionJson.map { PlaylistTrack(json: $0)! }
@@ -93,7 +93,7 @@ struct PlaylistTrack {
 }
 
 extension PlaylistTrack: GraphQLObject {
-  init?(json: [String:AnyObject]) {
+  init?(json: [String:Any]) {
     guard let id = json["id"] as? String,
     let title = json["title"] as? String,
     let permalinkUrl = json["permalinkUrl"] as? String,

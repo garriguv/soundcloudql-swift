@@ -2,8 +2,8 @@ import Foundation
 import UIKit
 
 class PostedPlaylistsCoordinator {
-  private let navigationController: UINavigationController
-  private let userId: String
+  fileprivate let navigationController: UINavigationController
+  fileprivate let userId: String
 
   internal weak var delegate: CoordinatorDelegate?
   internal var childCoordinators: [Coordinator] = []

@@ -9,23 +9,23 @@ class GraphQLQueryResolver<Query: GraphQLQuery> {
     self.apiController = apiController
   }
 
-  func fetch(closure: (QueryResponse<Query.Object>) -> ()) {
+  func fetch(_ closure: @escaping (QueryResponse<Query.Object>) -> ()) {
     print("resolving \(query)")
     apiController.fetch(withGraphQLQuery: query.name, variables: query.variables) { apiResponse in
       switch (apiResponse) {
-        case .GraphQL(let dictionary):
-          if let json = dictionary["data"] as? [String: AnyObject], let object = Query.Object(json: json) {
-            dispatch_async(dispatch_get_main_queue()) {
-              closure(.Success(object))
+        case .graphQL(let dictionary):
+          if let json = dictionary["data"] as? [String: Any], let object = Query.Object(json: json) {
+            DispatchQueue.main.async {
+              closure(.success(object))
             }
           } else {
-            dispatch_async(dispatch_get_main_queue()) {
-              closure(.Error(.SerializationError(dictionary)))
+            DispatchQueue.main.async {
+              closure(.error(.serializationError(dictionary)))
             }
           }
-        case .Error(let error):
-          dispatch_async(dispatch_get_main_queue()) {
-            closure(.Error(.ApiError(error)))
+        case .error(let error):
+          DispatchQueue.main.async {
+            closure(.error(.apiError(error)))
           }
       }
     }
@@ -33,23 +33,23 @@ class GraphQLQueryResolver<Query: GraphQLQuery> {
 }
 
 enum QueryResponse<Object> {
-  case Success(Object)
-  case Error(QueryError)
+  case success(Object)
+  case error(QueryError)
 }
 
 enum QueryError {
-  case ApiError(ApiControllerError)
-  case SerializationError([String: AnyObject])
+  case apiError(ApiControllerError)
+  case serializationError([String: Any])
 }
 
 extension QueryError: Equatable {}
 
 func == (lhs: QueryError, rhs: QueryError) -> Bool {
   switch (lhs, rhs) {
-  case (.ApiError(let lhsError), .ApiError(let rhsError)):
+  case (.apiError(let lhsError), .apiError(let rhsError)):
     return lhsError == rhsError
-  case (.SerializationError(let lhsDictionary), .SerializationError(let rhsDictionary)):
-    return NSDictionary(dictionary: lhsDictionary).isEqualToDictionary(rhsDictionary)
+  case (.serializationError(let lhsDictionary), .serializationError(let rhsDictionary)):
+    return NSDictionary(dictionary: lhsDictionary).isEqual(to: rhsDictionary)
   default:
     return false
   }

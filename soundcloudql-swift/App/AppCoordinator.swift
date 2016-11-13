@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 class AppCoordinator {
-  private let tabBarController: UITabBarController
+  fileprivate let tabBarController: UITabBarController
 
   internal weak var delegate: CoordinatorDelegate? = nil
   internal var childCoordinators: [Coordinator]
@@ -24,7 +24,7 @@ extension AppCoordinator: Coordinator {
 extension AppCoordinator: CoordinatorDelegate {}
 
 extension AppCoordinator {
-  private func startProfile() -> UINavigationController {
+  fileprivate func startProfile() -> UINavigationController {
     let navigationController = UINavigationController()
     let profileCoordinator = ProfileCoordinator(navigationController, userId: "2", delegate: self)
     childCoordinators.append(profileCoordinator)

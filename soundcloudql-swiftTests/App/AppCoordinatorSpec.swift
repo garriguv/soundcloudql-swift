@@ -6,7 +6,7 @@ class TestTabBarController: UITabBarController {
   var __didCallSetViewControllers: Bool = false
   var __viewControllers: [UIViewController]? = []
 
-  override func setViewControllers(viewControllers: [UIViewController]?, animated: Bool) {
+  override func setViewControllers(_ viewControllers: [UIViewController]?, animated: Bool) {
     __didCallSetViewControllers = true
     __viewControllers = viewControllers!
   }

@@ -2,8 +2,8 @@ import Foundation
 import UIKit
 
 class PlaylistCoordinator {
-  private let navigationController: UINavigationController
-  private let playlistId: String
+  fileprivate let navigationController: UINavigationController
+  fileprivate let playlistId: String
 
   internal weak var delegate: CoordinatorDelegate?
   internal var childCoordinators: [Coordinator] = []
@@ -29,13 +29,13 @@ extension PlaylistCoordinator: PlaylistTableViewControllerDelegate {
     delegate?.didFinishCoordinating(self)
   }
 
-  func didTapTrack(trackId trackId: String, permalinkUrl: String) {
-    if let permalinkURL = NSURL(string: permalinkUrl) {
-      UIApplication.sharedApplication().openURL(permalinkURL)
+  func didTapTrack(trackId: String, permalinkUrl: String) {
+    if let permalinkURL = URL(string: permalinkUrl) {
+      UIApplication.shared.open(permalinkURL, options: [:], completionHandler: nil)
     }
   }
 
-  func didTapUser(userId userId: String, permalinkUrl: String) {
+  func didTapUser(userId: String, permalinkUrl: String) {
     let profileCoordinator = ProfileCoordinator(navigationController, userId: userId, delegate: self)
     childCoordinators.append(profileCoordinator)
     profileCoordinator.start()

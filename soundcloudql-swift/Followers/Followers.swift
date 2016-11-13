@@ -4,10 +4,10 @@ struct FollowersQuery: GraphQLCollectionQuery {
   typealias Object = Followers
 
   let name = "followers"
-  let variables: [String: AnyObject]
+  let variables: [String: Any]
 
   init(id: String, limit: Int, next: String? = nil) {
-    var variables: [String: AnyObject] = ["id": id, "limit" : limit ]
+    var variables: [String: Any] = ["id": id, "limit" : limit ]
     if let next = next {
       variables["next"] = next
     }
@@ -20,8 +20,8 @@ struct Followers {
 }
 
 extension Followers: GraphQLObject {
-  init?(json: [String:AnyObject]) {
-    guard let userJson = json["user"] as? [String: AnyObject],
+  init?(json: [String:Any]) {
+    guard let userJson = json["user"] as? [String: Any],
     let user = FollowersUser(json: userJson) else {
       return nil
     }
@@ -30,7 +30,7 @@ extension Followers: GraphQLObject {
 }
 
 extension Followers: GraphQLCollectionObject {
-  func appendObjects(object: Followers) -> Followers {
+  func appendObjects(_ object: Followers) -> Followers {
     let followersCollection = user.followersCollection.collection + object.user.followersCollection.collection
     let collection = FollowersUserFollowersCollection(collection: followersCollection, next: object.user.followersCollection.next)
     let _followersUser = FollowersUser(followersCollection: collection)
@@ -41,7 +41,7 @@ extension Followers: GraphQLCollectionObject {
     return user.followersCollection.next
   }
 
-  func itemAtIndexPath(indexPath: NSIndexPath) -> FollowersMiniUser {
+  func itemAtIndexPath(_ indexPath: IndexPath) -> FollowersMiniUser {
     return user.followersCollection.collection[indexPath.row]
   }
 
@@ -55,8 +55,8 @@ struct FollowersUser {
 }
 
 extension FollowersUser: GraphQLObject {
-  init?(json: [String:AnyObject]) {
-    guard let followersCollectionJson = json["followersCollection"] as? [String: AnyObject],
+  init?(json: [String:Any]) {
+    guard let followersCollectionJson = json["followersCollection"] as? [String: Any],
     let followersCollection = FollowersUserFollowersCollection(json: followersCollectionJson) else {
       return nil
     }
@@ -70,8 +70,8 @@ struct FollowersUserFollowersCollection {
 }
 
 extension FollowersUserFollowersCollection: GraphQLObject {
-  init?(json: [String: AnyObject]) {
-    guard let collection = json["collection"] as? [[String: AnyObject]] else {
+  init?(json: [String: Any]) {
+    guard let collection = json["collection"] as? [[String: Any]] else {
       return nil
     }
     self.collection = collection.map { FollowersMiniUser(json: $0)! }
@@ -86,7 +86,7 @@ struct FollowersMiniUser {
 }
 
 extension FollowersMiniUser: GraphQLObject {
-  init?(json: [String: AnyObject]) {
+  init?(json: [String: Any]) {
     guard let id = json["id"] as? String,
     let username = json["username"] as? String else {
       return nil

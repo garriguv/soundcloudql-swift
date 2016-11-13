@@ -8,7 +8,7 @@ struct TestGraphQLQuery: GraphQLQuery {
   var name: String {
     return "test_query"
   }
-  var variables: [String:AnyObject] {
+  var variables: [String:Any] {
     return [ "id" : "2" ]
   }
 }
@@ -24,7 +24,7 @@ func == (lhs: TestObject, rhs: TestObject) -> Bool {
 }
 
 extension TestObject: GraphQLObject {
-  init?(json: [String:AnyObject]) {
+  init?(json: [String:Any]) {
     guard let id = json["id"] as? String else {
       return nil;
     }
@@ -37,7 +37,7 @@ class TestApiController: ApiController {
 
   init() { }
 
-  override func fetch(withGraphQLQuery graphQLQueryName: String, variables: [String:AnyObject], completion: (ApiResponse) -> ()) {
+  override func fetch(withGraphQLQuery graphQLQueryName: String, variables: [String:Any], completion: @escaping (ApiResponse) -> ()) {
     completion(__response)
   }
 }
@@ -60,14 +60,14 @@ class GraphQLQueryResolverSpec: QuickSpec {
       context("when the api returns a dictionary") {
         context("when the dictionary contains valid data") {
           beforeEach {
-            apiController.__response = ApiResponse.GraphQL([ "data": [ "id": "2" ] ])
+            apiController.__response = ApiResponse.graphQL([ "data": [ "id": "2" ] ])
           }
 
           it("completes with Success(object)") {
             waitUntil { done in
               subject.fetch { (response: QueryResponse<TestObject>) in
                 switch response {
-                case .Success(let object):
+                case .success(let object):
                   expect(object).to(equal(TestObject(id: "2")))
                 default:
                   assertionFailure("boom \(response)")
@@ -80,15 +80,15 @@ class GraphQLQueryResolverSpec: QuickSpec {
 
         context("when the dictionary contains invalid data") {
           beforeEach {
-            apiController.__response = ApiResponse.GraphQL([ "data": [ "invalid": "data" ] ])
+            apiController.__response = ApiResponse.graphQL([ "data": [ "invalid": "data" ] ])
           }
 
           it("completes with Error(.SerializationError)") {
             waitUntil { done in
               subject.fetch { (response: QueryResponse<TestObject>) in
                 switch response {
-                case .Error(let error):
-                  expect(error).to(equal(QueryError.SerializationError([ "data": [ "invalid": "data" ] ])))
+                case .error(let error):
+                  expect(error).to(equal(QueryError.serializationError([ "data": [ "invalid": "data" ] ])))
                 default:
                   assertionFailure("boom \(response)")
                 }
@@ -101,15 +101,15 @@ class GraphQLQueryResolverSpec: QuickSpec {
 
       context("when the api errors") {
         beforeEach {
-          apiController.__response = ApiResponse.Error(.GraphQLQueryNotFound)
+          apiController.__response = ApiResponse.error(.graphQLQueryNotFound)
         }
 
         it("completes with Error(.ApiError(error))") {
           waitUntil { done in
             subject.fetch { (response: QueryResponse<TestObject>) in
               switch response {
-              case .Error(let error):
-                expect(error).to(equal(QueryError.ApiError(.GraphQLQueryNotFound)))
+              case .error(let error):
+                expect(error).to(equal(QueryError.apiError(.graphQLQueryNotFound)))
               default:
                 assertionFailure("boom \(response)")
               }

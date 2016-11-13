@@ -4,10 +4,10 @@ struct LikedTracksQuery: GraphQLCollectionQuery {
   typealias Object = LikedTracks
 
   let name = "liked_tracks"
-  let variables: [String: AnyObject]
+  let variables: [String: Any]
 
   init(id: String, limit: Int, next: String? = nil) {
-    var variables: [String: AnyObject] = ["id": id, "limit" : limit ]
+    var variables: [String: Any] = ["id": id, "limit" : limit ]
     if let next = next {
       variables["next"] = next
     }
@@ -20,8 +20,8 @@ struct LikedTracks {
 }
 
 extension LikedTracks: GraphQLObject {
-  init?(json: [String: AnyObject]) {
-    guard let userJson = json["user"] as? [String: AnyObject],
+  init?(json: [String: Any]) {
+    guard let userJson = json["user"] as? [String: Any],
     let user = LikedTracksUser(json: userJson) else {
       return nil
     }
@@ -36,7 +36,7 @@ extension LikedTracks: GraphQLCollectionObject {
     return user.likedTracksCollection.collection.count
   }
 
-  func itemAtIndexPath(indexPath: NSIndexPath) -> Track {
+  func itemAtIndexPath(_ indexPath: IndexPath) -> Track {
     return user.likedTracksCollection.collection[indexPath.row]
   }
 
@@ -44,7 +44,7 @@ extension LikedTracks: GraphQLCollectionObject {
     return user.likedTracksCollection.next
   }
 
-  func appendObjects(object: LikedTracks) -> LikedTracks {
+  func appendObjects(_ object: LikedTracks) -> LikedTracks {
     let tracksCollection = user.likedTracksCollection.collection + object.user.likedTracksCollection.collection
     let collection = UserLikedTracksCollection(collection: tracksCollection, next: object.user.likedTracksCollection.next)
     let _user = LikedTracksUser(likedTracksCollection: collection)
@@ -57,8 +57,8 @@ struct LikedTracksUser {
 }
 
 extension LikedTracksUser: GraphQLObject {
-  init?(json: [String:AnyObject]) {
-    guard let likedTracksCollectionJson = json["likedTracksCollection"] as? [String: AnyObject],
+  init?(json: [String:Any]) {
+    guard let likedTracksCollectionJson = json["likedTracksCollection"] as? [String: Any],
     let likedTracksCollection = UserLikedTracksCollection(json: likedTracksCollectionJson) else {
       return nil
     }

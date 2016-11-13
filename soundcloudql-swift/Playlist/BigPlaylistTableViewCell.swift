@@ -15,11 +15,11 @@ class BigPlaylistTableViewCell: UITableViewCell {
 extension BigPlaylistTableViewCell: RenderableCell {
   @nonobjc static let height: CGFloat = 150
 
-  func render(object: GraphQLObject) {
+  func render(_ object: GraphQLObject) {
     if let playlist = object as? BigPlaylistRenderable {
       titleLabel.text = playlist.title
-      if let artworkUrl = playlist.artworkUrl, artworkURL = NSURL(string: artworkUrl) {
-        artworkImageView.kf_setImageWithURL(artworkURL)
+      if let artworkUrl = playlist.artworkUrl, let artworkURL = URL(string: artworkUrl) {
+        artworkImageView.kf.setImage(with: artworkURL)
       }
     }
   }

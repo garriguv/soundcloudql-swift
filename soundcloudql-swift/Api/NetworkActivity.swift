@@ -5,17 +5,17 @@ class NetworkActivity {
   static var counter: Int = 0
 
   static func increase() {
-    counter++
+    counter += 1
     updateIndicatorVisibility()
   }
 
   static func decrease() {
-    counter--
+    counter -= 1
     updateIndicatorVisibility()
   }
 
-  private static func updateIndicatorVisibility() {
+  fileprivate static func updateIndicatorVisibility() {
     precondition(counter >= 0, "counter should never be < 0")
-    UIApplication.sharedApplication().networkActivityIndicatorVisible = counter > 0
+    UIApplication.shared.isNetworkActivityIndicatorVisible = counter > 0
   }
 }

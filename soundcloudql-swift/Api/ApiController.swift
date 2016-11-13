@@ -1,38 +1,38 @@
 import Foundation
 
-enum ApiControllerError: ErrorType {
-  case GraphQLQueryNotFound
-  case NetworkError(NSError?)
-  case JSONSerialization(String?)
+enum ApiControllerError: Error {
+  case graphQLQueryNotFound
+  case networkError(Error?)
+  case jsonSerialization(String?)
 }
 
 extension ApiControllerError: Equatable {}
 
 func == (lhs: ApiControllerError, rhs: ApiControllerError) -> Bool {
   switch (lhs, rhs) {
-    case (.GraphQLQueryNotFound, .GraphQLQueryNotFound):
+    case (.graphQLQueryNotFound, .graphQLQueryNotFound):
       return true
-    case (.NetworkError(let lhsError), .NetworkError(let rhsError)):
-      return lhsError == rhsError
-    case (.JSONSerialization(let lhsError), .JSONSerialization(let rhsError)):
-      return lhsError == rhsError
+    case (.networkError(_), .networkError(_)):
+      return true
+    case (.jsonSerialization(_), .jsonSerialization(_)):
+      return true
     default:
       return false
   }
 }
 
 enum ApiResponse {
-  case GraphQL([String: AnyObject])
-  case Error(ApiControllerError)
+  case graphQL([String: Any])
+  case error(ApiControllerError)
 }
 
 extension ApiResponse: Equatable {}
 
 func == (lhs: ApiResponse, rhs: ApiResponse) -> Bool {
   switch (lhs, rhs) {
-    case (.GraphQL(let lhsObj), .GraphQL(let rhsObj)):
-      return NSDictionary(dictionary: lhsObj).isEqualToDictionary(rhsObj)
-    case (.Error(let lhsError), .Error(let rhsError)):
+    case (.graphQL(let lhsObj), .graphQL(let rhsObj)):
+      return NSDictionary(dictionary: lhsObj).isEqual(to: rhsObj)
+    case (.error(let lhsError), .error(let rhsError)):
       return lhsError == rhsError
     default:
       return false
@@ -42,49 +42,49 @@ func == (lhs: ApiResponse, rhs: ApiResponse) -> Bool {
 class ApiController {
   static let sharedInstance = ApiController()
 
-  private let session: NSURLSession
-  private let requestFactory: RequestFactory
+  fileprivate let session: URLSession
+  fileprivate let requestFactory: RequestFactory
 
-  init(session: NSURLSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration()),
+  init(session: URLSession = URLSession(configuration: URLSessionConfiguration.default),
        requestFactory: RequestFactory = RequestFactory()) {
     self.session = session
     self.requestFactory = requestFactory
   }
 
-  func fetch(withGraphQLQuery graphQLQueryName: String, variables: [String: AnyObject], completion: (ApiResponse) -> ()) {
+  func fetch(withGraphQLQuery graphQLQueryName: String, variables: [String: Any], completion: @escaping (ApiResponse) -> ()) {
     guard let request = requestFactory.request(withGraphQLQuery: graphQLQueryName, variables: variables) else {
-      completion(.Error(.GraphQLQueryNotFound))
+      completion(.error(.graphQLQueryNotFound))
       return
     }
     NetworkActivity.increase()
-    let dataTask = session.dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
+    let dataTask = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
       NetworkActivity.decrease()
       guard
-        let httpResponse = response as? NSHTTPURLResponse where httpResponse.statusCode == 200,
+        let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200,
         let jsonData = data else {
-        completion(.Error(.NetworkError(error)))
+        completion(.error(.networkError(error)))
         return;
       }
       do {
         let json = try ApiController.jsonDictionary(jsonData)
-        completion(.GraphQL(json))
+        completion(.graphQL(json))
       } catch let error as NSError? {
-        completion(.Error(.JSONSerialization(error?.localizedDescription)))
+        completion(.error(.jsonSerialization(error?.localizedDescription)))
       } catch let error as ApiControllerError {
-        completion(.Error(error))
+        completion(.error(error))
       } catch {
-        completion(.Error(.JSONSerialization(nil)))
+        completion(.error(.jsonSerialization(nil)))
       }
-    }
+    }) 
     dataTask.resume()
   }
 
-  private static func jsonDictionary(data: NSData) throws -> [String: AnyObject] {
-    let json = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+  fileprivate static func jsonDictionary(_ data: Data) throws -> [String: AnyObject] {
+    let json = try JSONSerialization.jsonObject(with: data, options: [])
     if let dictionary = json as? [String: AnyObject] {
       return dictionary
     } else {
-      throw ApiControllerError.JSONSerialization("Top level json object is not an NSDictionary: \(json)")
+      throw ApiControllerError.jsonSerialization("Top level json object is not an NSDictionary: \(json)")
     }
   }
 }

@@ -17,12 +17,12 @@ class PlaylistTableViewCell: UITableViewCell {
 extension PlaylistTableViewCell: RenderableCell {
   @nonobjc static let height: CGFloat = 70
 
-  func render(object: GraphQLObject) {
+  func render(_ object: GraphQLObject) {
     if let playlist = object as? PlaylistRenderable {
       titleLabel.text = playlist.title
       tracksCountLabel.text = "\(playlist.tracksCount) tracks"
-      if let artworkUrl = playlist.artworkUrl, let artworkURL = NSURL(string: artworkUrl) {
-        artworkImageView.kf_setImageWithURL(artworkURL)
+      if let artworkUrl = playlist.artworkUrl, let artworkURL = URL(string: artworkUrl) {
+        artworkImageView.kf.setImage(with: artworkURL)
       } else {
         artworkImageView.image = nil
       }

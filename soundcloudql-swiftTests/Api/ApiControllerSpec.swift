@@ -2,16 +2,16 @@ import Quick
 import Nimble
 @testable import soundcloudql_swift
 
-class TestNSURLSessionDataTask: NSURLSessionDataTask {
-  let __completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void
-  let __data: NSData?
-  let __response: NSURLResponse?
-  let __error: NSError?
+class TestNSURLSessionDataTask: URLSessionDataTask {
+  let __completionHandler: (Data?, URLResponse?, Error?) -> Void
+  let __data: Data?
+  let __response: URLResponse?
+  let __error: Error?
 
-  init(completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void,
-       data: NSData?,
-       response: NSURLResponse?,
-       error: NSError?) {
+  init(completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void,
+       data: Data?,
+       response: URLResponse?,
+       error: Error?) {
     self.__completionHandler = completionHandler
     self.__data = data
     self.__response = response
@@ -23,12 +23,12 @@ class TestNSURLSessionDataTask: NSURLSessionDataTask {
   }
 }
 
-class TestNSURLSession: NSURLSession {
-  var __data: NSData?
-  var __response: NSURLResponse?
-  var __error: NSError?
+class TestNSURLSession: URLSession {
+  var __data: Data?
+  var __response: URLResponse?
+  var __error: Error?
 
-  override func dataTaskWithRequest(_ request: NSURLRequest, completionHandler completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
+  override func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
     let testDataTask = TestNSURLSessionDataTask(completionHandler: completionHandler,
       data: __data, response: __response, error: __error)
     return testDataTask
@@ -36,9 +36,9 @@ class TestNSURLSession: NSURLSession {
 }
 
 class TestRequestFactory: RequestFactory {
-  var __request: NSURLRequest?
+  var __request: URLRequest?
 
-  override func request(withGraphQLQuery queryName: String, variables: [String:AnyObject]) -> NSURLRequest? {
+  override func request(withGraphQLQuery queryName: String, variables: [String:Any]) -> URLRequest? {
     return __request
   }
 }
@@ -50,7 +50,7 @@ class ApiControllerSpec: QuickSpec {
     var session: TestNSURLSession!
     var requestFactory: TestRequestFactory!
 
-    let url = NSURL(string: "http://localhost:5000/graphql")!
+    let url = URL(string: "http://localhost:5000/graphql")!
 
     beforeEach {
       session = TestNSURLSession()
@@ -69,7 +69,7 @@ class ApiControllerSpec: QuickSpec {
           waitUntil { done in
             subject.fetch(withGraphQLQuery: "query", variables: [String: String]()) {
               (response: ApiResponse) in
-              expect(response).to(equal(ApiResponse.Error(.GraphQLQueryNotFound)))
+              expect(response).to(equal(ApiResponse.error(.graphQLQueryNotFound)))
               done()
             }
           }
@@ -78,15 +78,15 @@ class ApiControllerSpec: QuickSpec {
 
       context("when the request factroy returns a request") {
         beforeEach {
-          requestFactory.__request = NSURLRequest(URL: url)
+          requestFactory.__request = URLRequest(url: url)
         }
 
         context("when the api errors") {
-          var networkResponse: NSHTTPURLResponse!
-          var networkError: NSError!
+          var networkResponse: HTTPURLResponse!
+          var networkError: Error!
 
           beforeEach {
-            networkResponse = NSHTTPURLResponse(URL: url, statusCode: 500, HTTPVersion: nil, headerFields: nil)
+            networkResponse = HTTPURLResponse(url: url, statusCode: 500, httpVersion: nil, headerFields: nil)
             networkError = NSError(domain: "network", code: 1337, userInfo: nil)
             session.__error = networkError
             session.__response = networkResponse
@@ -96,7 +96,7 @@ class ApiControllerSpec: QuickSpec {
             waitUntil { done in
               subject.fetch(withGraphQLQuery: "query", variables: [String: String]()) {
                 (response: ApiResponse) in
-                expect(response).to(equal(ApiResponse.Error(.NetworkError(networkError))))
+                expect(response).to(equal(ApiResponse.error(.networkError(networkError))))
                 done()
               }
             }
@@ -104,12 +104,12 @@ class ApiControllerSpec: QuickSpec {
         }
 
         context("when the JSON serialization errors") {
-          var networkResponse: NSHTTPURLResponse!
-          var networkData: NSData!
+          var networkResponse: HTTPURLResponse!
+          var networkData: Data!
 
           beforeEach {
-            networkResponse = NSHTTPURLResponse(URL: url, statusCode: 200, HTTPVersion: nil, headerFields: nil)
-            networkData = NSData()
+            networkResponse = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
+            networkData = Data()
             session.__response = networkResponse
             session.__data = networkData
           }
@@ -118,7 +118,7 @@ class ApiControllerSpec: QuickSpec {
             waitUntil { done in
               subject.fetch(withGraphQLQuery: "query", variables: [String: String]()) {
                 (response: ApiResponse) in
-                expect(response).to(equal(ApiResponse.Error(.JSONSerialization(nil))))
+                expect(response).to(equal(ApiResponse.error(.jsonSerialization(nil))))
                 done()
               }
             }
@@ -126,14 +126,14 @@ class ApiControllerSpec: QuickSpec {
         }
 
         context("when the api and JSON serialization succeeds") {
-          var networkResponse: NSHTTPURLResponse!
-          var networkData: NSData!
-          var expectedDictionary: [String: AnyObject]!
+          var networkResponse: HTTPURLResponse!
+          var networkData: Data!
+          var expectedDictionary: [String: Any]!
 
           beforeEach {
             expectedDictionary = [ "data": [ "hello" : "world" ] ]
-            networkResponse = NSHTTPURLResponse(URL: url, statusCode: 200, HTTPVersion: nil, headerFields: nil)
-            networkData = try! NSJSONSerialization.dataWithJSONObject(expectedDictionary, options: [])
+            networkResponse = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
+            networkData = try! JSONSerialization.data(withJSONObject: expectedDictionary, options: [])
             session.__response = networkResponse
             session.__data = networkData
           }
@@ -142,7 +142,7 @@ class ApiControllerSpec: QuickSpec {
             waitUntil { done in
               subject.fetch(withGraphQLQuery: "query", variables: [String: String]()) {
                 (response: ApiResponse) in
-                expect(response).to(equal(ApiResponse.GraphQL(expectedDictionary)))
+                expect(response).to(equal(ApiResponse.graphQL(expectedDictionary)))
                 done()
               }
             }

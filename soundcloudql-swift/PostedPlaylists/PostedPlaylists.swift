@@ -4,10 +4,10 @@ struct PostedPlaylistsQuery: GraphQLCollectionQuery {
   typealias Object = PostedPlaylists
 
   let name = "posted_playlists"
-  let variables: [String: AnyObject]
+  let variables: [String: Any]
 
   init(id: String, limit: Int, next: String? = nil) {
-    var variables: [String: AnyObject] = ["id": id, "limit" : limit ]
+    var variables: [String: Any] = ["id": id, "limit" : limit ]
     if let next = next {
       variables["next"] = next
     }
@@ -20,8 +20,8 @@ struct PostedPlaylists {
 }
 
 extension PostedPlaylists: GraphQLObject {
-  init?(json: [String: AnyObject]) {
-    guard let userJson = json["user"] as? [String: AnyObject],
+  init?(json: [String: Any]) {
+    guard let userJson = json["user"] as? [String: Any],
     let user = PostedPlaylistsUser(json: userJson) else {
       return nil
     }
@@ -36,7 +36,7 @@ extension PostedPlaylists: GraphQLCollectionObject {
     return user.postedPlaylistsCollection.collection.count
   }
 
-  func itemAtIndexPath(indexPath: NSIndexPath) -> MiniPlaylist {
+  func itemAtIndexPath(_ indexPath: IndexPath) -> MiniPlaylist {
     return user.postedPlaylistsCollection.collection[indexPath.row]
   }
 
@@ -44,7 +44,7 @@ extension PostedPlaylists: GraphQLCollectionObject {
     return user.postedPlaylistsCollection.next
   }
 
-  func appendObjects(object: PostedPlaylists) -> PostedPlaylists{
+  func appendObjects(_ object: PostedPlaylists) -> PostedPlaylists{
     let playlistsCollection = user.postedPlaylistsCollection.collection + object.user.postedPlaylistsCollection.collection
     let collection = UserPostedPlaylistsCollection(collection: playlistsCollection, next: object.user.postedPlaylistsCollection.next)
     let _user = PostedPlaylistsUser(postedPlaylistsCollection: collection)
@@ -57,12 +57,11 @@ struct PostedPlaylistsUser {
 }
 
 extension PostedPlaylistsUser: GraphQLObject {
-  init?(json: [String:AnyObject]) {
-    guard let postedPlaylistsCollectionJson = json["postedPlaylistsCollection"] as? [String: AnyObject],
+  init?(json: [String:Any]) {
+    guard let postedPlaylistsCollectionJson = json["postedPlaylistsCollection"] as? [String: Any],
     let postedPlaylistsCollection = UserPostedPlaylistsCollection(json: postedPlaylistsCollectionJson) else {
       return nil
     }
     self.postedPlaylistsCollection = postedPlaylistsCollection
   }
 }
-

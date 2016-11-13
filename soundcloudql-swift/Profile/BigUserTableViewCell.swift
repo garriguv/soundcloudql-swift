@@ -11,12 +11,12 @@ class BigUserTableViewCell: UITableViewCell {
 extension BigUserTableViewCell: RenderableCell {
   @nonobjc static let height: CGFloat = 150
 
-  func render(object: GraphQLObject) {
+  func render(_ object: GraphQLObject) {
     if let user = object as? User {
       usernameLabel.text = user.username
       cityLabel.text = user.city
-      if let avatarUrl = user.avatarUrl, avatarURL = NSURL(string: avatarUrl) {
-        avatarImageView.kf_setImageWithURL(avatarURL)
+      if let avatarUrl = user.avatarUrl, let avatarURL = URL(string: avatarUrl) {
+        avatarImageView.kf.setImage(with: avatarURL)
       } else {
         avatarImageView.image = nil
       }

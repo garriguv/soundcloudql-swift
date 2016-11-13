@@ -1,11 +1,11 @@
-platform :ios, '9.0'
+platform :ios, '10.0'
 use_frameworks!
 
 target 'soundcloudql-swift' do
-  pod 'Kingfisher', '~> 2.1.0'
+  pod 'Kingfisher'
 end
 
 target 'soundcloudql-swiftTests' do
-  pod 'Quick', '~> 0.9.1'
-  pod 'Nimble', '~> 3.1.0'
+  pod 'Quick'
+  pod 'Nimble'
 end

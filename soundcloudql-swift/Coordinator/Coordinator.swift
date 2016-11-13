@@ -9,13 +9,13 @@ protocol Coordinator: class {
 }
 
 protocol CoordinatorDelegate: class {
-  func didFinishCoordinating(coordinator: Coordinator)
+  func didFinishCoordinating(_ coordinator: Coordinator)
 }
 
 extension Coordinator {
-  func didFinishCoordinating(coordinator: Coordinator) {
-    let index = childCoordinators.indexOf { $0 === coordinator }!
-    childCoordinators.removeAtIndex(index)
+  func didFinishCoordinating(_ coordinator: Coordinator) {
+    let index = childCoordinators.index { $0 === coordinator }!
+    childCoordinators.remove(at: index)
   }
 }
 
@@ -24,13 +24,13 @@ extension Coordinator where Self: CollectionTableViewControllerDelegate, Self: C
     delegate?.didFinishCoordinating(self)
   }
 
-  func didSelectObject(object: GraphQLObject) {
+  func didSelectObject(_ object: GraphQLObject) {
     guard let navigationController = topNavigationController() else {
       preconditionFailure("Something's weird here")
     }
     if let track = object as? TrackRenderable {
-      if let permalinkURL = NSURL(string: track.permalinkUrl) {
-        UIApplication.sharedApplication().openURL(permalinkURL)
+      if let permalinkURL = URL(string: track.permalinkUrl) {
+        UIApplication.shared.open(permalinkURL, options: [:], completionHandler: nil)
       }
     } else if let user = object as? UserRenderable {
       let profileCoordinator = ProfileCoordinator(navigationController, userId: user.id, delegate: self)
@@ -43,8 +43,8 @@ extension Coordinator where Self: CollectionTableViewControllerDelegate, Self: C
     }
   }
 
-  private func topNavigationController() -> UINavigationController? {
-    let tabBarController = UIApplication.sharedApplication().keyWindow?.rootViewController as? UITabBarController
+  fileprivate func topNavigationController() -> UINavigationController? {
+    let tabBarController = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController
     return tabBarController?.viewControllers?.first as? UINavigationController
   }
 }

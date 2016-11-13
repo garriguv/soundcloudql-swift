@@ -1,27 +1,27 @@
 import Foundation
 
 protocol GraphQLQuery {
-  typealias Object: GraphQLObject
+  associatedtype Object: GraphQLObject
 
   var name: String { get }
-  var variables: [String: AnyObject] { get }
+  var variables: [String: Any] { get }
 }
 
 protocol GraphQLObject {
-  init?(json: [String: AnyObject])
+  init?(json: [String: Any])
 }
 
 protocol GraphQLCollectionQuery: GraphQLQuery {
-  typealias Object: GraphQLCollectionObject
+  associatedtype Object: GraphQLCollectionObject
 
   init(id: String, limit: Int, next: String?)
 }
 
 protocol GraphQLCollectionObject: GraphQLObject {
-  typealias Object: GraphQLObject
+  associatedtype Object: GraphQLObject
 
   func numberOfItems() -> Int
-  func itemAtIndexPath(indexPath: NSIndexPath) -> Object
+  func itemAtIndexPath(_ indexPath: IndexPath) -> Object
   func next() -> String?
-  func appendObjects(object: Self) -> Self
+  func appendObjects(_ object: Self) -> Self
 }

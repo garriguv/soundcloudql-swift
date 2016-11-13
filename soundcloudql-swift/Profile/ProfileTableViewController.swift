@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 enum ProfileSections: Int {
-  case User = 0, Followers, Followings, PostedTracks, LikedTracks, PostedPlaylists, Count
+  case user = 0, followers, followings, postedTracks, likedTracks, postedPlaylists, count
 }
 
 protocol ProfileTableViewControllerDelegate {
@@ -14,15 +14,15 @@ protocol ProfileTableViewControllerDelegate {
   func didTapMoreLikedTracks()
   func didTapMorePostedPlaylists()
 
-  func didTapTrack(trackId trackId: String, permalinkUrl: String)
-  func didTapPlaylist(playlistId playlistId: String, permalinkUrl: String)
+  func didTapTrack(trackId: String, permalinkUrl: String)
+  func didTapPlaylist(playlistId: String, permalinkUrl: String)
 }
 
 class ProfileTableViewController: UITableViewController {
   var userId: String!
   var profileDelegate: ProfileTableViewControllerDelegate?
 
-  private var profile: Profile?
+  fileprivate var profile: Profile?
 }
 
 // View lifecycle
@@ -35,9 +35,9 @@ extension ProfileTableViewController {
     let profileResolver = GraphQLQueryResolver(query: ProfileQuery(profileId: userId))
     profileResolver.fetch() { (response: QueryResponse<Profile>) in
       switch response {
-      case .Success(let profile):
+      case .success(let profile):
         self.updateProfile(profile)
-      case .Error(let error):
+      case .error(let error):
         print(error)
       }
     }
@@ -46,21 +46,21 @@ extension ProfileTableViewController {
 
 // UITableViewDataSource
 extension ProfileTableViewController {
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     if let _ = profile {
-      return ProfileSections.Count.rawValue
+      return ProfileSections.count.rawValue
     }
     return 0
   }
 
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if let profile = profile {
       switch ProfileSections(rawValue: section)! {
-      case .PostedTracks:
+      case .postedTracks:
         return profile.user.postedTracksCollection.collection.count + 1
-      case .LikedTracks:
+      case .likedTracks:
         return profile.user.likedTracksCollection.collection.count + 1
-      case .PostedPlaylists:
+      case .postedPlaylists:
         return profile.user.postedPlaylistsCollection.collection.count + 1
       default:
         return 1
@@ -69,59 +69,59 @@ extension ProfileTableViewController {
     return 0
   }
 
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     switch ProfileSections(rawValue: indexPath.section)! {
-    case .User:
-      let cell = tableView.dequeueReusableCellWithIdentifier(BigUserTableViewCell.reuseIdentifier, forIndexPath: indexPath) as! BigUserTableViewCell
+    case .user:
+      let cell = tableView.dequeueReusableCell(withIdentifier: BigUserTableViewCell.reuseIdentifier, for: indexPath) as! BigUserTableViewCell
       let user = profile!.user
       cell.render(user)
       return cell
-    case .Followers:
-      let cell = tableView.dequeueReusableCellWithIdentifier("FooterCell") ?? UITableViewCell(style: .Default, reuseIdentifier: "FooterCell")
+    case .followers:
+      let cell = tableView.dequeueReusableCell(withIdentifier: "FooterCell") ?? UITableViewCell(style: .default, reuseIdentifier: "FooterCell")
       cell.textLabel?.text = "\(profile!.user.followersCount) followers"
-      cell.accessoryType = .DisclosureIndicator
+      cell.accessoryType = .disclosureIndicator
       return cell
-    case .Followings:
-      let cell = tableView.dequeueReusableCellWithIdentifier("FooterCell") ?? UITableViewCell(style: .Default, reuseIdentifier: "FooterCell")
+    case .followings:
+      let cell = tableView.dequeueReusableCell(withIdentifier: "FooterCell") ?? UITableViewCell(style: .default, reuseIdentifier: "FooterCell")
       cell.textLabel?.text = "\(profile!.user.followingsCount) followings"
-      cell.accessoryType = .DisclosureIndicator
+      cell.accessoryType = .disclosureIndicator
       return cell
-    case .PostedTracks, .LikedTracks:
+    case .postedTracks, .likedTracks:
       if indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1 {
-        let cell = tableView.dequeueReusableCellWithIdentifier("FooterCell") ?? UITableViewCell(style: .Default, reuseIdentifier: "FooterCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FooterCell") ?? UITableViewCell(style: .default, reuseIdentifier: "FooterCell")
         cell.textLabel?.text = "more \(self.tableView(tableView, titleForHeaderInSection: indexPath.section)!)"
-        cell.accessoryType = .DisclosureIndicator
+        cell.accessoryType = .disclosureIndicator
         return cell
       } else {
-        let cell = tableView.dequeueReusableCellWithIdentifier(TrackTableViewCell.reuseIdentifier, forIndexPath: indexPath) as! TrackTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TrackTableViewCell.reuseIdentifier, for: indexPath) as! TrackTableViewCell
         let track = trackAtIndexPath(indexPath)
         cell.render(track)
         return cell
       }
-    case .PostedPlaylists:
+    case .postedPlaylists:
       if indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1 {
-        let cell = tableView.dequeueReusableCellWithIdentifier("FooterCell") ?? UITableViewCell(style: .Default, reuseIdentifier: "FooterCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FooterCell") ?? UITableViewCell(style: .default, reuseIdentifier: "FooterCell")
         cell.textLabel?.text = "more \(self.tableView(tableView, titleForHeaderInSection: indexPath.section)!)"
-        cell.accessoryType = .DisclosureIndicator
+        cell.accessoryType = .disclosureIndicator
         return cell
       } else {
-        let cell = tableView.dequeueReusableCellWithIdentifier(PlaylistTableViewCell.reuseIdentifier, forIndexPath: indexPath) as! PlaylistTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: PlaylistTableViewCell.reuseIdentifier, for: indexPath) as! PlaylistTableViewCell
         let playlist = playlistAtIndexPath(indexPath)
         cell.render(playlist)
         return cell
       }
     default:
-      preconditionFailure("\(__FUNCTION__) invalid section \(indexPath.section)")
+      preconditionFailure("\(#function) invalid section \(indexPath.section)")
     }
   }
 
-  override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch ProfileSections(rawValue: section)! {
-    case .PostedTracks:
+    case .postedTracks:
       return "posted tracks"
-    case .LikedTracks:
+    case .likedTracks:
       return "liked tracks"
-    case .PostedPlaylists:
+    case .postedPlaylists:
       return "posted playlists"
     default:
       return nil
@@ -131,40 +131,40 @@ extension ProfileTableViewController {
 
 // UITableViewDelegate
 extension ProfileTableViewController {
-  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     switch ProfileSections(rawValue: indexPath.section)! {
-    case .User:
+    case .user:
       return BigUserTableViewCell.height
-    case .PostedPlaylists:
+    case .postedPlaylists:
        return PlaylistTableViewCell.height
     default:
       return TrackTableViewCell.height
     }
   }
 
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
 
     switch ProfileSections(rawValue: indexPath.section)! {
-    case .Followers:
+    case .followers:
       profileDelegate?.didTapFollowers()
-    case .Followings:
+    case .followings:
       profileDelegate?.didTapFollowings()
-    case .PostedTracks:
+    case .postedTracks:
       if (indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1) {
         profileDelegate?.didTapMorePostedTracks()
       } else {
         let track = trackAtIndexPath(indexPath)
         profileDelegate?.didTapTrack(trackId: track.id, permalinkUrl: track.permalinkUrl)
       }
-    case .LikedTracks:
+    case .likedTracks:
       if (indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1) {
         profileDelegate?.didTapMoreLikedTracks()
       } else {
         let track = trackAtIndexPath(indexPath)
         profileDelegate?.didTapTrack(trackId: track.id, permalinkUrl: track.permalinkUrl)
       }
-    case .PostedPlaylists:
+    case .postedPlaylists:
       if (indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1) {
         profileDelegate?.didTapMorePostedPlaylists()
       } else {
@@ -179,7 +179,7 @@ extension ProfileTableViewController {
 
 // Private
 extension ProfileTableViewController {
-  private func setup() {
+  fileprivate func setup() {
     title = "profile"
 
     TrackTableViewCell.register(inTableView: tableView)
@@ -187,31 +187,31 @@ extension ProfileTableViewController {
     BigUserTableViewCell.register(inTableView: tableView)
   }
 
-  private func updateProfile(newProfile: Profile) {
+  fileprivate func updateProfile(_ newProfile: Profile) {
     profile = newProfile
     tableView.reloadData()
   }
 
-  private func trackAtIndexPath(indexPath: NSIndexPath) -> Track {
+  fileprivate func trackAtIndexPath(_ indexPath: IndexPath) -> Track {
     guard let profile = profile else {
       preconditionFailure("trying to access a track (\(indexPath)) without a profile")
     }
     switch ProfileSections(rawValue: indexPath.section)! {
-    case .PostedTracks:
+    case .postedTracks:
       return profile.user.postedTracksCollection.collection[indexPath.row]
-    case .LikedTracks:
+    case .likedTracks:
       return profile.user.likedTracksCollection.collection[indexPath.row]
     default:
       preconditionFailure("invalid section \(indexPath.section)")
     }
   }
 
-  private func playlistAtIndexPath(indexPath: NSIndexPath) -> MiniPlaylist {
+  fileprivate func playlistAtIndexPath(_ indexPath: IndexPath) -> MiniPlaylist {
     guard let profile = profile else {
       preconditionFailure("trying to access a track (\(indexPath)) without a profile")
     }
     switch ProfileSections(rawValue: indexPath.section)! {
-    case .PostedPlaylists:
+    case .postedPlaylists:
       return profile.user.postedPlaylistsCollection.collection[indexPath.row]
     default:
       preconditionFailure("invalid section \(indexPath.section)")

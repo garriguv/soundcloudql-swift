@@ -16,11 +16,11 @@ class UserTableViewCell: UITableViewCell {
 extension UserTableViewCell: RenderableCell {
   @nonobjc static let height: CGFloat = 50
 
-  func render(object: GraphQLObject) {
+  func render(_ object: GraphQLObject) {
     if let user = object as? UserRenderable {
       usernameLabel.text = user.username
-      if let avatarUrl = user.avatarUrl, let avatarURL = NSURL(string: avatarUrl) {
-        avatarImageView.kf_setImageWithURL(avatarURL)
+      if let avatarUrl = user.avatarUrl, let avatarURL = URL(string: avatarUrl) {
+        avatarImageView.kf.setImage(with: avatarURL)
       } else {
         avatarImageView.image = nil
       }

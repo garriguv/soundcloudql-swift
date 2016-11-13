@@ -2,42 +2,42 @@ import Foundation
 
 class RequestFactory {
 
-  private let bundle: NSBundle
-  private let environment: Environment
+  fileprivate let bundle: Bundle
+  fileprivate let environment: Environment
 
-  init(bundle: NSBundle = NSBundle.mainBundle(), environment: Environment = Environment.sharedInstance) {
+  init(bundle: Bundle = Bundle.main, environment: Environment = Environment.sharedInstance) {
     self.bundle = bundle
     self.environment = environment
   }
 
-  func request(withGraphQLQuery queryName: String, variables: [String: AnyObject]) -> NSURLRequest? {
+  func request(withGraphQLQuery queryName: String, variables: [String: Any]) -> URLRequest? {
     guard
       let query = graphQLQuery(queryName),
       let body = body(withQuery: query, variables: variables) else {
       return nil
     }
-    let request = NSMutableURLRequest(URL: environment.graphQLURL)
+    let request = NSMutableURLRequest(url: environment.graphQLURL as URL)
 
-    request.HTTPBody = body
-    request.HTTPMethod = "POST"
+    request.httpBody = body
+    request.httpMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
-    return request
+    return request as URLRequest
   }
 
-  private func graphQLQuery(queryName: String) -> String? {
-    guard let queryURL = bundle.URLForResource(queryName, withExtension: "graphql") else {
+  fileprivate func graphQLQuery(_ queryName: String) -> String? {
+    guard let queryURL = bundle.url(forResource: queryName, withExtension: "graphql") else {
       return nil
     }
-    return try? String(contentsOfURL: queryURL, encoding: NSUTF8StringEncoding)
+    return try? String(contentsOf: queryURL, encoding: String.Encoding.utf8)
   }
 
-  private func body(withQuery query: String, variables: [String: AnyObject]) -> NSData? {
+  fileprivate func body(withQuery query: String, variables: [String: Any]) -> Data? {
     let body = [
       "query" : query,
       "variables" : variables
-    ]
-    return try? NSJSONSerialization.dataWithJSONObject(body, options: [])
+    ] as [String : Any]
+    return try? JSONSerialization.data(withJSONObject: body, options: [])
   }
 
 }

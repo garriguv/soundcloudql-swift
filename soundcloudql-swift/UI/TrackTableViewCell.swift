@@ -16,11 +16,11 @@ class TrackTableViewCell: UITableViewCell {
 extension TrackTableViewCell: RenderableCell {
   @nonobjc static let height: CGFloat = 50
 
-  func render(object: GraphQLObject) {
+  func render(_ object: GraphQLObject) {
     if let track = object as? TrackRenderable {
       titleLabel.text = track.title
       if let artworkUrl = track.artworkUrl {
-        artworkImageView.kf_setImageWithURL(NSURL(string: artworkUrl)!)
+        artworkImageView.kf.setImage(with: URL(string: artworkUrl)!)
       } else {
         artworkImageView.image = nil
       }

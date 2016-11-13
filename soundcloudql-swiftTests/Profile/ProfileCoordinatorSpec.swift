@@ -6,7 +6,7 @@ class TestNavigationController: UINavigationController {
   var __pushedViewController: UIViewController?
   var __pushedViewControllerAnimated: Bool?
 
-  override func pushViewController(viewController: UIViewController, animated: Bool) {
+  override func pushViewController(_ viewController: UIViewController, animated: Bool) {
     __pushedViewController = viewController
     __pushedViewControllerAnimated = animated
   }
@@ -28,7 +28,7 @@ class ProfileCoordinatorSpec: QuickSpec {
       it("pushes an instance of ProfileCollectionViewController") {
         subject.start()
 
-        expect(navigationController.__pushedViewController).to(beAnInstanceOf(ProfileTableViewController))
+        expect(navigationController.__pushedViewController).to(beAnInstanceOf(ProfileTableViewController.self))
       }
 
       it("pushes a view controller without animating") {

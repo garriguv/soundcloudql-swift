@@ -4,7 +4,7 @@ import Foundation
 import UIKit
 
 func runningTestBundle() -> Bool {
-  let environment = NSProcessInfo.processInfo().environment
+  let environment = ProcessInfo.processInfo.environment
   if let injectBundle = environment["XCInjectBundle"] {
     return NSString(string: injectBundle).pathExtension == "xctest"
   }
@@ -13,8 +13,6 @@ func runningTestBundle() -> Bool {
 
 class UnitTestsAppDelegate: UIResponder, UIApplicationDelegate {}
 
-if runningTestBundle() {
-  UIApplicationMain(Process.argc, Process.unsafeArgv, NSStringFromClass(UIApplication), NSStringFromClass(UnitTestsAppDelegate))
-} else {
-  UIApplicationMain(Process.argc, Process.unsafeArgv, NSStringFromClass(UIApplication), NSStringFromClass(AppDelegate))
-}
+let appDelegateClass: AnyClass? = runningTestBundle() ? UnitTestsAppDelegate.self : AppDelegate.self
+let args = UnsafeMutableRawPointer(CommandLine.unsafeArgv).bindMemory(to: UnsafeMutablePointer<Int8>.self, capacity: Int(CommandLine.argc))
+UIApplicationMain(CommandLine.argc, args, nil, NSStringFromClass(appDelegateClass!))

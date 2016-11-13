@@ -3,18 +3,18 @@ import Nimble
 @testable import soundcloudql_swift
 
 class TestEnvironment: Environment {
-  override var graphQLURL: NSURL { return NSURL(string: "http://localhost:5000/graphql")! }
+  override var graphQLURL: URL { return URL(string: "http://localhost:5000/graphql")! }
 }
 
 class RequestFactorySpec: QuickSpec {
   override func spec() {
     var subject: RequestFactory!
 
-    var bundle: NSBundle!
+    var bundle: Bundle!
     var environment: TestEnvironment!
 
     beforeEach {
-      bundle = NSBundle(forClass: self.dynamicType)
+      bundle = Bundle(for: type(of: self))
       environment = TestEnvironment()
 
     subject = RequestFactory(bundle: bundle, environment: environment)
@@ -22,7 +22,7 @@ class RequestFactorySpec: QuickSpec {
 
     describe("request(queryName:variables:)") {
       context("when the query exists") {
-        var request: (() -> NSURLRequest)!
+        var request: (() -> URLRequest)!
 
         beforeEach {
           request = {
@@ -31,7 +31,7 @@ class RequestFactorySpec: QuickSpec {
         }
 
         it("returns a request with the right URL") {
-          expect(request().URL).to(equal(NSURL(string: "http://localhost:5000/graphql")))
+          expect(request().url).to(equal(URL(string: "http://localhost:5000/graphql")))
         }
 
         it("returns a request with the right content type") {
@@ -39,17 +39,17 @@ class RequestFactorySpec: QuickSpec {
         }
 
         it("returns a request with the right method") {
-          expect(request().HTTPMethod).to(equal("POST"))
+          expect(request().httpMethod).to(equal("POST"))
         }
 
         it("returns a request with the right body") {
-          let expectedBody: [String: AnyObject] = [
+          let expectedBody: NSDictionary = [
             "query" : "user(id: $id) {\n  username\n}\n",
             "variables" : [
               "id" : "2"
             ]
           ]
-          let requestBody = try! NSJSONSerialization.JSONObjectWithData(request().HTTPBody!, options: []) as! NSDictionary
+          let requestBody = try! JSONSerialization.jsonObject(with: request().httpBody!, options: []) as! NSDictionary
           expect(requestBody).to(equal(expectedBody))
         }
       }
