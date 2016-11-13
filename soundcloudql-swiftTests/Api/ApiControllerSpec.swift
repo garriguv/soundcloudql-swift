@@ -30,7 +30,7 @@ class TestNSURLSession: URLSession {
 
   override func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
     let testDataTask = TestNSURLSessionDataTask(completionHandler: completionHandler,
-      data: __data, response: __response, error: __error)
+                                                data: __data, response: __response, error: __error)
     return testDataTask
   }
 }
@@ -38,7 +38,7 @@ class TestNSURLSession: URLSession {
 class TestRequestFactory: RequestFactory {
   var __request: URLRequest?
 
-  override func request(withGraphQLQuery queryName: String, variables: [String:Any]) -> URLRequest? {
+  override func request(withGraphQLQuery queryName: String, variables: [String: Any]) -> URLRequest? {
     return __request
   }
 }
@@ -131,7 +131,7 @@ class ApiControllerSpec: QuickSpec {
           var expectedDictionary: [String: Any]!
 
           beforeEach {
-            expectedDictionary = [ "data": [ "hello" : "world" ] ]
+            expectedDictionary = ["data": ["hello": "world"]]
             networkResponse = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
             networkData = try! JSONSerialization.data(withJSONObject: expectedDictionary, options: [])
             session.__response = networkResponse

@@ -7,7 +7,7 @@ struct PostedPlaylistsQuery: GraphQLCollectionQuery {
   let variables: [String: Any]
 
   init(id: String, limit: Int, next: String? = nil) {
-    var variables: [String: Any] = ["id": id, "limit" : limit ]
+    var variables: [String: Any] = ["id": id, "limit": limit]
     if let next = next {
       variables["next"] = next
     }
@@ -22,7 +22,7 @@ struct PostedPlaylists {
 extension PostedPlaylists: GraphQLObject {
   init?(json: [String: Any]) {
     guard let userJson = json["user"] as? [String: Any],
-    let user = PostedPlaylistsUser(json: userJson) else {
+      let user = PostedPlaylistsUser(json: userJson) else {
       return nil
     }
     self.user = user
@@ -44,7 +44,7 @@ extension PostedPlaylists: GraphQLCollectionObject {
     return user.postedPlaylistsCollection.next
   }
 
-  func appendObjects(_ object: PostedPlaylists) -> PostedPlaylists{
+  func appendObjects(_ object: PostedPlaylists) -> PostedPlaylists {
     let playlistsCollection = user.postedPlaylistsCollection.collection + object.user.postedPlaylistsCollection.collection
     let collection = UserPostedPlaylistsCollection(collection: playlistsCollection, next: object.user.postedPlaylistsCollection.next)
     let _user = PostedPlaylistsUser(postedPlaylistsCollection: collection)
@@ -57,9 +57,9 @@ struct PostedPlaylistsUser {
 }
 
 extension PostedPlaylistsUser: GraphQLObject {
-  init?(json: [String:Any]) {
+  init?(json: [String: Any]) {
     guard let postedPlaylistsCollectionJson = json["postedPlaylistsCollection"] as? [String: Any],
-    let postedPlaylistsCollection = UserPostedPlaylistsCollection(json: postedPlaylistsCollectionJson) else {
+      let postedPlaylistsCollection = UserPostedPlaylistsCollection(json: postedPlaylistsCollectionJson) else {
       return nil
     }
     self.postedPlaylistsCollection = postedPlaylistsCollection

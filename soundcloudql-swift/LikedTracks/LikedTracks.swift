@@ -7,7 +7,7 @@ struct LikedTracksQuery: GraphQLCollectionQuery {
   let variables: [String: Any]
 
   init(id: String, limit: Int, next: String? = nil) {
-    var variables: [String: Any] = ["id": id, "limit" : limit ]
+    var variables: [String: Any] = ["id": id, "limit": limit]
     if let next = next {
       variables["next"] = next
     }
@@ -22,7 +22,7 @@ struct LikedTracks {
 extension LikedTracks: GraphQLObject {
   init?(json: [String: Any]) {
     guard let userJson = json["user"] as? [String: Any],
-    let user = LikedTracksUser(json: userJson) else {
+      let user = LikedTracksUser(json: userJson) else {
       return nil
     }
     self.user = user
@@ -57,9 +57,9 @@ struct LikedTracksUser {
 }
 
 extension LikedTracksUser: GraphQLObject {
-  init?(json: [String:Any]) {
+  init?(json: [String: Any]) {
     guard let likedTracksCollectionJson = json["likedTracksCollection"] as? [String: Any],
-    let likedTracksCollection = UserLikedTracksCollection(json: likedTracksCollectionJson) else {
+      let likedTracksCollection = UserLikedTracksCollection(json: likedTracksCollectionJson) else {
       return nil
     }
     self.likedTracksCollection = likedTracksCollection

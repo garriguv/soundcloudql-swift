@@ -23,7 +23,7 @@ extension CollectionTableViewController {
   }
 
   override func didMove(toParentViewController parent: UIViewController?) {
-    if (parent == nil) {
+    if parent == nil {
       collectionDelegate?.viewDidDisappear()
     }
   }

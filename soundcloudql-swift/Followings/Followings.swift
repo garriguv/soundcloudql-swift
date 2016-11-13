@@ -7,7 +7,7 @@ struct FollowingsQuery: GraphQLCollectionQuery {
   let variables: [String: Any]
 
   init(id: String, limit: Int, next: String? = nil) {
-    var variables: [String: Any] = [ "id": id, "limit" : limit ]
+    var variables: [String: Any] = ["id": id, "limit": limit]
     if let next = next {
       variables["next"] = next
     }
@@ -20,9 +20,9 @@ struct Followings {
 }
 
 extension Followings: GraphQLObject {
-  init?(json: [String:Any]) {
+  init?(json: [String: Any]) {
     guard let userJson = json["user"] as? [String: Any],
-    let user = FollowingsUser(json: userJson) else {
+      let user = FollowingsUser(json: userJson) else {
       return nil
     }
     self.user = user
@@ -55,9 +55,9 @@ struct FollowingsUser {
 }
 
 extension FollowingsUser: GraphQLObject {
-  init?(json: [String:Any]) {
+  init?(json: [String: Any]) {
     guard let followingsCollectionJson = json["followingsCollection"] as? [String: Any],
-    let followingsCollection = FollowingsUserFollowingsCollection(json: followingsCollectionJson) else {
+      let followingsCollection = FollowingsUserFollowingsCollection(json: followingsCollectionJson) else {
       return nil
     }
     self.followingsCollection = followingsCollection
@@ -88,7 +88,7 @@ struct FollowingsMiniUser {
 extension FollowingsMiniUser: GraphQLObject {
   init?(json: [String: Any]) {
     guard let id = json["id"] as? String,
-    let username = json["username"] as? String else {
+      let username = json["username"] as? String else {
       return nil
     }
     self.id = id

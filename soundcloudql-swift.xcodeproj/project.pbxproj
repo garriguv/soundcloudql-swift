@@ -497,6 +497,7 @@
 			buildConfigurationList = EB80F2FC1C8B0C9A00E7C7DD /* Build configuration list for PBXNativeTarget "soundcloudql-swift" */;
 			buildPhases = (
 				9E3153F2D02D2261F12C21BF /* [CP] Check Pods Manifest.lock */,
+				EBEFB6E71DD89CB900E3264F /* swiftformat */,
 				EB80F2D01C8B0C9A00E7C7DD /* Sources */,
 				EB80F2D11C8B0C9A00E7C7DD /* Frameworks */,
 				EB80F2D21C8B0C9A00E7C7DD /* Resources */,
@@ -517,6 +518,7 @@
 			buildConfigurationList = EB80F2FF1C8B0C9A00E7C7DD /* Build configuration list for PBXNativeTarget "soundcloudql-swiftTests" */;
 			buildPhases = (
 				A8D3AD3DE4651F8C2FD1B94D /* [CP] Check Pods Manifest.lock */,
+				EBEFB6E81DD89D0700E3264F /* swiftformat */,
 				EB80F2E41C8B0C9A00E7C7DD /* Sources */,
 				EB80F2E51C8B0C9A00E7C7DD /* Frameworks */,
 				EB80F2E61C8B0C9A00E7C7DD /* Resources */,
@@ -730,6 +732,34 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-soundcloudql-swiftTests/Pods-soundcloudql-swiftTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		EBEFB6E71DD89CB900E3264F /* swiftformat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = swiftformat;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/vendor/swiftformat\" --indent 2 \"${SRCROOT}/soundcloudql-swift/\"";
+		};
+		EBEFB6E81DD89D0700E3264F /* swiftformat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = swiftformat;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/vendor/swiftformat\"  --indent 2 \"${SRCROOT}/soundcloudql-swiftTests/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

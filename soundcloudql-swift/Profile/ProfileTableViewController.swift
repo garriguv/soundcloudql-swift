@@ -136,7 +136,7 @@ extension ProfileTableViewController {
     case .user:
       return BigUserTableViewCell.height
     case .postedPlaylists:
-       return PlaylistTableViewCell.height
+      return PlaylistTableViewCell.height
     default:
       return TrackTableViewCell.height
     }
@@ -151,21 +151,21 @@ extension ProfileTableViewController {
     case .followings:
       profileDelegate?.didTapFollowings()
     case .postedTracks:
-      if (indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1) {
+      if indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1 {
         profileDelegate?.didTapMorePostedTracks()
       } else {
         let track = trackAtIndexPath(indexPath)
         profileDelegate?.didTapTrack(trackId: track.id, permalinkUrl: track.permalinkUrl)
       }
     case .likedTracks:
-      if (indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1) {
+      if indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1 {
         profileDelegate?.didTapMoreLikedTracks()
       } else {
         let track = trackAtIndexPath(indexPath)
         profileDelegate?.didTapTrack(trackId: track.id, permalinkUrl: track.permalinkUrl)
       }
     case .postedPlaylists:
-      if (indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1) {
+      if indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1 {
         profileDelegate?.didTapMorePostedPlaylists()
       } else {
         let playlist = playlistAtIndexPath(indexPath)

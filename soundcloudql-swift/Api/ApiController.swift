@@ -10,14 +10,14 @@ extension ApiControllerError: Equatable {}
 
 func == (lhs: ApiControllerError, rhs: ApiControllerError) -> Bool {
   switch (lhs, rhs) {
-    case (.graphQLQueryNotFound, .graphQLQueryNotFound):
-      return true
-    case (.networkError(_), .networkError(_)):
-      return true
-    case (.jsonSerialization(_), .jsonSerialization(_)):
-      return true
-    default:
-      return false
+  case (.graphQLQueryNotFound, .graphQLQueryNotFound):
+    return true
+  case (.networkError(_), .networkError(_)):
+    return true
+  case (.jsonSerialization(_), .jsonSerialization(_)):
+    return true
+  default:
+    return false
   }
 }
 
@@ -30,12 +30,12 @@ extension ApiResponse: Equatable {}
 
 func == (lhs: ApiResponse, rhs: ApiResponse) -> Bool {
   switch (lhs, rhs) {
-    case (.graphQL(let lhsObj), .graphQL(let rhsObj)):
-      return NSDictionary(dictionary: lhsObj).isEqual(to: rhsObj)
-    case (.error(let lhsError), .error(let rhsError)):
-      return lhsError == rhsError
-    default:
-      return false
+  case (.graphQL(let lhsObj), .graphQL(let rhsObj)):
+    return NSDictionary(dictionary: lhsObj).isEqual(to: rhsObj)
+  case (.error(let lhsError), .error(let rhsError)):
+    return lhsError == rhsError
+  default:
+    return false
   }
 }
 
@@ -51,7 +51,7 @@ class ApiController {
     self.requestFactory = requestFactory
   }
 
-  func fetch(withGraphQLQuery graphQLQueryName: String, variables: [String: Any], completion: @escaping (ApiResponse) -> ()) {
+  func fetch(withGraphQLQuery graphQLQueryName: String, variables: [String: Any], completion: @escaping (ApiResponse) -> Void) {
     guard let request = requestFactory.request(withGraphQLQuery: graphQLQueryName, variables: variables) else {
       completion(.error(.graphQLQueryNotFound))
       return
@@ -63,7 +63,7 @@ class ApiController {
         let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200,
         let jsonData = data else {
         completion(.error(.networkError(error)))
-        return;
+        return
       }
       do {
         let json = try ApiController.jsonDictionary(jsonData)
@@ -75,7 +75,7 @@ class ApiController {
       } catch {
         completion(.error(.jsonSerialization(nil)))
       }
-    }) 
+    })
     dataTask.resume()
   }
 

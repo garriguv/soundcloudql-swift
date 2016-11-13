@@ -7,7 +7,7 @@ struct ProfileQuery: GraphQLQuery {
   let variables: [String: Any]
 
   init(profileId: String) {
-    self.variables = [ "id": profileId ]
+    self.variables = ["id": profileId]
   }
 }
 
@@ -18,7 +18,7 @@ struct Profile {
 extension Profile: GraphQLObject {
   init?(json: [String: Any]) {
     guard let userJson = json["user"] as? [String: Any],
-    let user = User(json: userJson) else {
+      let user = User(json: userJson) else {
       return nil
     }
     self.user = user
@@ -41,16 +41,16 @@ struct User {
 extension User: GraphQLObject {
   init?(json: [String: Any]) {
     guard let id = json["id"] as? String,
-    let username = json["username"] as? String,
-    let permalinkUrl = json["permalinkUrl"] as? String,
-    let followersCount = json["followersCount"] as? Int,
-    let followingsCount = json["followingsCount"] as? Int,
-    let postedTracksCollectionJson = json["postedTracksCollection"] as? [String: AnyObject],
-    let postedTracksCollection = UserPostedTracksCollection(json: postedTracksCollectionJson),
-    let likedTracksCollectionJson = json["likedTracksCollection"] as? [String: AnyObject],
-    let likedTracksCollection = UserLikedTracksCollection(json: likedTracksCollectionJson),
-    let postedPlaylistsCollectionJson = json["postedPlaylistsCollection"] as? [String: AnyObject],
-    let postedPlaylistsCollection = UserPostedPlaylistsCollection(json: postedPlaylistsCollectionJson) else {
+      let username = json["username"] as? String,
+      let permalinkUrl = json["permalinkUrl"] as? String,
+      let followersCount = json["followersCount"] as? Int,
+      let followingsCount = json["followingsCount"] as? Int,
+      let postedTracksCollectionJson = json["postedTracksCollection"] as? [String: AnyObject],
+      let postedTracksCollection = UserPostedTracksCollection(json: postedTracksCollectionJson),
+      let likedTracksCollectionJson = json["likedTracksCollection"] as? [String: AnyObject],
+      let likedTracksCollection = UserLikedTracksCollection(json: likedTracksCollectionJson),
+      let postedPlaylistsCollectionJson = json["postedPlaylistsCollection"] as? [String: AnyObject],
+      let postedPlaylistsCollection = UserPostedPlaylistsCollection(json: postedPlaylistsCollectionJson) else {
       return nil
     }
     self.id = id
@@ -122,9 +122,9 @@ struct Track {
 extension Track: GraphQLObject {
   init?(json: [String: Any]) {
     guard let id = json["id"] as? String,
-    let title = json["title"] as? String,
-    let permalinkUrl = json["permalinkUrl"] as? String,
-    let duration = json["duration"] as? Int else {
+      let title = json["title"] as? String,
+      let permalinkUrl = json["permalinkUrl"] as? String,
+      let duration = json["duration"] as? Int else {
       return nil
     }
     self.id = id
@@ -149,10 +149,10 @@ struct MiniPlaylist {
 extension MiniPlaylist: GraphQLObject {
   init?(json: [String: Any]) {
     guard let id = json["id"] as? String,
-    let title = json["title"] as? String,
-    let permalinkUrl = json["permalinkUrl"] as? String,
-    let tracksCount = json["tracksCount"] as? Int,
-    let duration = json["duration"] as? Int else {
+      let title = json["title"] as? String,
+      let permalinkUrl = json["permalinkUrl"] as? String,
+      let tracksCount = json["tracksCount"] as? Int,
+      let duration = json["duration"] as? Int else {
       return nil
     }
     self.id = id

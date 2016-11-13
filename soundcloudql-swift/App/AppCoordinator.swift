@@ -16,7 +16,7 @@ class AppCoordinator {
 extension AppCoordinator: Coordinator {
   func start() {
     self.tabBarController.setViewControllers([
-      startProfile()
+      startProfile(),
     ], animated: true)
   }
 }

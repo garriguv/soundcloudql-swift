@@ -7,7 +7,7 @@ struct PlaylistQuery: GraphQLQuery {
   let variables: [String: Any]
 
   init(playlistId: String) {
-    self.variables = [ "id": playlistId ]
+    self.variables = ["id": playlistId]
   }
 }
 
@@ -22,15 +22,15 @@ struct Playlist {
 }
 
 extension Playlist: GraphQLObject {
-  init?(json: [String:Any]) {
+  init?(json: [String: Any]) {
     guard let playlistJson = json["playlist"] as? [String: Any],
-    let id = playlistJson["id"] as? String,
-    let title = playlistJson["title"] as? String,
-    let tracksCount = playlistJson["tracksCount"] as? Int,
-    let userConnectionJson = playlistJson["userConnection"] as? [String: Any],
-    let userConnection = PlaylistUser(json: userConnectionJson),
-    let tracksCollectionJson = playlistJson["tracksCollection"] as? [String: Any],
-    let tracksCollection = PlaylistTracksCollection(json: tracksCollectionJson)
+      let id = playlistJson["id"] as? String,
+      let title = playlistJson["title"] as? String,
+      let tracksCount = playlistJson["tracksCount"] as? Int,
+      let userConnectionJson = playlistJson["userConnection"] as? [String: Any],
+      let userConnection = PlaylistUser(json: userConnectionJson),
+      let tracksCollectionJson = playlistJson["tracksCollection"] as? [String: Any],
+      let tracksCollection = PlaylistTracksCollection(json: tracksCollectionJson)
     else {
       return nil
     }
@@ -54,10 +54,10 @@ struct PlaylistUser {
 }
 
 extension PlaylistUser: GraphQLObject {
-  init?(json: [String:Any]) {
+  init?(json: [String: Any]) {
     guard let id = json["id"] as? String,
-    let username = json["username"] as? String,
-    let permalinkUrl = json["permalinkUrl"] as? String else {
+      let username = json["username"] as? String,
+      let permalinkUrl = json["permalinkUrl"] as? String else {
       return nil
     }
     self.id = id
@@ -75,9 +75,9 @@ struct PlaylistTracksCollection {
 }
 
 extension PlaylistTracksCollection: GraphQLObject {
-  init?(json: [String:Any]) {
+  init?(json: [String: Any]) {
     guard let collectionJson = json["collection"] as? [[String: Any]] else {
-      return nil;
+      return nil
     }
     self.collection = collectionJson.map { PlaylistTrack(json: $0)! }
     self.next = json["next"] as? String
@@ -93,11 +93,11 @@ struct PlaylistTrack {
 }
 
 extension PlaylistTrack: GraphQLObject {
-  init?(json: [String:Any]) {
+  init?(json: [String: Any]) {
     guard let id = json["id"] as? String,
-    let title = json["title"] as? String,
-    let permalinkUrl = json["permalinkUrl"] as? String,
-    let duration = json["duration"] as? Int else {
+      let title = json["title"] as? String,
+      let permalinkUrl = json["permalinkUrl"] as? String,
+      let duration = json["duration"] as? Int else {
       return nil
     }
     self.id = id

@@ -17,7 +17,7 @@ class RequestFactorySpec: QuickSpec {
       bundle = Bundle(for: type(of: self))
       environment = TestEnvironment()
 
-    subject = RequestFactory(bundle: bundle, environment: environment)
+      subject = RequestFactory(bundle: bundle, environment: environment)
     }
 
     describe("request(queryName:variables:)") {
@@ -26,7 +26,7 @@ class RequestFactorySpec: QuickSpec {
 
         beforeEach {
           request = {
-            return subject.request(withGraphQLQuery:"query", variables: [ "id": "2" ])!
+            return subject.request(withGraphQLQuery: "query", variables: ["id": "2"])!
           }
         }
 
@@ -44,10 +44,10 @@ class RequestFactorySpec: QuickSpec {
 
         it("returns a request with the right body") {
           let expectedBody: NSDictionary = [
-            "query" : "user(id: $id) {\n  username\n}\n",
-            "variables" : [
-              "id" : "2"
-            ]
+            "query": "user(id: $id) {\n  username\n}\n",
+            "variables": [
+              "id": "2",
+            ],
           ]
           let requestBody = try! JSONSerialization.jsonObject(with: request().httpBody!, options: []) as! NSDictionary
           expect(requestBody).to(equal(expectedBody))
@@ -56,7 +56,7 @@ class RequestFactorySpec: QuickSpec {
 
       context("when the query does not exist") {
         it("does not return any request") {
-          expect(subject.request(withGraphQLQuery:"nope", variables: [String: String]())).to(beNil())
+          expect(subject.request(withGraphQLQuery: "nope", variables: [String: String]())).to(beNil())
         }
       }
     }

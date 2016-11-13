@@ -8,8 +8,9 @@ struct TestGraphQLQuery: GraphQLQuery {
   var name: String {
     return "test_query"
   }
-  var variables: [String:Any] {
-    return [ "id" : "2" ]
+
+  var variables: [String: Any] {
+    return ["id": "2"]
   }
 }
 
@@ -24,9 +25,9 @@ func == (lhs: TestObject, rhs: TestObject) -> Bool {
 }
 
 extension TestObject: GraphQLObject {
-  init?(json: [String:Any]) {
+  init?(json: [String: Any]) {
     guard let id = json["id"] as? String else {
-      return nil;
+      return nil
     }
     self.id = id
   }
@@ -35,9 +36,9 @@ extension TestObject: GraphQLObject {
 class TestApiController: ApiController {
   var __response: ApiResponse!
 
-  init() { }
+  init() {}
 
-  override func fetch(withGraphQLQuery graphQLQueryName: String, variables: [String:Any], completion: @escaping (ApiResponse) -> ()) {
+  override func fetch(withGraphQLQuery graphQLQueryName: String, variables: [String: Any], completion: @escaping (ApiResponse) -> Void) {
     completion(__response)
   }
 }
@@ -60,7 +61,7 @@ class GraphQLQueryResolverSpec: QuickSpec {
       context("when the api returns a dictionary") {
         context("when the dictionary contains valid data") {
           beforeEach {
-            apiController.__response = ApiResponse.graphQL([ "data": [ "id": "2" ] ])
+            apiController.__response = ApiResponse.graphQL(["data": ["id": "2"]])
           }
 
           it("completes with Success(object)") {
@@ -80,7 +81,7 @@ class GraphQLQueryResolverSpec: QuickSpec {
 
         context("when the dictionary contains invalid data") {
           beforeEach {
-            apiController.__response = ApiResponse.graphQL([ "data": [ "invalid": "data" ] ])
+            apiController.__response = ApiResponse.graphQL(["data": ["invalid": "data"]])
           }
 
           it("completes with Error(.SerializationError)") {
@@ -88,7 +89,7 @@ class GraphQLQueryResolverSpec: QuickSpec {
               subject.fetch { (response: QueryResponse<TestObject>) in
                 switch response {
                 case .error(let error):
-                  expect(error).to(equal(QueryError.serializationError([ "data": [ "invalid": "data" ] ])))
+                  expect(error).to(equal(QueryError.serializationError(["data": ["invalid": "data"]])))
                 default:
                   assertionFailure("boom \(response)")
                 }

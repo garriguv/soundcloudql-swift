@@ -34,10 +34,9 @@ class RequestFactory {
 
   fileprivate func body(withQuery query: String, variables: [String: Any]) -> Data? {
     let body = [
-      "query" : query,
-      "variables" : variables
-    ] as [String : Any]
+      "query": query,
+      "variables": variables,
+    ] as [String: Any]
     return try? JSONSerialization.data(withJSONObject: body, options: [])
   }
-
 }

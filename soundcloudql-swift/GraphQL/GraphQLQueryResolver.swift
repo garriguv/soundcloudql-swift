@@ -9,24 +9,24 @@ class GraphQLQueryResolver<Query: GraphQLQuery> {
     self.apiController = apiController
   }
 
-  func fetch(_ closure: @escaping (QueryResponse<Query.Object>) -> ()) {
+  func fetch(_ closure: @escaping (QueryResponse<Query.Object>) -> Void) {
     print("resolving \(query)")
     apiController.fetch(withGraphQLQuery: query.name, variables: query.variables) { apiResponse in
-      switch (apiResponse) {
-        case .graphQL(let dictionary):
-          if let json = dictionary["data"] as? [String: Any], let object = Query.Object(json: json) {
-            DispatchQueue.main.async {
-              closure(.success(object))
-            }
-          } else {
-            DispatchQueue.main.async {
-              closure(.error(.serializationError(dictionary)))
-            }
-          }
-        case .error(let error):
+      switch apiResponse {
+      case .graphQL(let dictionary):
+        if let json = dictionary["data"] as? [String: Any], let object = Query.Object(json: json) {
           DispatchQueue.main.async {
-            closure(.error(.apiError(error)))
+            closure(.success(object))
           }
+        } else {
+          DispatchQueue.main.async {
+            closure(.error(.serializationError(dictionary)))
+          }
+        }
+      case .error(let error):
+        DispatchQueue.main.async {
+          closure(.error(.apiError(error)))
+        }
       }
     }
   }

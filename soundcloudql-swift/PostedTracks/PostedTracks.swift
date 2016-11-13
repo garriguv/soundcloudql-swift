@@ -7,7 +7,7 @@ struct PostedTracksQuery: GraphQLCollectionQuery {
   let variables: [String: Any]
 
   init(id: String, limit: Int, next: String? = nil) {
-    var variables: [String: Any] = ["id": id, "limit" : limit ]
+    var variables: [String: Any] = ["id": id, "limit": limit]
     if let next = next {
       variables["next"] = next
     }
@@ -22,7 +22,7 @@ struct PostedTracks {
 extension PostedTracks: GraphQLObject {
   init?(json: [String: Any]) {
     guard let userJson = json["user"] as? [String: Any],
-    let user = PostedTracksUser(json: userJson) else {
+      let user = PostedTracksUser(json: userJson) else {
       return nil
     }
     self.user = user
@@ -52,13 +52,12 @@ extension PostedTracks: GraphQLCollectionObject {
   }
 }
 
-
 struct PostedTracksUser {
   let postedTracksCollection: UserPostedTracksCollection
 }
 
 extension PostedTracksUser: GraphQLObject {
-  init?(json: [String:Any]) {
+  init?(json: [String: Any]) {
     guard let postedTracksCollectionJson = json["postedTracksCollection"] as? [String: Any],
       let postedTracksCollection = UserPostedTracksCollection(json: postedTracksCollectionJson) else {
       return nil
